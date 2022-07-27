@@ -59,7 +59,7 @@ vector<unsigned int> GetVertexes(vector<unsigned int> vertexes) {
     return vertexes;
 }
 
-void SwapWeight(vector<unsigned int> &vertexes, double &currWeight,
+void MoveWeight(vector<unsigned int> &vertexes, double &currWeight,
                 vector<unsigned int> &nextVertexes, double &nextWeight) {
     vertexes = std::move(nextVertexes);
     currWeight = nextWeight;
@@ -94,16 +94,16 @@ double CalcSimAnneling() {
     double currWeight = GetWeight(vertexes, matrix);
     auto temperature = TEMP_MAX;
 
-    for (int i = 0; i < CYCLE_RATE && temperature > TEMP_MIN; ++i) {
+    for (int i = 1; i < CYCLE_RATE && temperature > TEMP_MIN; ++i) {
         vector<unsigned int> nextVertexes = GetVertexes(vertexes);
         double nextWeight = GetWeight(nextVertexes, matrix);
 
         if (nextWeight < currWeight)
-            SwapWeight(vertexes, currWeight, nextVertexes, nextWeight);
+            MoveWeight(vertexes, currWeight, nextVertexes, nextWeight);
         else {
             double probability = GetProbability(nextWeight - currWeight, temperature);
             if (IsTransitNeeded(probability))
-                SwapWeight(vertexes, currWeight, nextVertexes, nextWeight);
+                MoveWeight(vertexes, currWeight, nextVertexes, nextWeight);
         }
 
         //  cooling down
