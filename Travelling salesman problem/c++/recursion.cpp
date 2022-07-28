@@ -36,7 +36,8 @@ double CalcRec() {
 }
 
 int main() {
-    MeasureFuncExecTime([](){ std::cout << CalcRec(); });
+    double time = MeasureFuncExecTime([]() { std::cout << CalcRec();  });
+    std::cout << "\nSearch time: " << time;
 
     return 0;
 }

@@ -62,11 +62,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="CMake Application.TSP_rec" />
       <item itemvalue="CMake Application.TSP_simAnnealing" />
@@ -89,6 +84,7 @@
       <workItem from="1657458962178" duration="667000" />
       <workItem from="1657789258035" duration="14962000" />
       <workItem from="1658946975613" duration="6572000" />
+      <workItem from="1659007065555" duration="20270000" />
     </task>
     <servers />
   </component>

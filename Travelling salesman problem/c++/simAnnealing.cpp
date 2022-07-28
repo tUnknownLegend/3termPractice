@@ -128,9 +128,31 @@ double GetSimAnneling() {
     return GetBestResult(res1, res2);
 }
 
+void CounterTrueFalse() {
+    int counter = 0;
+    double resVal = 0.0;
+    double currVal = 0.0;
+    double time = 0.0;
+    double const trueRes = 0.01701; //10; //0.015; //0.01701;
+    for (int i = 0; i < LOOP_RATE; ++i) {
+        //currVal = GetSimAnneling();
+        time += MeasureFuncExecTime( [&currVal]() mutable { currVal = GetSimAnneling(); });
+        resVal += currVal;
+        if (abs(currVal - trueRes) <= 0.000001)
+            ++counter;
+    }
+
+    std::cout << "True: " << counter << "; False: " << LOOP_RATE - counter << "\n";
+    std::cout << "Avarage score: " << double (resVal / (double) counter) <<
+    "; Eps: " << abs(resVal / (double) counter - trueRes) / trueRes * 100 << "\n";
+    std::cout << "Time: " << double (time / (double) counter) << "s";
+}
+
 int main() {
-    //MeasureFuncExecTime([]() { std::cout << CalcSimAnneling(); });
-    MeasureFuncExecTime([]() { std::cout << GetSimAnneling(); });
+    //double time = MeasureFuncExecTime([]() { std::cout << GetSimAnneling();  });
+    //std::cout << "\nSearch time: " << time;
+
+    CounterTrueFalse();
 
     return 0;
 }

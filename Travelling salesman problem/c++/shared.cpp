@@ -37,10 +37,12 @@ void inputMatrix(vector<vector<double>> &matrix) {
     //cout << "End reading\n";
 }
 
-void MeasureFuncExecTime(const std::function<void()>& FuncToMeasure){
+double MeasureFuncExecTime(const std::function<void()>& FuncToMeasure){
     unsigned int startingTime = clock();
     FuncToMeasure();
     unsigned int stopTime = clock();
     unsigned int searchTime = stopTime - startingTime;   //  exec time
-    cout << "\nSearch time: " << ((double) searchTime) / CLOCKS_PER_SEC << "\n";
+    //cout << "\nSearch time: " << ((double) searchTime) / CLOCKS_PER_SEC << "\n";
+
+    return (((double) searchTime) / CLOCKS_PER_SEC);
 }
