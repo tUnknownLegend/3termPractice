@@ -1,0 +1,3 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Теоретическая часть}{5}{0}{1}
+\beamer@sectionintoc {2}{Решение задач}{8}{0}{2}

@@ -1,0 +1,17 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\textbf {\ignorespaces {Введение}}}{3}{section*.1}%
+\contentsline {section}{\numberline {\hbox to 0pt{\hss }{{\textbf {1.\ }}}}{{\textbf {\ignorespaces {Постановка задачи}}}}}{3}{section*.3}%
+\contentsline {subsection}{\numberline {\hbox to 0pt{\hss }{{1.1.\ }}}{\ignorespaces {Чистый изгиб}}}{3}{section*.4}%
+\contentsline {subsection}{\numberline {\hbox to 0pt{\hss }{{1.2.\ }}}{\ignorespaces {Дифференциальное уравнение равновесия стержня}}}{7}{section*.10}%
+\contentsline {section}{\numberline {\hbox to 0pt{\hss }{{\textbf {2.\ }}}}{{\textbf {\ignorespaces {Теоретическая часть}}}}}{8}{section*.12}%
+\contentsline {subsection}{\numberline {\hbox to 0pt{\hss }{{2.1.\ }}}{\ignorespaces {Метод интегрирования}}}{8}{section*.13}%
+\contentsline {subsection}{\numberline {\hbox to 0pt{\hss }{{2.2.\ }}}{\ignorespaces {Метод обобщенных функций}}}{8}{section*.14}%
+\contentsline {section}{\numberline {\hbox to 0pt{\hss }{{\textbf {3.\ }}}}{{\textbf {\ignorespaces {Практическая часть}}}}}{10}{section*.19}%
+\contentsline {subsection}{\numberline {\hbox to 0pt{\hss }{{3.1.\ }}}{\ignorespaces {Балка в заделке}}}{10}{section*.20}%
+\contentsline {subsubsection}{\numberline {\hbox to 0pt{\hss }{{3.1.1.\ }}}{\ignorespaces {Решение методом интегрирования}}}{10}{section*.22}%
+\contentsline {subsubsection}{\numberline {\hbox to 0pt{\hss }{{3.1.2.\ }}}{\ignorespaces {Решение методом обобщенных функций}}}{12}{section*.24}%
+\contentsline {subsection}{\numberline {\hbox to 0pt{\hss }{{3.2.\ }}}{\ignorespaces {Двух опорная балка}}}{12}{section*.25}%
+\contentsline {subsubsection}{\numberline {\hbox to 0pt{\hss }{{3.2.1.\ }}}{\ignorespaces {Решение методом интегрирования}}}{13}{section*.27}%
+\contentsline {subsubsection}{\numberline {\hbox to 0pt{\hss }{{3.2.2.\ }}}{\ignorespaces {Решение методом обобщенных функций}}}{14}{section*.29}%
+\contentsline {section}{\textbf {\ignorespaces {Заключение}}}{17}{section*.31}%
+\contentsline {section}{\textbf {\ignorespaces {Список использованных источников}}}{18}{section*.33}%

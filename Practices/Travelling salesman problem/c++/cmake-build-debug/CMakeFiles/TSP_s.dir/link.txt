@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2022.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\TSP_s.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\ar.exe qc CMakeFiles\TSP_s.dir/objects.a @CMakeFiles\TSP_s.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE  -O2 -g -Wl,--whole-archive CMakeFiles\TSP_s.dir/objects.a -Wl,--no-whole-archive -o TSP_s.exe -Wl,--out-implib,libTSP_s.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\TSP_s.dir\linklibs.rsp
