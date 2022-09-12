@@ -5,22 +5,6 @@
 using std::vector;
 using std::cerr;
 
-//  This function generates a random double in [i, j]
-double GetRandomDouble(double i, double j) {
-    std::random_device rd;  // Will be used to obtain a seed for the random number engine
-    std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
-    std::uniform_real_distribution<> dis(i, j);
-    return dis(gen);
-}
-
-//  This function generates a random int in [i, j]
-unsigned int GetRandomInt(unsigned int i, unsigned int j) {
-    std::random_device rd;  //  Will be used to obtain a seed for the random number engine
-    std::mt19937 gen(rd()); //  Standard mersenne_twister_engine seeded with rd()
-    std::uniform_int_distribution<> distrib(i, j);
-    return distrib(gen);
-}
-
 double GetDistance(const vector<vector<double>> &matrix, const unsigned int &v1, const unsigned int &v2) {
     return matrix[v1][v2];
 }
@@ -143,9 +127,9 @@ void CounterTrueFalse() {
     }
 
     std::cout << "True: " << counter << "; False: " << LOOP_RATE - counter << "\n";
-    std::cout << "Avarage score: " << double (resVal / (double) counter) <<
-    "; Eps: " << abs(resVal / (double) counter - trueRes) / trueRes * 100 << "\n";
-    std::cout << "Time: " << double (time / (double) counter) << "s";
+    std::cout << "Avarage score: " << double(resVal / (double) LOOP_RATE) <<
+              "; Eps: " << abs(resVal / (double) LOOP_RATE - trueRes) / trueRes * 100 << "%\n";
+    std::cout << "Time: " << double(time / (double) LOOP_RATE) << "s";
 }
 
 int main() {
@@ -153,6 +137,8 @@ int main() {
     //std::cout << "\nSearch time: " << time;
 
     CounterTrueFalse();
+
+    //outputMatrix(50);
 
     return 0;
 }

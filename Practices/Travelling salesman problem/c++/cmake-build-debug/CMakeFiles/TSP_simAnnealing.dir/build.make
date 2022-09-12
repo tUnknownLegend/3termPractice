@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.1.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++"
+CMAKE_SOURCE_DIR = "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/TSP_simAnnealing.dir/depend.make
@@ -71,30 +71,30 @@ include CMakeFiles/TSP_simAnnealing.dir/flags.make
 CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj: CMakeFiles/TSP_simAnnealing.dir/flags.make
 CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj: ../simAnnealing.cpp
 CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj: CMakeFiles/TSP_simAnnealing.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj -MF CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.obj.d -o CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.obj -c "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\simAnnealing.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.obj -MF CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.obj.d -o CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.obj -c "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\simAnnealing.cpp"
 
 CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\simAnnealing.cpp" > CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\simAnnealing.cpp" > CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.i
 
 CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TSP_simAnnealing.dir/simAnnealing.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\simAnnealing.cpp" -o CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\simAnnealing.cpp" -o CMakeFiles\TSP_simAnnealing.dir\simAnnealing.cpp.s
 
 CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj: CMakeFiles/TSP_simAnnealing.dir/flags.make
 CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj: ../shared.cpp
 CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj: CMakeFiles/TSP_simAnnealing.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj -MF CMakeFiles\TSP_simAnnealing.dir\shared.cpp.obj.d -o CMakeFiles\TSP_simAnnealing.dir\shared.cpp.obj -c "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\shared.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TSP_simAnnealing.dir/shared.cpp.obj -MF CMakeFiles\TSP_simAnnealing.dir\shared.cpp.obj.d -o CMakeFiles\TSP_simAnnealing.dir\shared.cpp.obj -c "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\shared.cpp"
 
 CMakeFiles/TSP_simAnnealing.dir/shared.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TSP_simAnnealing.dir/shared.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\shared.cpp" > CMakeFiles\TSP_simAnnealing.dir\shared.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\shared.cpp" > CMakeFiles\TSP_simAnnealing.dir\shared.cpp.i
 
 CMakeFiles/TSP_simAnnealing.dir/shared.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TSP_simAnnealing.dir/shared.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\shared.cpp" -o CMakeFiles\TSP_simAnnealing.dir\shared.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\shared.cpp" -o CMakeFiles\TSP_simAnnealing.dir\shared.cpp.s
 
 # Object files for target TSP_simAnnealing
 TSP_simAnnealing_OBJECTS = \
@@ -110,7 +110,7 @@ TSP_simAnnealing.exe: CMakeFiles/TSP_simAnnealing.dir/build.make
 TSP_simAnnealing.exe: CMakeFiles/TSP_simAnnealing.dir/linklibs.rsp
 TSP_simAnnealing.exe: CMakeFiles/TSP_simAnnealing.dir/objects1.rsp
 TSP_simAnnealing.exe: CMakeFiles/TSP_simAnnealing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable TSP_simAnnealing.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable TSP_simAnnealing.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\TSP_simAnnealing.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -122,6 +122,6 @@ CMakeFiles/TSP_simAnnealing.dir/clean:
 .PHONY : CMakeFiles/TSP_simAnnealing.dir/clean
 
 CMakeFiles/TSP_simAnnealing.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles\TSP_simAnnealing.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug" "C:\Users\pinev\Documents\GitHub\UniversityPractices\Practices\Travelling salesman problem\c++\cmake-build-debug\CMakeFiles\TSP_simAnnealing.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/TSP_simAnnealing.dir/depend
 

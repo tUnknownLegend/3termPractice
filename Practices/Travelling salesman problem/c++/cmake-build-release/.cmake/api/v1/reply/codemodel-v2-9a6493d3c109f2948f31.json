@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TSP",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TSP_rec::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TSP_rec-Release-67de8a5acf91daea31e5.json",
+					"name" : "TSP_rec",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TSP_simAnnealing::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TSP_simAnnealing-Release-f6c3b4e289528d5ae177.json",
+					"name" : "TSP_simAnnealing",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/pinev/Documents/GitHub/UniversityPractices/Practices/Travelling salesman problem/c++/cmake-build-release",
+		"source" : "C:/Users/pinev/Documents/GitHub/UniversityPractices/Practices/Travelling salesman problem/c++"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

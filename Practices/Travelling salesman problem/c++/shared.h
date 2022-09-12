@@ -8,7 +8,7 @@
 // output for Quick
 #define outFileQuick "../out_Quick.txt"
 // output for Noneff
-#define outFileNonEff "../out_NonEff.txt"
+#define outFileNonEff "../outTest.txt"
 // compare for double
 #define COMPARE_RATE 10e-5
 // depth of for loop in sim alg. Probably optimal
@@ -20,11 +20,11 @@
 // temperature max. Probably optimal
 #define TEMP_MAX DBL_MAX
 // temperature mim. Probably optimal
-#define TEMP_MIN 0.00001
+#define TEMP_MIN 0.001
 // depth of for loop to repeat simAnnealing() exec. Change to optimize results, mainly time of execution
-#define REPEAT_RATE 100
+#define REPEAT_RATE 10
 // depth of for loop to repeat GetSimAnneling(). For testing;
-#define LOOP_RATE 1000
+#define LOOP_RATE 100
 
 #endif //INC_1_SHARED_H
 
@@ -34,4 +34,12 @@
 void inputMatrix(std::vector<std::vector<double>> &matrix);
 
 double MeasureFuncExecTime(const std::function<void()> &FuncToMeasure);
+
+//  This function generates a random double in [i, j]
+double GetRandomDouble(double i, double j);
+
+//  This function generates a random int in [i, j]
+unsigned int GetRandomInt(unsigned int i, unsigned int j);
+
+void outputMatrix(int amtOfVertices);
 

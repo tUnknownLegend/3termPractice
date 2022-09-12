@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.11)  29 JUL 2022 16:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.11)  10 SEP 2022 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1417,69 +1417,95 @@ Overfull \hbox (20.05078pt too wide) in paragraph at lines 186--186
 [5
 
  <./pictures//Test2-1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 \T2A/cmss/m/n/10 по-лу-чен-но-го
  []
 
 
-Overfull \hbox (4.69348pt too wide) in paragraph at lines 207--207
+Overfull \hbox (4.69348pt too wide) in paragraph at lines 205--205
 []\T2A/cmss/m/n/10 Относительная
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 \T2A/cmss/m/n/10 по-греш-ность,
  []
 
 
-Overfull \hbox (2.53958pt too wide) in paragraph at lines 207--207
+Overfull \hbox (2.53958pt too wide) in paragraph at lines 205--205
 []\T2A/cmss/m/n/10 Затраченное
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 []\T2A/cmss/m/n/10 Алгоритм ими-та-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 \T2A/cmss/m/n/10 ции от-жи-га при
  []
 
 
-Overfull \hbox (14.1979pt too wide) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
+[]\T2A/cmss/m/n/10 Алгоритм ими-
+ []
+
+
+Underfull \hbox (badness 5939) in paragraph at lines 205--205
+\T2A/cmss/m/n/10 та-ции от-жи-га при
+ []
+
+
+Overfull \hbox (1.65413pt too wide) in paragraph at lines 205--205
+[] \OT1/cmss/m/n/10 =  \T1/cmss/m/n/10 0\OML/cmm/m/it/10 :\T1/cmss/m/n/10 99$\T
+2A/cmss/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
+[]\T2A/cmss/m/n/10 Алгоритм ими-та-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
+\T2A/cmss/m/n/10 ции от-жи-га при
+ []
+
+
+Overfull \hbox (14.1979pt too wide) in paragraph at lines 205--205
  [] 
  []
 
 [6
 
 ]
-Overfull \hbox (2.93896pt too wide) in paragraph at lines 235--235
+Overfull \hbox (2.93896pt too wide) in paragraph at lines 229--229
 []\T2A/cmtt/m/n/10 cooling
  []
 
 
-Overfull \hbox (3.83736pt too wide) in paragraph at lines 235--235
+Overfull \hbox (3.83736pt too wide) in paragraph at lines 229--229
 []\T2A/cmtt/m/n/10 repeat
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
+Underfull \hbox (badness 10000) in paragraph at lines 229--229
 []\T2A/cmss/m/n/10 Средняя дли-на
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
+Underfull \hbox (badness 10000) in paragraph at lines 229--229
 []\T2A/cmss/m/n/10 Относительная
  []
 
 
-Overfull \hbox (11.7579pt too wide) in paragraph at lines 235--235
+Overfull \hbox (11.7579pt too wide) in paragraph at lines 229--229
 []\T2A/cmss/m/n/10 Затраченное
  []
 
 
-Overfull \hbox (4.68535pt too wide) in paragraph at lines 235--235
+Overfull \hbox (4.68535pt too wide) in paragraph at lines 229--229
  [] 
  []
 
@@ -1503,12 +1529,12 @@ Package rerunfilecheck Info: File `presentation_SA.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  25857 strings out of 478614
- 513742 string characters out of 2843122
- 777460 words of memory out of 3000000
+ 513812 string characters out of 2843122
+ 771460 words of memory out of 3000000
  43423 multiletter control sequences out of 15000+600000
  491624 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,122p,431b,832s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 128i,15n,122p,439b,832s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\pinev\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss
 1000.pk> <C:\Users\pinev\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\
 latt1000.pk> <C:\Users\pinev\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi
@@ -1522,9 +1548,9 @@ eX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/pinev/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/pinev/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/pinev
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentation_SA.pdf (8 pages, 843976 bytes).
+Output written on presentation_SA.pdf (8 pages, 842677 bytes).
 PDF statistics:
- 523 PDF objects out of 1000 (max. 8388607)
+ 520 PDF objects out of 1000 (max. 8388607)
  17 named destinations out of 1000 (max. 500000)
  184 words of extra memory for PDF output out of 10000 (max. 10000000)
 
