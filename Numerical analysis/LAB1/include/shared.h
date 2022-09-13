@@ -1,5 +1,5 @@
-#ifndef INC_1_SHARED_H
-#define INC_1_SHARED_H
+#ifndef INC_LAB1_SHARED_H
+#define INC_LAB1_SHARED_H
 
 // input file for matrix
 #define IN_FILE_MATRIX "../../../inputMatrix.txt"
@@ -10,7 +10,7 @@
 // output file for vector
 #define OUT_FILE_VECTOR "../../../outputVector.txt"
 // compare for double
-#define COMPARE_RATE 10e-5
+#define COMPARE_RATE 10e-8
 // zero division error
 #define DIVISTION_ERROR 5
 

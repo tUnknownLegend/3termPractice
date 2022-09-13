@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\include",
     "\\src"
   ],
-  "SelectedNode": "\\cmake-build-debug",
+  "SelectedNode": "\\src\\QR.cpp",
   "PreviewInSolutionExplorer": false
 }

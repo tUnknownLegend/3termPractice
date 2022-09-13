@@ -10,8 +10,8 @@ include_directories(./src ./include)
 
 file(GLOB SOURCES *.cpp *.h)
 
-set(SOURCES ./src/main.cpp ./src/shared.cpp ./src/Gauss.cpp)
-set(HEADERS ./include/shared.h)
+set(SOURCES ./src/main.cpp ./src/shared.cpp ./src/Gauss.cpp src/QR.cpp)
+set(HEADERS ./include/shared.h ./include/Gauss.h ./include/QR.h)
 
 #find_package(GTest REQUIRED)
 #include_directories(${GTEST_INCLUDE_DIRS})

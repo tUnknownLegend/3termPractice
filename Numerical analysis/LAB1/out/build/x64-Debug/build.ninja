@@ -67,6 +67,14 @@ build CMakeFiles\LAB1.dir\src\Gauss.cpp.obj: CXX_COMPILER__LAB1_Debug ..\..\..\s
   TARGET_COMPILE_PDB = CMakeFiles\LAB1.dir\
   TARGET_PDB = LAB1.pdb
 
+build CMakeFiles\LAB1.dir\src\QR.cpp.obj: CXX_COMPILER__LAB1_Debug ..\..\..\src\QR.cpp || cmake_object_order_depends_target_LAB1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest
+  INCLUDES = -I..\..\..\.\src -I..\..\..\.\include
+  OBJECT_DIR = CMakeFiles\LAB1.dir
+  OBJECT_FILE_DIR = CMakeFiles\LAB1.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\LAB1.dir\
+  TARGET_PDB = LAB1.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target LAB1
@@ -75,7 +83,7 @@ build CMakeFiles\LAB1.dir\src\Gauss.cpp.obj: CXX_COMPILER__LAB1_Debug ..\..\..\s
 #############################################
 # Link the executable LAB1.exe
 
-build LAB1.exe: CXX_EXECUTABLE_LINKER__LAB1_Debug CMakeFiles\LAB1.dir\src\main.cpp.obj CMakeFiles\LAB1.dir\src\shared.cpp.obj CMakeFiles\LAB1.dir\src\Gauss.cpp.obj
+build LAB1.exe: CXX_EXECUTABLE_LINKER__LAB1_Debug CMakeFiles\LAB1.dir\src\main.cpp.obj CMakeFiles\LAB1.dir\src\shared.cpp.obj CMakeFiles\LAB1.dir\src\Gauss.cpp.obj CMakeFiles\LAB1.dir\src\QR.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

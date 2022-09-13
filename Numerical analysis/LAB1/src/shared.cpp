@@ -77,7 +77,7 @@ void outputVector(int amtOfElements) {
 	outFile << amtOfElements << std::endl;
 
 	{
-		const int leftBound = 0;
+		const int leftBound = 1;
 		const int rightBound = 10;
 		double node = 0.0;
 		for (int j = 0; j < amtOfElements; ++j) {

@@ -1,15 +1,8 @@
-﻿#include <iostream>
-#include "shared.h"
-
-using std::vector;
+﻿#include "Gauss.h"
 
 int main()
 {
-	vector<vector<double>> matrix;
-	vector<double> vect;
-	inputMatrix(matrix);
-	inputVector(vect);
-	outputMatrix(matrix);
-	outputVector(vect);
+	getGauss();
+
 	return 0;
 }
