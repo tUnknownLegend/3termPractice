@@ -1,7 +1,15 @@
-﻿#include "LAB1.h"
+﻿#include <iostream>
+#include "shared.h"
+
+using std::vector;
 
 int main()
 {
-	std::cout << "Hello world!\n";
+	vector<vector<double>> matrix;
+	vector<double> vect;
+	inputMatrix(matrix);
+	inputVector(vect);
+	outputMatrix(matrix);
+	outputVector(vect);
 	return 0;
 }

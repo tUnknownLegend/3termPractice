@@ -138,7 +138,7 @@ int main() {
 
     CounterTrueFalse();
 
-    //outputMatrix(50);
+    //outputMatrix(10);
 
     return 0;
 }

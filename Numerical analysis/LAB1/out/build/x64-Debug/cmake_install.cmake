@@ -1,8 +1,8 @@
-# Install script for directory: F:/Vladislav/Documents/GitHub/UniversityPracticesAndLabs/Numerical analysis/LAB1
+# Install script for directory: C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "F:/Vladislav/Documents/GitHub/UniversityPracticesAndLabs/Numerical analysis/LAB1/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "F:/Vladislav/Documents/GitHub/UniversityPracticesAndLabs/Numerical analysis/LAB1/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
