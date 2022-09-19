@@ -1,8 +1,10 @@
 ﻿#include "Gauss.h"
+#include "QR.h"
 
 int main()
 {
-	getGauss();
+	//getGauss();
+	//getQR();
 
 	return 0;
 }

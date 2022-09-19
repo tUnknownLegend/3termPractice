@@ -1,0 +1,100 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3032,         92]
+NotebookOptionsPosition[      2546,         77]
+NotebookOutlinePosition[      2987,         93]
+CellTagsIndexPosition[      2944,         90]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", 
+    RowBox[{"x_", ",", " ", "y_"}], "]"}], ":=", 
+   FormBox[
+    TagBox[
+     RowBox[{
+      RowBox[{"5", 
+       SuperscriptBox["x", "2"]}], "+", 
+      RowBox[{"4", "x", "y"}], "+", 
+      RowBox[{"2", 
+       SuperscriptBox["y", "2"]}], "+", 
+      RowBox[{"4", 
+       SqrtBox["5"], 
+       RowBox[{"(", 
+        RowBox[{"x", "+", "y"}], ")"}]}], "+", "51"}],
+     "MathMLPresentationTag",
+     AutoDelete->True],
+    TraditionalForm]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:043d\:0430\:0438\:0441\:043a\:043e\:0440\:0435\:0439\:0448\:0438\:0439",
+     " ", "\:0441\:043f\:0443\:0441\:043a"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.872527730619528*^9, 3.8725277432004414`*^9}, 
+   3.8725284911786532`*^9, {3.872528710098834*^9, 3.8725287237910285`*^9}, {
+   3.8725287891405087`*^9, 
+   3.8725287918346047`*^9}},ExpressionUUID->"64416acf-22fd-4a99-be43-\
+1ab08126e9d5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GradientDescent", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"dir", " ", "=", " ", 
+       RowBox[{"-", " ", 
+        RowBox[{"Grad", "[", 
+         RowBox[{"F", ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "y"}], "}"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Lambda", " ", "=", " ", "1"}]}]}], "\n", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.8725277353595524`*^9, 3.872527735360544*^9}, {
+  3.8725278063396397`*^9, 3.8725279106093225`*^9}, {3.8725280929098663`*^9, 
+  3.8725281114344296`*^9}, {3.8725282103777485`*^9, 3.8725282873805823`*^9}, {
+  3.872528499454999*^9, 3.8725285066681976`*^9}, {3.8725287075713077`*^9, 
+  3.872528733723611*^9}, {3.872528800690303*^9, 3.8725288141427155`*^9}, {
+  3.872528928590477*^9, 
+  3.872528931447277*^9}},ExpressionUUID->"6638cc28-28c4-4b00-9cd9-\
+e3ddf7601900"]
+},
+WindowSize->{583.7538461538461, 531.1384615384616},
+WindowMargins->{{234.83076923076922`, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a840d1bf-f43a-4ce3-92e2-ce8611efa895"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 975, 29, 51, "Input",ExpressionUUID->"64416acf-22fd-4a99-be43-1ab08126e9d5"],
+Cell[1536, 51, 1006, 24, 86, "Input",ExpressionUUID->"6638cc28-28c4-4b00-9cd9-e3ddf7601900"]
+}
+]
+*)
+

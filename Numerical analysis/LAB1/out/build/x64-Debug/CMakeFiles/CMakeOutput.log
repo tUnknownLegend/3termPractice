@@ -50,16 +50,16 @@ The CXX compiler identification is MSVC, found in "C:/Users/pinev/Documents/GitH
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/build/x64-Debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_27247 && [1/2] Building C object CMakeFiles\cmTC_27247.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_27247.exe
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_eb405 && [1/2] Building C object CMakeFiles\cmTC_eb405.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_eb405.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/build/x64-Debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_75c79 && [1/2] Building CXX object CMakeFiles\cmTC_75c79.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_75c79.exe
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_09ac5 && [1/2] Building CXX object CMakeFiles\cmTC_09ac5.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_09ac5.exe
 
 
 

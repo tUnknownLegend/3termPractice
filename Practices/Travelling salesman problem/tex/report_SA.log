@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.11)  29 JUL 2022 15:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.11)  18 SEP 2022 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -960,7 +960,7 @@ See the caption package documentation for explanation.
 [12] (report_SA.aux) ) 
 Here is how much of TeX's memory you used:
  15858 strings out of 478614
- 254625 string characters out of 2843122
+ 254695 string characters out of 2843122
  552766 words of memory out of 3000000
  33691 multiletter control sequences out of 15000+600000
  484772 words of font info for 68 fonts, out of 8000000 for 9000
@@ -982,7 +982,7 @@ pinev/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
 cm/cmr8.pfb><C:/Users/pinev/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb><C:/Users/pinev/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy8.pfb>
-Output written on report_SA.pdf (10 pages, 255866 bytes).
+Output written on report_SA.pdf (10 pages, 255865 bytes).
 PDF statistics:
  527 PDF objects out of 1000 (max. 8388607)
  41 named destinations out of 1000 (max. 500000)
