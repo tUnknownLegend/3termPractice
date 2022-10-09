@@ -3,8 +3,8 @@
 
 int main()
 {
-	//getGauss();
-	//getQR();
+	getGauss();
+	getQR();
 
 	return 0;
 }
