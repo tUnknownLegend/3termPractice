@@ -1,4 +1,0 @@
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Practices/Travelling salesman problem/c++/cmake-build-debug/CMakeFiles/TSP_rec.dir
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Practices/Travelling salesman problem/c++/cmake-build-debug/CMakeFiles/TSP_simAnnealing.dir
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Practices/Travelling salesman problem/c++/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Practices/Travelling salesman problem/c++/cmake-build-debug/CMakeFiles/rebuild_cache.dir
