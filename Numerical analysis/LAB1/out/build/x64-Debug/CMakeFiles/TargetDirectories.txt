@@ -1,3 +1,0 @@
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/build/x64-Debug/CMakeFiles/LAB1.dir
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/pinev/Documents/GitHub/UniversityPractices/Numerical analysis/LAB1/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
