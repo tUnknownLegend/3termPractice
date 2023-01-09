@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void outputVector(const vector<double>& vect, const string& fileName) {
+void outputVector(const vector<double> &vect, const string &fileName) {
     ofstream outFile(fileName);
     if (!outFile.is_open()) {
         cerr << "error // output.txt open\n";
@@ -20,7 +20,7 @@ void outputVector(const vector<double>& vect, const string& fileName) {
     outFile << vect.size() << std::endl;
     {
         double node = 0.0;
-        for (auto& el : vect) {
+        for (auto &el: vect) {
             outFile << el << endl;
         }
         outFile << std::endl;
@@ -28,7 +28,7 @@ void outputVector(const vector<double>& vect, const string& fileName) {
     outFile.close();
 }
 
-void outputPair(const vector<pair<double, double>>& vect, const string& fileName) {
+void outputPair(const vector<pair<double, double>> &vect, const string &fileName) {
     ofstream outFile(fileName);
     if (!outFile.is_open()) {
         cerr << "error // output.txt open\n";
@@ -37,7 +37,7 @@ void outputPair(const vector<pair<double, double>>& vect, const string& fileName
     outFile << vect.size() << std::endl;
     {
         double node = 0.0;
-        for (auto& el : vect) {
+        for (auto &el: vect) {
             outFile << el.first << " " << el.second << endl;
         }
         outFile << std::endl;
@@ -69,11 +69,11 @@ double vectorNorm(const pair<double, double> p) {
     return sqrt(pow(p.first, 2) + pow(p.second, 2));
 }
 
-double GoldRate(double eps, const function<double(double)> &func) {
+double GoldRate(double eps, const function<double(double)> &func, unsigned int &amtF) {
     double leftBound = 0;
-    double rightBound = 2.5;
+    double rightBound = 5;
     double it = 1;
-
+    amtF += 2;
     double nextLeft = leftBound + (1 - 1 / ((1 + sqrt(5)) / 2)) * (leftBound + rightBound);
     double nextRight = leftBound + (leftBound + rightBound) * (1 / ((1 + sqrt(5)) / 2));
     double leftFunc = func(nextLeft);
@@ -95,6 +95,7 @@ double GoldRate(double eps, const function<double(double)> &func) {
             nextLeft = leftBound + rightBound - nextRight;
             leftFunc = func(nextLeft);
         }
+        ++amtF;
         ++it;
     }
     return (rightBound + leftBound) / 2;
@@ -102,11 +103,13 @@ double GoldRate(double eps, const function<double(double)> &func) {
 
 
 pair<double, double> FastDescent(const double initX, const double initY, const double eps,
-                                 const function<pair<double, double>(double, double)> &func, const string& folder) {
+                                 const function<pair<double, double>(double, double)> &func, const string &folder) {
     pair<double, double> currDir = func(initX, initY);
     double kappa = initKappa;
     pair<double, double> XY = {initX, initY};
     long int it = 0;
+    unsigned int amtF = 0;
+    unsigned int amtG = 1;
     vector<double> kappaVec{kappa};
     vector<pair<double, double>> XYvec{XY};
     vector<double> Fvec{func1(XY.first, XY.second)};
@@ -120,11 +123,12 @@ pair<double, double> FastDescent(const double initX, const double initY, const d
         kappa = GoldRate(eps, [=](double
                                   kp) {
                              return func1(XY.first + kp * currDir.first, XY.second + kp * currDir.second);
-                         }
+                         }, amtF
         );
         XY.first += kappa * currDir.first;
         XY.second += kappa * currDir.second;
         currDir = func(XY.first, XY.second);
+        ++amtG;
 
         ++it;
         if (all || it % 10 == 0 || it < 100) {
@@ -135,17 +139,17 @@ pair<double, double> FastDescent(const double initX, const double initY, const d
         }
     }
 
-    outputVector(kappaVec, folder+"/kappa.txt");
-    outputPair(XYvec, folder+"/points.txt");
-    outputVector(Fvec, folder+"/func.txt");
-    outputVector(normVec, folder+"/norm.txt");
+    outputVector(kappaVec, folder + "/kappa.txt");
+    outputPair(XYvec, folder + "/points.txt");
+    outputVector(Fvec, folder + "/func.txt");
+    outputVector(normVec, folder + "/norm.txt");
 
-    cout << "it: " << it << "; ";
+    cout << "amtFunc: " << amtF << "; amtGrad: " << amtG << "; ";
     return XY;
 }
 
 pair<double, double> GradDescent(const double initX, const double initY, const double eps,
-                                 const function<pair<double, double>(double, double)> &func, const string& folder) {
+                                 const function<pair<double, double>(double, double)> &func, const string &folder) {
     const double omega = 0.5;
     const double nu = 0.95;
     pair<double, double> currDir = func(initX, initY);
@@ -153,6 +157,8 @@ pair<double, double> GradDescent(const double initX, const double initY, const d
     vector<double> kappaVec{kappa};
     pair<double, double> XY = {initX, initY};
     vector<pair<double, double>> XYvec{XY};
+    unsigned int amtF = 1;
+    unsigned int amtG = 1;
     long int it = 0;
     double Fcurr = func1(XY.first, XY.second);
     vector<double> Fvec{Fcurr};
@@ -168,9 +174,12 @@ pair<double, double> GradDescent(const double initX, const double initY, const d
             kappa *= nu;
             XYcurr.first = XY.first + kappa * currDir.first;
             XYcurr.second = XY.second + kappa * currDir.second;
+            ++amtF;
         }
         XY = XYcurr;
+        ++amtF;
         Fcurr = func1(XY.first, XY.second);
+        ++amtG;
         currDir = func(XY.first, XY.second);
 
         ++it;
@@ -182,12 +191,12 @@ pair<double, double> GradDescent(const double initX, const double initY, const d
         }
     }
 
-    outputVector(kappaVec, folder+"/kappa.txt");
-    outputPair(XYvec, folder+"/points.txt");
-    outputVector(Fvec, folder+"/func.txt");
-    outputVector(normVec, folder+"/norm.txt");
+    outputVector(kappaVec, folder + "/kappa.txt");
+    outputPair(XYvec, folder + "/points.txt");
+    outputVector(Fvec, folder + "/func.txt");
+    outputVector(normVec, folder + "/norm.txt");
 
-    cout << "it: " << it << "; ";
+    cout << "amtFunc: " << amtF << "; amtGrad: " << amtG << "; ";
     return XY;
 }
 
@@ -196,7 +205,7 @@ int main() {
     const double Y = -2.0;
 
     std::cout << "FastDescent:" << std::endl;
-    pair<double, double> res = FastDescent(X, Y, 10e-4, Grad1, "../fast2");
+    pair<double, double> res = FastDescent(X, Y, 10e-3, Grad1, "../fast2");
     cout << "2 - " << setprecision(5) << "x: " << res.first << "; y: "
          << res.second << "; f(x, y): " << func1(res.first, res.second) << "\n";
     res = FastDescent(X, Y, 10e-7, Grad1, "../fast6");
