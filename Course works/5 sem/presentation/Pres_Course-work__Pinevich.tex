@@ -105,11 +105,6 @@ Au = f, f \in H
 	\end{frame}
 
 \begin{frame}{Метод Ритца}
-	\begin{block}{Линейная комбинация первых $n$ координатных элементов}	
-	\[
-	u_n = \sum_{i = 1}^n a_i \, \varphi_i
-	\]
-\end{block}
 		
 	\begin{block}{Для вычисления коэффициентов $a_i$}	
 		\[
@@ -126,6 +121,12 @@ Au = f, f \in H
 \begin{block}{Для получения минимума $F$}
 	\[
 		\frac{\partial F(u_n)}{\partial a_i} = 0, \qquad i = 1, 2, \ldots, n
+	\]
+\end{block}
+
+\begin{block}{Ищем решение в виде}	
+	\[
+	\psi_n = \varphi_0 + a_1 \varphi_1 + \ldots + a_n \varphi_n 
 	\]
 \end{block}
 	
@@ -201,9 +202,9 @@ Au = f, f \in H
 	\end{block}
 
 \begin{block}{}	
-\[
-\psi(x, y) = x(x - a)y(y - b)\left(a_0 + a_1\left(x + y\right) + a_2\left(x^2 + a_3 y^2\right) + \ldots\right)
-\]
+	\[
+	\psi(x, y) = x(x - a)y(y - b)\left(a_0 + a_1\left(x + y\right) + a_2\left(x^2 + a_3 y^2\right) + \ldots\right)
+	\]
 \end{block}
 
 	\begin{block}{Первый порядок точности}	
@@ -278,13 +279,13 @@ Au = f, f \in H
 	\column{0.5\textwidth}
 \begin{block}{1-е приближение м. Ритца}
 \[
-M_{\text{Р}_1} = 0.139(2a)^4
+M_{\text{Р}_1} = 0.139a^4
 \]
 \end{block}
 \column{0.5\textwidth}
 \begin{block}{2-е приближение м. Ритца}
 \[
-M_{\text{Р}_2} = 0.140(2a)^4
+M_{\text{Р}_2} = 0.140a^4
 \]
 \end{block}
 \end{columns}
