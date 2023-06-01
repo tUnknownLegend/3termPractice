@@ -9,7 +9,15 @@ using namespace std;
 
 
 enum calcMethod {
-    MexplicitEuler, MimplicitEuler, Msymmetric, MrungeKutta2, MrungeKutta4, MrungeKuttaRungeStep, MexplicitAdams
+    MexplicitEuler,
+    MimplicitEuler,
+    Msymmetric,
+    MrungeKutta2,
+    MrungeKutta4,
+    MrungeKuttaRungeStep,
+    MexplicitAdams,
+    Mbdf2,
+    Mbdf4
 };
 
 vector<vector<TT>> calcDiff(const vector<vector<TT>> &answer) {
@@ -48,8 +56,8 @@ vector<vector<TT>> implicitEuler(const vector<TT> &cond, const int n) {
     vector<vector<TT>> y(n, vector<TT>(cond.size()));
     y[0] = cond;
 
-    for (int i = 0; i < n - 1; i++) {
-        y[i + 1] = Newton("Euler", cond.size(), y[i]);
+    for (int i = 0; i < n - 1; ++i) {
+        y[i + 1] = Newton("Euler", cond.size(), {y[i]});
     }
     return y;
 }
@@ -58,8 +66,8 @@ vector<vector<TT>> symmetric(const vector<TT> &cond, const int n) {
     vector<vector<TT>> y(n, vector<TT>(cond.size()));
     y[0] = cond;
 
-    for (int i = 0; i < n - 1; i++) {
-        y[i + 1] = Newton("Symmetric", cond.size(), y[i]);
+    for (int i = 0; i < n - 1; ++i) {
+        y[i + 1] = Newton("Symmetric", cond.size(), {y[i]});
     }
     return y;
 }
@@ -96,7 +104,7 @@ vector<vector<TT>> rungeKutta2(const vector<TT> &cond, const int n) {
 
     vector<TT> k1(numOfPoints);
     vector<TT> k2(numOfPoints);
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n - 1; ++i) {
         k1 = f(y[i]);
         vector<TT> temp = vectorOperation(y[i],
                                           vectorRDigit(step, k1, '*'), '+');
@@ -145,53 +153,28 @@ vector<vector<TT>> rungeKutta4(const vector<TT> &cond) {
     return x;
 }
 
-vector<vector<TT>> rg(const vector<TT> &cond, const TT Tchange, const TT eps = COMPARE_RATE) {
-    vector<vector<TT>> y(numOfPoints, vector<TT>(cond.size()));
-    vector<TT> k1(cond.size());
-    vector<TT> k2(cond.size());
-    vector<TT> k3(cond.size());
-    vector<TT> k4(cond.size());
-    vector<TT> temp1(cond.size());
-    vector<TT> temp2(cond.size());
+vector<vector<TT>> bdf2(const vector<TT> &cond, int n) {
+    vector<vector<TT>> y(n, vector<TT>(cond.size()));
+    y[0] = rungeKutta2(cond, numOfPoints)[0];
+    y[1] = rungeKutta2(cond, numOfPoints)[1];
 
-    TT localTau = tau;
+    for (int i = 1; i < n - 1; ++i) {
+        y[i + 1] = Newton("BDF2", cond.size(), {y[i - 1], y[i]});
+    }
+    return y;
+}
 
-    y[0] = cond;
-    for (int i = 0; i < numOfPoints - 1; i++) {
-        // øàã = tau_{n+1}
-        k1 = f(y[i]);
-        temp1 = vectorOperation(y[i], vectorRDigit(localTau / 2 * step, k1, '*'), '+');
-        k2 = f(temp1);
-        temp1 = vectorOperation(y[i], vectorRDigit(localTau / 2 * step, k2, '*'), '+');
-        k3 = f(temp1);
-        temp1 = vectorOperation(y[i], vectorRDigit(localTau * step, k3, '*'), '+');
-        k4 = f(temp1);
-
-        temp1 = vectorOperation(vectorOperation(k1, vectorRDigit(2.0, k2, '*'), '+'),
-                                vectorRDigit(2.0, vectorOperation(k3, k4, '+'), '*'), '+');
-        temp1 = vectorOperation(y[i], vectorRDigit(step / 6.0, temp1, '*'), '+');
-
-        temp2 = y[i];
-        for (int j = 0; j < 2; j++) {
-            k1 = f(y[i]);
-            temp2 = vectorOperation(temp2, vectorRDigit(localTau / 4 * step, k1, '*'), '+');
-            k2 = f(temp2);
-            temp2 = vectorOperation(temp2, vectorRDigit(localTau / 4 * step, k2, '*'), '+');
-            k3 = f(temp2);
-            temp2 = vectorOperation(temp2, vectorRDigit(localTau / 2 * step, k3, '*'), '+');
-            k4 = f(temp2);
-
-            temp2 = vectorOperation(vectorOperation(k1, vectorRDigit(2.0, k2, '*'), '+'),
-                                    vectorRDigit(2.0, vectorOperation(k3, k4, '+'), '*'), '+');
-            temp2 = vectorOperation(y[i], vectorRDigit(step / 6.0, temp2, '*'), '+');
+vector<vector<TT>> bdf4(const vector<TT> &cond, int n) {
+    vector<vector<TT>> y(n, vector<TT>(cond.size()));
+    {
+        const auto firstYs = rungeKutta4(cond);
+        for (int i = 0; i < 4; ++i) {
+            y[i] = firstYs[i];
         }
-        if (norm1Vector(vectorRDigit(1 / (pow(2, 4) - 1),
-                                     vectorOperation(temp2, temp1, '-'), '*')) <= eps) {
-            y[i + 1] = temp2;
-            localTau /= 2;
-        } else {
-            y[i + 1] = temp1;
-        }
+    }
+
+    for (int i = 3; i < n - 1; ++i) {
+        y[i + 1] = Newton("BDF4", cond.size(), {y[i - 3], y[i - 2], y[i - 1], y[i]});
     }
     return y;
 }
@@ -202,12 +185,12 @@ vector<vector<TT>> Adams(const vector<TT> &cond, const int n) {
     vector<TT> temp(cond.size());
 
     y4 = rungeKutta4(cond);
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; ++i) {
         y[i] = y4[i];
     }
 
-    for (int i = 3; i < n - 1; i++) {
-        for (int j = 0; j < cond.size(); j++) {
+    for (int i = 3; i < n - 1; ++i) {
+        for (int j = 0; j < cond.size(); ++j) {
             temp = vectorOperation(vectorRDigit(55.0, f(y[i]), '*'),
                                    vectorRDigit(59.0, f(y[i - 1]), '*'), '-');
         }
@@ -254,6 +237,14 @@ void templateOutput(const calcMethod method) {
             result = Adams(initPoints, numOfPoints);
             outputMatrix(result, ADD_DOTS"data/outMexplicitAdams.txt");
             break;
+        case Mbdf2:
+            result = bdf2(initPoints, numOfPoints);
+            outputMatrix(result, ADD_DOTS"data/outMbdf2.txt");
+            break;
+        case Mbdf4:
+            result = bdf4(initPoints, numOfPoints);
+            outputMatrix(result, ADD_DOTS"data/outMbdf4.txt");
+            break;
     }
     std::cout << "diff: " << getMaxDiff(calcDiff(result)) << "\n";
     assert(getMaxDiff(calcDiff(result)) < 0.01);
@@ -282,4 +273,12 @@ void RungeKutta4() {
 
 void ExplicitAdams() {
     templateOutput(MexplicitAdams);
+}
+
+void BDF2() {
+    templateOutput(Mbdf2);
+}
+
+void BDF4() {
+    templateOutput(Mbdf4);
 }

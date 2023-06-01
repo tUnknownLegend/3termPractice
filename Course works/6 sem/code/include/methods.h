@@ -13,4 +13,8 @@ void RungeKutta4();
 
 void ExplicitAdams();
 
+void BDF2();
+
+void BDF4();
+
 #endif //LAB_EULER_H
