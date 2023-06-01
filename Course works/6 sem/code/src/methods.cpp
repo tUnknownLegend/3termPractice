@@ -16,6 +16,7 @@ enum calcMethod {
     MrungeKutta4,
     MrungeKuttaRungeStep,
     MexplicitAdams,
+    MimplicitAdams,
     Mbdf2,
     Mbdf4
 };
@@ -118,7 +119,7 @@ vector<vector<TT>> rungeKutta2(const vector<TT> &cond, const int n) {
     return y;
 }
 
-vector<vector<TT>> rungeKutta4(const vector<TT> &cond) {
+vector<vector<TT>> rungeKutta4(const vector<TT> &cond, const int n) {
     vector<TT> previous(cond.size());
     vector<TT> help(cond.size());
     vector<vector<TT>> K(4);
@@ -130,7 +131,7 @@ vector<vector<TT>> rungeKutta4(const vector<TT> &cond) {
     }
 
     for (int i = 0; i < 4; ++i) { K[i] = help; };
-    for (int t = 0; t < numOfPoints; ++t) {
+    for (int t = 0; t < n; ++t) {
         previous = x[t];
         x.emplace_back();
 
@@ -170,7 +171,7 @@ vector<vector<TT>> bdf2(const vector<TT> &cond, int n) {
 vector<vector<TT>> bdf4(const vector<TT> &cond, int n) {
     vector<vector<TT>> y(n, vector<TT>(cond.size()));
     {
-        const auto firstYs = rungeKutta4(cond);
+        const auto firstYs = rungeKutta4(cond, n);
         for (int i = 0; i < 4; ++i) {
             y[i] = firstYs[i];
         }
@@ -185,34 +186,31 @@ vector<vector<TT>> bdf4(const vector<TT> &cond, int n) {
 vector<vector<TT>> implicitAdams(const vector<TT> &cond, int n) {
     vector<vector<TT>> y(n, vector<TT>(cond.size()));
     {
-        const auto firstYs = rungeKutta4(cond);
+        const auto firstYs = rungeKutta4(cond, n);
         for (int i = 0; i < 4; ++i) {
             y[i] = firstYs[i];
         }
     }
 
     for (int i = 3; i < n - 1; ++i) {
-        y[i + 1] = Newton("BDF4", cond.size(), {y[i - 3], y[i - 2], y[i - 1], y[i]});
+        y[i + 1] = Newton("implicitAdams", cond.size(), {y[i - 3], y[i - 2], y[i - 1], y[i]});
     }
     return y;
 }
 
 vector<vector<TT>> Adams(const vector<TT> &cond, const int n) {
-//    vector<vector<TT>> y(n, vector<TT>(cond.size()));
-//    vector<TT> temp(cond.size());
-
     vector<vector<TT>> x(n, vector<TT>(cond.size()));
-    vector<vector<TT>> y4 = rungeKutta4(cond);
+    vector<vector<TT>> y4 = rungeKutta4(cond, n);
     for (int i = 0; i < 4; ++i) {
         x[i] = y4[i];
     }
 
     for (int t = 3; t < n - 1; ++t) {
-//        x.emplace_back();
         const vector<TT> currF = f(x[t]);
         const vector<TT> F1 = f(x[t - 1]);
         const vector<TT> F2 = f(x[t - 2]);
         const vector<TT> F3 = f(x[t - 3]);
+
         for (int j = 0; j < cond.size(); ++j) {
             x[t + 1][j] = x[t][j] + step / 24 * (55 * currF[j] - 59 * F1[j]
                                                  + 37 * F2[j] - 9 * F3[j]);
@@ -242,12 +240,16 @@ void templateOutput(const calcMethod method) {
             outputMatrix(result, ADD_DOTS"data/outMrungeKutta2.txt");
             break;
         case MrungeKutta4:
-            result = rungeKutta4(initPoints);
+            result = rungeKutta4(initPoints, numOfPoints);
             outputMatrix(result, ADD_DOTS"data/outMrungeKutta4.txt");
             break;
         case MexplicitAdams:
             result = Adams(initPoints, numOfPoints);
             outputMatrix(result, ADD_DOTS"data/outMexplicitAdams.txt");
+            break;
+        case MimplicitAdams:
+            result = implicitAdams(initPoints, numOfPoints);
+            outputMatrix(result, ADD_DOTS"data/outMimplicitAdams.txt");
             break;
         case Mbdf2:
             result = bdf2(initPoints, numOfPoints);
@@ -285,6 +287,10 @@ void RungeKutta4() {
 
 void ExplicitAdams() {
     templateOutput(MexplicitAdams);
+}
+
+void ImplicitAdams() {
+    templateOutput(MimplicitAdams);
 }
 
 void BDF2() {

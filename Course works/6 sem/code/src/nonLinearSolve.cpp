@@ -49,6 +49,14 @@ vector<TT> calcMethod(const size_t dim, const string &method, const vector<TT> &
                               - 12 * step * f(x0)[i]) / 25.0;
         }
     }
+
+    if (method == "implicitAdams") {
+        for (size_t i = 0; i < dim; ++i) {
+            ans[i] = x0[i] - y[3][i] - step * (
+                    251 * f(x0)[i] + 646 * f(y[3])[i] - 264 * f(y[2])[i] + 106 * f(y[1])[i] -
+                    19 * f(y[0])[i]) / 720.0;
+        }
+    }
     return ans;
 }
 

@@ -13,6 +13,8 @@ void RungeKutta4();
 
 void ExplicitAdams();
 
+void ImplicitAdams();
+
 void BDF2();
 
 void BDF4();
