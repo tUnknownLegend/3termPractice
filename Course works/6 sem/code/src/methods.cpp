@@ -26,6 +26,9 @@ vector<vector<TT>> calcDiff(const vector<vector<TT>> &answer) {
     for (int i = 0; i < answer.size(); ++i) {
         diff[i][0] = fabs(cos(i * step) - answer[i][0]);
         diff[i][1] = fabs(-sin(i * step) - answer[i][1]);
+//        diff[i][0] = fabs(-exp(2 * i) + i * exp(i) + 2 * exp(i) - answer[i][0]);
+//        diff[i][1] = fabs(i * exp(i) - answer[i][1]);
+//        diff[i][2] = fabs(-exp(2 * i) + i * exp(i) + exp(i) - answer[i][1]);
     }
     return diff;
 }
@@ -179,34 +182,43 @@ vector<vector<TT>> bdf4(const vector<TT> &cond, int n) {
     return y;
 }
 
-vector<vector<TT>> Adams(const vector<TT> &cond, const int n) {
+vector<vector<TT>> implicitAdams(const vector<TT> &cond, int n) {
     vector<vector<TT>> y(n, vector<TT>(cond.size()));
-    vector<vector<TT>> y4(n, vector<TT>(cond.size()));
-    vector<TT> temp(cond.size());
-
-    y4 = rungeKutta4(cond);
-    for (int i = 0; i < 4; ++i) {
-        y[i] = y4[i];
+    {
+        const auto firstYs = rungeKutta4(cond);
+        for (int i = 0; i < 4; ++i) {
+            y[i] = firstYs[i];
+        }
     }
 
     for (int i = 3; i < n - 1; ++i) {
-        for (int j = 0; j < cond.size(); ++j) {
-            temp = vectorOperation(vectorRDigit(55.0, f(y[i]), '*'),
-                                   vectorRDigit(59.0, f(y[i - 1]), '*'), '-');
-        }
-        temp = vectorOperation(temp,
-                               vectorRDigit(37.0, f(y[i - 2]), '*'), '+');
-
-        temp = vectorOperation(temp,
-                               vectorRDigit(9.0, f(y[i - 3]), '*'), '-');
-
-        y[i + 1] = vectorOperation(y[i],
-                                   vectorRDigit(step,
-                                                vectorRDigit(24.0, temp, '*'),
-                                                '/'),
-                                   '+');
+        y[i + 1] = Newton("BDF4", cond.size(), {y[i - 3], y[i - 2], y[i - 1], y[i]});
     }
     return y;
+}
+
+vector<vector<TT>> Adams(const vector<TT> &cond, const int n) {
+//    vector<vector<TT>> y(n, vector<TT>(cond.size()));
+//    vector<TT> temp(cond.size());
+
+    vector<vector<TT>> x(n, vector<TT>(cond.size()));
+    vector<vector<TT>> y4 = rungeKutta4(cond);
+    for (int i = 0; i < 4; ++i) {
+        x[i] = y4[i];
+    }
+
+    for (int t = 3; t < n - 1; ++t) {
+//        x.emplace_back();
+        const vector<TT> currF = f(x[t]);
+        const vector<TT> F1 = f(x[t - 1]);
+        const vector<TT> F2 = f(x[t - 2]);
+        const vector<TT> F3 = f(x[t - 3]);
+        for (int j = 0; j < cond.size(); ++j) {
+            x[t + 1][j] = x[t][j] + step / 24 * (55 * currF[j] - 59 * F1[j]
+                                                 + 37 * F2[j] - 9 * F3[j]);
+        }
+    }
+    return x;
 }
 
 void templateOutput(const calcMethod method) {
