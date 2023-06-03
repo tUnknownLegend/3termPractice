@@ -61,8 +61,6 @@ std::vector<std::vector<TT>> transpoceMatrix(const std::vector<std::vector<TT>> 
 
 std::vector<std::vector<TT>> identityMatrix(int size, TT digit = 1.0);
 
-void outputOnTheScreenMatrix(const std::vector<std::vector<TT>> &matrix);
-
 void outputOnTheScreenVector(const std::vector<TT> &vector);
 
 std::vector<std::vector<TT>>
@@ -84,7 +82,7 @@ void LDU(const std::vector<std::vector<TT>> &A, std::vector<std::vector<TT>> &L,
 void three_diag_init(std::vector<TT> &a, std::vector<TT> &b, std::vector<TT> &c, std::vector<TT> &d, TT one, TT two,
                      TT three, TT four);
 
-std::vector<std::vector<TT>> inverseMatrix(std::vector<std::vector<TT>> &matrix);
+std::vector<std::vector<TT>> inverseMatrix(const std::vector<std::vector<TT>> &matrix);
 
 void outputOnTheScreenMatrix(const std::vector<std::vector<TT>> &matrix);
 

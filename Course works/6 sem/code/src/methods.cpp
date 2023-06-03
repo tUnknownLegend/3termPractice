@@ -260,8 +260,8 @@ void templateOutput(const calcMethod method) {
             outputMatrix(result, ADD_DOTS"data/outMbdf4.txt");
             break;
     }
-    std::cout << "diff: " << getMaxDiff(calcDiff(result)) << "\n";
-    assert(getMaxDiff(calcDiff(result)) < 0.01);
+//    std::cout << "diff: " << getMaxDiff(calcDiff(result)) << "\n";
+//    assert(getMaxDiff(calcDiff(result)) < 0.01);
 //    outputOnTheScreenMatrix(calcDiff(result));
 }
 

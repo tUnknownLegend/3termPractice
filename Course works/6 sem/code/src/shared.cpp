@@ -46,7 +46,7 @@ void inputMatrix(vector<vector<TT>> &matrix) {
     inFile.close();
 }
 
-void inputVector(vector<TT> &vect, const string& out) {
+void inputVector(vector<TT> &vect, const string &out) {
     ifstream inFile(out);
     if (!inFile.is_open()) {
         cerr << "error // input.txt open\n";
@@ -89,7 +89,7 @@ void outputVector(int amtOfElements) {
     outFile.close();
 }
 
-void outputVector(const vector<TT> &vect, const string& out) {
+void outputVector(const vector<TT> &vect, const string &out) {
     ofstream outFile(out);
     if (!outFile.is_open()) {
         cerr << "error // output.txt open\n";
@@ -107,7 +107,7 @@ void outputVector(const vector<TT> &vect, const string& out) {
     outFile.close();
 }
 
-void outputMatrix(const vector<vector<TT>> &matrix, const string& fileName) {
+void outputMatrix(const vector<vector<TT>> &matrix, const string &fileName) {
     ofstream outFile(fileName);
     if (!outFile.is_open()) {
         cerr << "error // output.txt open\n";
@@ -152,8 +152,8 @@ void outputMatrix(int amtOfVertices) {
 
 // вывод матрицы на экран
 void outputOnTheScreenMatrix(const vector<vector<TT>> &matrix) {
-    for (const auto& i : matrix) {
-        for (const auto& j : i) {
+    for (const auto &i: matrix) {
+        for (const auto &j: i) {
             cout << std::setprecision(8) << std::setw(i.size() * 8) << j << ' ';
         }
         cout << std::endl;
@@ -202,7 +202,7 @@ TT normInfMatrix(const vector<vector<TT>> &matrix) {
 
     for (size_t j = 0; j < matrix.size(); ++j) {
         TT sum = 0;
-        for (const auto & i : matrix) {
+        for (const auto &i: matrix) {
             sum += std::abs(i[j]);
         }
         if (norm < sum)
@@ -475,14 +475,12 @@ void LDU(const vector<vector<TT>> &A, vector<vector<TT>> &L, vector<vector<TT>> 
 }
 
 vector<TT> CalcGaussMethod(vector<vector<TT>> matr, vector<TT> vect) {
-    vector<TT> resultVect(vect.size(), 1.0);
-
-    for (size_t k = 0; k < matr[1].size(); ++k) {
+    for (size_t k = 0; k < matr[0].size(); ++k) {
         size_t maxValInd = k;
-        for (size_t i = k; i < matr.size(); ++i)
-        {
-            if (std::abs(matr[i][k]) > std::abs(matr[maxValInd][k]))
+        for (size_t i = k; i < matr.size(); ++i) {
+            if (std::abs(matr[i][k]) > std::abs(matr[maxValInd][k])) {
                 maxValInd = i;
+            }
         }
 
         if (maxValInd != k) {
@@ -492,38 +490,38 @@ vector<TT> CalcGaussMethod(vector<vector<TT>> matr, vector<TT> vect) {
         for (size_t i = k + 1; i < matr.size(); ++i) {
             TT coeffProp = matr[i][k] / matr[k][k];
 
-            for (size_t j = k; j < matr[1].size(); ++j) {
+            for (size_t j = k; j < matr[0].size(); ++j) {
                 matr[i][j] -= matr[k][j] * coeffProp;
             }
 
             vect[i] -= vect[k] * coeffProp;
         }
     }
+
+    vector<TT> resultVect(vect.size(), 1.0);
     for (int i = matr.size() - 1; i >= 0; --i) {
-        TT sum = 0.0;
+        TT sum = vect[i];
         for (size_t j = i + 1; j < matr.size(); ++j) {
-            sum = sum + matr[i][j] * resultVect[j];
+            sum -= matr[i][j] * resultVect[j];
         }
-        resultVect[i] = (resultVect[i] - sum) / matr[i][i];
+        resultVect[i] = sum / matr[i][i];
+
+        if (resultVect[i] < COMPARE_RATE) {
+            resultVect[i] = 0.0;
+        }
     }
     return resultVect;
 }
 
 // Обратная матрица
-vector<vector<TT>> inverseMatrix(vector<vector<TT>> &matrix) {
+vector<vector<TT>> inverseMatrix(const vector<vector<TT>> &matrix) {
     vector<TT> res(matrix.size(), 0.0);
-    vector<TT> str;
     vector<vector<TT>> resMatrix;
     vector<vector<TT>> EE;
     EE = identityMatrix(matrix.size());
 
-    for (size_t i = 0; i < matrix.size(); ++i) {
-        for (size_t j = 0; j < matrix.size(); ++j) {
-            str.push_back(EE[j][i]);
-        }
-        res = CalcGaussMethod(matrix, str);
-        resMatrix.push_back(res);
-        str.clear();
+    for (const auto &Evect: EE) {
+        resMatrix.push_back(CalcGaussMethod(matrix, Evect));
     }
     return transpoceMatrix(resMatrix);
 }

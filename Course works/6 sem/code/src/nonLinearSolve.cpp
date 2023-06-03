@@ -8,13 +8,13 @@ using namespace std;
 
 vector<TT> f(const vector<TT> &x) {
     // robertson
-//    return {
-//            -0.04 * x[0] + pow(10, 4) * x[1] * x[2],
-//            0.04 * x[0] - pow(10, 4) * x[1] * x[2] - 3 * pow(10, 7) * pow(x[1], 2),
-//            3 * pow(10, 7) * pow(x[1], 2)
-//    };
+    return {
+            -0.04 * x[0] + pow(10, 4) * x[1] * x[2],
+            0.04 * x[0] - pow(10, 4) * x[1] * x[2] - 3 * pow(10, 7) * pow(x[1], 2),
+            3 * pow(10, 7) * pow(x[1], 2)
+    };
     // pendulum
-    return {x[1], -x[0]};
+//    return {x[1], -x[0]};
     // 3d
 //    return {
 //            x[0] - x[1] + x[2],
@@ -97,7 +97,9 @@ vector<TT> Newton(const string &method, const size_t dim, const vector<vector<TT
             Jacobi[1][1] = temp / jacobian;
             Jacobi[0][1] /= -jacobian;
             Jacobi[1][0] /= -jacobian;
-        } else Jacobi = inverseMatrix(Jacobi);
+        } else {
+            Jacobi = inverseMatrix(Jacobi);
+        }
 
         xk = vectorMatrixMultiplication(Jacobi, calcMethod(dim, method, xk, y));
         xk = vectorOperation(x, xk, '-');

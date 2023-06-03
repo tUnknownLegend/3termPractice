@@ -1,0 +1,90 @@
+
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[oglav,spisok,boldsect,eqwhole,figwhole,hyperref,hyperprint,remarks,greekit]{./style/fn2kursstyle}
+\graphicspath{{./style/}{./figures/}}
+
+\usepackage{multirow}
+\usepackage{supertabular}
+\usepackage{multicol}
+\usepackage{amsmath}
+% Параметры титульного листа
+\title{Решение жесткой системы\\ дифференциальных уравнений}
+\author{В.\,Г.~Пиневич}
+\supervisor{А.\,В.~Котович}
+\group{ФН2-61Б}
+\date{2023}
+
+% Переопределение команды \vec, чтобы векторы печатались полужирным курсивом
+\renewcommand{\vec}[1]{\text{\mathversion{bold}${#1}$}}%{\bi{#1}}
+\newcommand\thh[1]{\text{\mathversion{bold}${#1}$}}
+%Переопределение команды нумерации перечней: точки заменяются на скобки
+\renewcommand{\labelenumi}{\theenumi)}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\newpage
+
+\section-{Введение}
+Проблема решения задачи жестких систем дифференциальных уравнений возникает во многих сферах науки и техники. Существует большое количество различных методов решения таких задач. В данной работе будет рассмотрено решение задачи методом <метод>.
+
+\section{Постановка задачи}
+Задача данной работы --- найти решение модели химических реакций Робертсона. 
+\begin{equation}
+	\label{taskDef}
+	\begin{cases}
+		y_1 = -0,04 y_1 + 10^4 y_2 y_3,\\
+		y_2 = 0,04 y_1 - 10^4 y_2 y_3 - 3 * 10^7 y_2^2,\\
+		y_3 = 3 * 10^7 y_2^2.
+	\end{cases}
+\end{equation}
+Кроме того, требуется построить фазовые траектории для данной задачи.
+
+\subsection{Жесткая система}
+Пусть есть система дифференциальных уравнений 
+\begin{equation}
+	\label{example_eq}
+	y_t = f(t, y), 0 <= t <= T, y(0) = y_0.
+\end{equation}
+
+Система называется жесткой, если для всех t, y (т. е. на решениях~(\ref{example_eq})), собственные значения матрицы A удовлетворяют условиям~\cite{metoda_bmstu}.
+
+\begin{equation}
+	\begin{cases}
+	\frac{max | Re \lambda_j |}
+	{min | Re \lambda_j |} >> 1, Re \lambda_j < 0,\\
+	max | Im \lambda_j | << max | Re \lambda_j |, j, k = 1, ..., J.
+	\end{cases}
+\end{equation}
+
+Схема называется абсолютно устойчивой, если $|q(\sigma)| <= 1 $ выполняется при всех значениях.
+
+Схема называется A-устойчивой, если кривая $|q(\sigma)| = 1$ лежит в правой полуплоскости $\sigma$.
+
+\section-{Метод}
+\subsection{Описание метода}
+
+\subsection{Аппроксимация}
+
+\subsection{Устойчивость}
+
+
+
+\newpage
+\section-{Заключение}
+ 
+\newpage
+\begin{thebibliography}{2}
+\bibitem{metoda_bmstu} metoda
+
+\end{thebibliography}
+
+\end{document} 
