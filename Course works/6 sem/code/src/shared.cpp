@@ -107,14 +107,17 @@ void outputVector(const vector<TT> &vect, const string &out) {
     outFile.close();
 }
 
-void outputMatrix(const vector<vector<TT>> &matrix, const string &fileName) {
+void outputMatrix(const vector<vector<TT>> &matrix, const string &fileName, const bool addNum) {
     ofstream outFile(fileName);
     if (!outFile.is_open()) {
         cerr << "error // output.txt open\n";
         return;
     }
 
-    outFile << matrix.size() << std::endl;
+    if (addNum) {
+        outFile << matrix.size() << std::endl;
+
+    }
 
     {
         for (auto &raw: matrix) {

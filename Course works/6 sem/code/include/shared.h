@@ -34,7 +34,7 @@ double GetRandomDouble(double i, double j);
 
 void inputMatrix(std::vector<std::vector<TT>> &matrix);
 
-void outputMatrix(const std::vector<std::vector<TT>> &matrix, const std::string& fileName = OUT_FILE_MATRIX);
+void outputMatrix(const std::vector<std::vector<TT>> &matrix, const std::string& fileName = OUT_FILE_MATRIX, bool addNum = false);
 
 void outputMatrix(int amtOfVertices);
 

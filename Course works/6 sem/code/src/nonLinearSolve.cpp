@@ -10,8 +10,8 @@ vector<TT> f(const vector<TT> &x) {
     // robertson
     return {
             -0.04 * x[0] + pow(10, 4) * x[1] * x[2],
-            0.04 * x[0] - pow(10, 4) * x[1] * x[2] - 3 * pow(10, 7) * pow(x[1], 2),
-            3 * pow(10, 7) * pow(x[1], 2)
+            0.04 * x[0] - pow(10, 4) * x[1] * x[2] - 3.0 * pow(10, 7) * pow(x[1], 2),
+            3.0 * pow(10, 7) * pow(x[1], 2)
     };
     // pendulum
 //    return {x[1], -x[0]};
@@ -89,18 +89,7 @@ vector<TT> Newton(const string &method, const size_t dim, const vector<vector<TT
     do {
         x = xk;
         Jacobi = Jacobi_matr(dim, method, x, y);
-
-        if (dim == 2) {
-            TT jacobian = Jacobi[0][0] * Jacobi[1][1] - Jacobi[1][0] * Jacobi[0][1];
-            TT temp = Jacobi[0][0];
-            Jacobi[0][0] = Jacobi[1][1] / jacobian;
-            Jacobi[1][1] = temp / jacobian;
-            Jacobi[0][1] /= -jacobian;
-            Jacobi[1][0] /= -jacobian;
-        } else {
-            Jacobi = inverseMatrix(Jacobi);
-        }
-
+        Jacobi = inverseMatrix(Jacobi);
         xk = vectorMatrixMultiplication(Jacobi, calcMethod(dim, method, xk, y));
         xk = vectorOperation(x, xk, '-');
     } while (norm1Vector(vectorOperation(x, xk, '-')) > COMPARE_RATE);
