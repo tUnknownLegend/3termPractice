@@ -15,6 +15,8 @@ void ExplicitAdams();
 
 void ImplicitAdams();
 
+void Implicit2Adams();
+
 void BDF2();
 
 void BDF4();

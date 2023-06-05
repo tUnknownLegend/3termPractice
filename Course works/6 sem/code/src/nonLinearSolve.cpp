@@ -50,6 +50,14 @@ vector<TT> calcMethod(const size_t dim, const string &method, const vector<TT> &
         }
     }
 
+
+    if (method == "implicit2Adams") {
+        for (size_t i = 0; i < dim; ++i) {
+            ans[i] = x0[i] - y[1][i] - step * (
+                    5 * f(x0)[i] + 8 * f(y[1])[i] - f(y[0])[i]) / 12.0;
+        }
+    }
+
     if (method == "implicitAdams") {
         for (size_t i = 0; i < dim; ++i) {
             ans[i] = x0[i] - y[3][i] - step * (

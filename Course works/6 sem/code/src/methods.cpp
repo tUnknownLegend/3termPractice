@@ -17,9 +17,25 @@ enum calcMethod {
     MrungeKuttaRungeStep,
     MexplicitAdams,
     MimplicitAdams,
+    Mimplicit2Adams,
     Mbdf2,
     Mbdf4
 };
+
+void saveAxesData(const vector<vector<TT>> &answer, const unsigned int axe, const string &fileName) {
+    vector<vector<TT>> values;
+    values.reserve(answer.size());
+    for (int i = 0; i < answer.size(); ++i) {
+        values.push_back({i * step, answer[i][axe]});
+    }
+    outputMatrix(values, fileName);
+}
+
+void saveAllAxes(const vector<vector<TT>> &answer, const string &file1, const string &file2, const string &file3) {
+    saveAxesData(answer, 0, file1);
+    saveAxesData(answer, 1, file2);
+    saveAxesData(answer, 2, file3);
+}
 
 vector<vector<TT>> calcDiff(const vector<vector<TT>> &answer) {
     vector<vector<TT>> diff(answer);
@@ -32,6 +48,11 @@ vector<vector<TT>> calcDiff(const vector<vector<TT>> &answer) {
 //        diff[i][2] = fabs(-exp(2 * i) + i * exp(i) + exp(i) - answer[i][1]);
     }
     return diff;
+}
+
+TT getP(const vector<vector<TT>> &answer) {
+    const unsigned int i = 10 * multiplayer;
+    return max(fabs(cos(i * step) - answer[i][0]), fabs(-sin(i * step) - answer[i][1]));
 }
 
 TT getMaxDiff(const vector<vector<TT>> &diff) {
@@ -74,32 +95,6 @@ vector<vector<TT>> symmetric(const vector<TT> &cond, const int n) {
         y[i + 1] = Newton("Symmetric", cond.size(), {y[i]});
     }
     return y;
-}
-
-void k_iSum(vector<TT> &temp, const vector<TT> &k1, const vector<TT> &k2, const vector<TT> &k3,
-            const vector<TT> &k4, const vector<TT> &y_i, const TT Tchange) {
-    temp = vectorOperation(vectorRDigit(2.0, k2, '*'), vectorRDigit(2.0, k3, '*'), '+');
-    temp = vectorOperation(k1, temp, '+');
-    temp = vectorOperation(k4, temp, '+');
-    temp = vectorRDigit(Tchange / 6.0, temp, '*');
-    temp = vectorOperation(y_i, temp, '+');
-}
-
-vector<TT> rungeKutta4Calc(const vector<TT> &yi, vector<TT> &tempVector, const TT localStep, const TT Tchange) {
-    vector<TT> resVector(yi.size());
-    // calc k_i
-    vector<TT> k1(f(yi));
-    resVector = vectorOperation(tempVector, vectorRDigit(0.5 * Tchange * localStep, k1, '*'), '+');
-    vector<TT> k2(f(resVector));
-    resVector = vectorOperation(tempVector, vectorRDigit(0.5 * Tchange * localStep, k2, '*'), '+');
-    vector<TT> k3(f(resVector));
-    resVector = vectorOperation(tempVector, vectorRDigit(Tchange * localStep, k3, '*'), '+');
-    vector<TT> k4(f(resVector));
-
-    // sum k_i
-    k_iSum(resVector, k1, k2, k3, k4, yi, Tchange);
-
-    return resVector;
 }
 
 vector<vector<TT>> rungeKutta2(const vector<TT> &cond, const int n) {
@@ -183,6 +178,17 @@ vector<vector<TT>> bdf4(const vector<TT> &cond, int n) {
     return y;
 }
 
+vector<vector<TT>> implicit2Adams(const vector<TT> &cond, int n) {
+    vector<vector<TT>> y(n, vector<TT>(cond.size()));
+    y[0] = rungeKutta2(cond, numOfPoints)[0];
+    y[1] = rungeKutta2(cond, numOfPoints)[1];
+
+    for (int i = 1; i < n - 1; ++i) {
+        y[i + 1] = Newton("implicit2Adams", cond.size(), {y[i - 1], y[i]});
+    }
+    return y;
+}
+
 vector<vector<TT>> implicitAdams(const vector<TT> &cond, int n) {
     vector<vector<TT>> y(n, vector<TT>(cond.size()));
     {
@@ -251,18 +257,31 @@ void templateOutput(const calcMethod method) {
             result = implicitAdams(initPoints, numOfPoints);
             outputMatrix(result, ADD_DOTS"data/outMimplicitAdams.txt");
             break;
+        case Mimplicit2Adams:
+            result = implicit2Adams(initPoints, numOfPoints);
+            outputMatrix(result, ADD_DOTS"data/outMimplicit2Adams.txt");
+            saveAllAxes(result, ADD_DOTS"data/y1/outMimplicit2Adams.txt",
+                        ADD_DOTS"data/y2/outMimplicit2Adams.txt",
+                        ADD_DOTS"data/y3/outMimplicit2Adams.txt");
+            break;
         case Mbdf2:
             result = bdf2(initPoints, numOfPoints);
             outputMatrix(result, ADD_DOTS"data/outMbdf2.txt");
+            saveAllAxes(result, ADD_DOTS"data/y1/outMbdf2.txt",
+                        ADD_DOTS"data/y2/outMbdf2.txt",
+                        ADD_DOTS"data/y3/outMbdf2.txt");
             break;
         case Mbdf4:
             result = bdf4(initPoints, numOfPoints);
             outputMatrix(result, ADD_DOTS"data/outMbdf4.txt");
+            saveAllAxes(result, ADD_DOTS"data/y1/outMbdf4.txt",
+                        ADD_DOTS"data/y2/outMbdf4.txt",
+                        ADD_DOTS"data/y3/outMbdf4.txt");
             break;
     }
-    std::cout << "diff: " << getMaxDiff(calcDiff(result)) << "\n";
+//    std::cout << "diff: " << getMaxDiff(calcDiff(result)) << "\n";
 //    assert(getMaxDiff(calcDiff(result)) < 0.01);
-//    outputOnTheScreenMatrix(calcDiff(result));
+//    std::cout << "p: " << getP(result) << "\n";
 }
 
 void ImplicitEuler() {
@@ -291,6 +310,10 @@ void ExplicitAdams() {
 
 void ImplicitAdams() {
     templateOutput(MimplicitAdams);
+}
+
+void Implicit2Adams() {
+    templateOutput(Mimplicit2Adams);
 }
 
 void BDF2() {
