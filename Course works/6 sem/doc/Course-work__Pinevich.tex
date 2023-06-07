@@ -62,9 +62,9 @@
 
 \begin{equation*}
 	\begin{cases}
-	\frac{max | Re \lambda_j |}
-	{min | Re \lambda_j |} >> 1, Re \lambda_j < 0,\\
-	max | Im \lambda_j | << max | Re \lambda_j |, j, k = 1, ..., J.
+	\frac{\underset{j}{max} | Re \lambda_j |}
+	{\underset{k}{min} | Re \lambda_j |} >> 1, Re \lambda_j < 0,\\
+	\underset{j}{max} | Im \lambda_j | << \underset{k}{max} | Re \lambda_j |, j, k = 1, ..., J.
 	\end{cases}
 \end{equation*}
 
@@ -104,7 +104,7 @@ $S$-шажный метод Адамса-Моултона будет иметь 
 Вычислим порядок согласно формуле 
 \begin{equation}
 	\label{approx_formula}
-	p = log_2 \frac{f_i - f}{f_{i+1} - f}.
+	p = \log_2 \frac{f_i - f}{f_{i+1} - f}.
 \end{equation}
 
 Получаем следующие результаты
@@ -114,11 +114,11 @@ $S$-шажный метод Адамса-Моултона будет иметь 
 		\hline
 		Шаг      & Разность     & Порядок            \\ 
 		\hline
-		0.1    & 1.66E-07 & 3.000227306  \\ 
+		0.1    & 1.66E-07 & 3.00  \\ 
 		\hline
-		0.05   & 2.08E-08 & 3.00011384   \\ 
+		0.05   & 2.08E-08 & 3.00   \\ 
 		\hline
-		0.025  & 2.60E-09 & 3.000061088  \\ 
+		0.025  & 2.60E-09 & 3.00  \\ 
 		\hline
 		0.0125 & 3.25E-10 &              \\
 		\hline
@@ -136,7 +136,7 @@ $S$-шажный метод Адамса-Моултона будет иметь 
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{lin-stab-a-m-2}%
-	\caption{Область устйочивости двухшажного метода Адамса-Моултона}
+	\caption{Область устйочивости двухшажного метода Адамса-Моултона~\cite{cambridge}}
 	\vspace*{-2mm}
 	\label{lin-stab-a-m-2}
 \end{figure}
@@ -167,11 +167,11 @@ S-шажный метод BDF имеет порядок $s$.
 		\hline
 		Шаг      & Разность     & Порядок            \\ 
 		\hline
-		0.1    & 2.57E-06 & 1.948893957  \\ 
+		0.1    & 2.57E-06 & 1.95  \\ 
 		\hline
-		0.05   & 7.36E-07 & 1.911532203  \\ 
+		0.05   & 7.36E-07 & 1.91  \\ 
 		\hline
-		0.025  & 1.96E-07 & 1.957753587  \\ 
+		0.025  & 1.96E-07 & 1.96  \\ 
 		\hline
 		0.0125 & 5.04E-08 &              \\
 		\hline
@@ -186,11 +186,11 @@ S-шажный метод BDF имеет порядок $s$.
 	\begin{tabular}{|l|l|l|} 
 		\hline
 		Шаг      & Разность     & Порядок \\        \hline
-		0.1    & 1.27E-10 & 3.926687816  \\ 
+		0.1    & 1.27E-10 & 3.93  \\ 
 		\hline
-		0.05   & 1.02E-11 & 3.994735551  \\ 
+		0.05   & 1.02E-11 & 3.99  \\ 
 		\hline
-		0.025  & 7.06E-13 & 3.929859553  \\ 
+		0.025  & 7.06E-13 & 3.93  \\ 
 		\hline
 		0.0125 & 4.64E-14 &              \\
 		\hline
@@ -208,16 +208,16 @@ S-шажный метод BDF имеет порядок $s$.
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.5\textwidth]{lin-stab-bdf-2}%
-	\caption{Область устойчивости метода BDF-2}
+	\includegraphics[width=0.8\textwidth]{330px-Stability_region_for_BDF2}%
+	\caption{Область устойчивости метода BDF-2~\cite{intr-cambridge}}
 	\vspace*{-2mm}
 	\label{ser_graph}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.5\textwidth]{lin-stab-bdf-4}%
-	\caption{Область устойчивости метода BDF-4}
+	\includegraphics[width=0.8\textwidth]{330px-Stability_region_for_BDF4}%
+	\caption{Область устойчивости метода BDF-4~\cite{intr-cambridge}}
 	\vspace*{-2mm}
 	\label{ser_graph}
 \end{figure}
@@ -301,9 +301,15 @@ BDF-2 метод является А-устойчивым~\cite{cambridge}.
 \newpage
 \section-{Заключение}
 
-Метод Адамса-Моултона является плохим выбором при решении жестких задач, так как он не является абсолютно устойчивым. Кроме того, в результатах расчетов решение для рассматриваемой задачи~(\ref{taskDef}) удалось получить лишь на интервале $[0; 40]$. 
+\begin{enumerate}	
+	\item Метод Адамса-Моултона является плохим выбором при решении жестких задач, так как он не является абсолютно устойчивым.
+	\item В результатах расчетов решение для рассматриваемой задачи удалось получить лишь на интервале $[0; 40]$.
+	\item 
+	Метод BDF-2 и BDF-4 позволили получить решение на поставленную задачу 
+	%Метод BDF-4 позволяет получить более точный результат, чем метод BDF-2, так как имеет больший порядок
+\end{enumerate}
 
-Метод BDF-2 и BDF-4 позволили получить решение на поставленную задачу, однако при дальнейшем увеличении интервала решения задачи метод $BDF-4 $ не позволит получить удовлетворительный результат, поскольку данный метод не является А-устойчивым, а лишь A($\alpha$) устойчивым.
+%, однако при дальнейшем увеличении интервала решения задачи метод $BDF-4 $ не позволит получить удовлетворительный результат, поскольку данный метод не является А-устойчивым, а лишь A($\alpha$) устойчивым.
  
 \newpage
 \begin{thebibliography}{2}
@@ -313,6 +319,7 @@ the Numerical Analysis
 of Differential Equations, М.: Изд-во Cambridge University Press, 2009. --- 481 с.
 \bibitem{iowa} Atkinson, Kendal E. An introduction to numericlal analysis, М.: Изд-во John Wiley \& Sons, 1988 --- 663~с.
 \bibitem{haier} Хайер Э., Ваннер Г. Решение обыкновенных дифференциальных уравнений. Жесткие и дифференциально-алгебраические задачи. Пер. с англ., М.: Изд-во Мир, 1999. --- 685~с.
+\bibitem{intr-cambridge} Suli E., Mayers D. An Introduction to Numerical Analysis, М.: Изд-во Cambridge University Press, 2003. --- 444 с.
 
 \end{thebibliography}
 
