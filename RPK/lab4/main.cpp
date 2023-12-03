@@ -52,9 +52,9 @@ int main() {
 	DataMesh data;
 	const std::string file_name_first = "Test1";
 	const std::string file_name_second = "Test2";
-	data.read("In" + file_name_first + ".txt");
+	data.read("../In" + file_name_second + ".txt");
 	data.print();
-	data.write("Out" + file_name_first + "1.txt");
+	data.write("../Out" + file_name_second + ".txt");
 	return 0;
 }
 
