@@ -248,64 +248,13 @@ S_n = S_{11} - \left( 2 \left(S_{11} - S_{12}\right) - S_{44} \right) n_1^2 \lef
 
 Теперь найдем зависимость линейной податливости $S_n$ от направления единичного вектора, лежащего в плоскостях, содержащих диагонали двух граней, имеющих общую точку.
 
-Пусть первая диагональ лежит в двух разных плоскостях, а общая точка
---- начало координат. Векторы $\vec{b_1} = \vec{i} + \vec{k}$ и $\vec{b_2} = \vec{j} + \vec{k}$, лежат на этих диагоналях,
-следовательно, в рассматриваемой плоскости. $\vec{b_1}$ и $\vec{b_2}$ не ортогональны, потому
-что $\cos{\widehat{\vec{b_1}, \vec{b2}}}$. Ортогонализируем по алгоритму Грама-Шмидта:
-\begin{gather*}
-	\vec{e_{1}}=\frac{\vec{b_{1}}}{\|\vec{b_{1}}\|}=\sqrt{2}(\vec{i}+\vec{k}),
-\end{gather*}
-
-\begin{gather*}
-	\vec{d_{2}}=\vec{b_{2}}-\langle \vec{e_{1}}, \vec{b_{2}} \rangle \vec{e_{1}}=-\frac{1}{2}\vec{i}+\vec{j}+\frac{1}{2}\vec{k},
-\end{gather*}
-
-\begin{gather*}
-	\vec{e_{2}}=\frac{\vec{d_{2}}}{\|\vec{d_{2}}\|}=-\frac{1}{6}\vec{i}+\sqrt{\frac{2}{3}}\vec{j}+\frac{1}{\sqrt{6}}\vec{k}.
-\end{gather*}
-
-Тогда вектор $\vec{e_{3}}$ определим:
-\begin{gather*}
-	\vec{e_{3}}=\vec{e_{1}} \times \vec{e_{2}}=-\frac{1}{\sqrt{3}}\vec{i}-\frac{1}{\sqrt{3}}\vec{j}+\frac{1}{\sqrt{3}}\vec{k}.
-\end{gather*}
-
-\begin{gather*}
-	A_{\mathcal{B} \rightarrow \mathcal{E}}=
-	\begin{pmatrix}
-		\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{3}}\\
-		0 & \sqrt{\frac{2}{3}} & -\frac{1}{\sqrt{3}}\\
-		\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}}
-	\end{pmatrix} 
-\end{gather*}
-Тогда получим
-\begin{gather*}
-	\begin{align}
-		\begin{pmatrix}
-			n_{1} \\
-			n_{2} \\
-			n_{3}
-		\end{pmatrix} =
-		\begin{pmatrix}
-			\frac{1}{\sqrt{2}} n_1 -\frac{1}{\sqrt{6}} n_2 \\
-			\sqrt{\frac{2}{3}} n_2\\
-			\frac{1}{\sqrt{2}} n_1 + \frac{1}{\sqrt{6}} n_2 
-		\end{pmatrix}
-	\end{align}
-\end{gather*}
-В случае, если плоскость внутри отрезка $\Bigl[0;~\dfrac{\pi}{3}\Bigr]$ вектор $\vec{n}$ расположен внутри куба и плоскости $-x_{1}-x_{2}+x_{3}=0.$ Получим зависимость:
+В плоскости, содержащей диагонали грани в плоскости $O x_1 x_3$ и $O x_2 x_3$: 
 \[
-S_n(n_1, n_2) = S_n \Bigl( 
-\frac{1}{\sqrt{2}} n_1 -\frac{1}{\sqrt{6}} n_2, 
-\sqrt{\frac{2}{3}} n_2,
-\frac{1}{\sqrt{2}} n_1 + \frac{1}{\sqrt{6}} \sqrt{1-n_1^2}
-\Bigr)
+n_1 - n_2 + n_3 = 0; n_1^2 + n_2^2 + n_3^2 = 1 \text{, тогда}
 \]
-\[ S_n(n_1) = S_n \Bigl( 
-\frac{1}{\sqrt{2}} n_1 -\frac{1}{\sqrt{6}} \sqrt{1-n_1^2}, 
-\sqrt{\frac{2}{3}} \sqrt{1-n_1^2},
-\frac{1}{\sqrt{2}} n_1 + \frac{1}{\sqrt{6}} \sqrt{1-n_1^2}
-\Bigr).
-\] 
+\[
+S_n = S_{11} - \frac{\Delta{S}}{4}.
+\]
 
 \begin{figure}[!htbp]
 	\centering
@@ -314,49 +263,19 @@ S_n(n_1, n_2) = S_n \Bigl(
 	\vspace*{-2mm}
 	\label{lin-grani-2-kuba}
 \end{figure}
+\newpage
 
  Получаем, что графиком функции является прямая, параллельная оси абсцисс. Полученный результат закономерен, так как $n_1^2 n_2^2 + n_2^2 n_3^2 + n_3^2 n_1^2 = \dfrac{1}{4}$.
  
  Теперь найдем зависимость линейной податливости $S_n$ от направления единичного вектора, лежащего в плоскостях, содержащих диагональ куба и ребро, имеющих общую точку.
  
-  Пусть диагональ куба проходит через начало координат, ребро лежит на оси $x_1.$ Векторы $ \vec e_1 = \vec i, \vec b_2 = \vec i + \vec j + \vec k $ лежат на ребре и диагонали соответственно, а следовательно, и в рассматриваемой плоскости. Но они не ортогональны, так как $\cos{\Bigl( \widehat{\vec e_1, \vec b_2} \Bigr)} = \dfrac{1}{\sqrt 3}$. Применим к ним процесс ортогонализации Грама-Шмидта: 
- \[
- \vec d_2 = \vec b_2 - \langle \vec e_1, \vec b_2 \rangle \vec e_1 = \vec j + \vec k,
- \]
- \[
- \vec e_2 = \dfrac{1}{\sqrt 2}\Bigl(\vec j + \vec k \Bigr).	
- \]
- 
- Оставшийся вектор $\vec e_3$ определим из соотношения 
- \[
- \vec e_3 = \vec e_1 \times \vec e_2 = \dfrac{1}{\sqrt 2}\Bigl(\vec j + \vec k\Bigr).	
- \]
- 
- Выберем $\vec e_1, \vec e_2, \vec e_3 $ в качестве базиса $\mathcal \varepsilon$. Тогда 
- \[
- \mathcal A_{\mathcal B \rightarrow \mathcal \varepsilon} = \begin{pmatrix}
- 	1 & 0 & 0 \\
- 	0 & \dfrac{1}{\sqrt 2} & -\dfrac{1}{\sqrt 2} \\[1em]
- 	0 & \dfrac{1}{\sqrt 2} & \dfrac{1}{\sqrt 2}	
- \end{pmatrix},
- \]
- 
- \[
- \begin{pmatrix}
- 	n1 \\
- 	n2 \\
- 	n3	
- \end{pmatrix} = \begin{pmatrix}
- 	\cos \alpha \\[0.2em]
- 	\dfrac{1}{\sqrt 2} \sin \alpha \\[1em]
- 	\dfrac{1}{\sqrt 2} \sin \alpha
- \end{pmatrix}.
- \]
- 
- При $\alpha \in \Bigr[ 0, \dfrac{\pi}{2} \Bigl]$ вектор $ \vec n $ расположен внутри куба в плоскости $ -x_2 + x_3 = 0 $. Получим зависимость 
- \[
- S_n(n_1, n_2) = S_n \Bigl( \cos \alpha, \dfrac{1}{\sqrt 2} \sin \alpha, \dfrac{1}{\sqrt 2} \sin \alpha \Bigr).
- \] 
+В плоскости, содержащей диагонали грани в плоскости $O x_2 x_3$ и куба: 
+\[
+n_2 = n_3; n_1^2 + n_2^2 + n_3^2 = 1 \text{, тогда}
+\]
+\[
+S_n = S_{11} - \frac{\Delta{S}}{4} \left(1 - n_1^2\right) \left(1 + 3 n_1^3\right).
+\]
  \begin{figure}[!htbp]
  	\centering
  	\includegraphics[width=0.5\textwidth]{pic-6}%
