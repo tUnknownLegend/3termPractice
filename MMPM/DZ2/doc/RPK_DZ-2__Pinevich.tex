@@ -150,7 +150,7 @@
 	Откуда получим
 	\begin{equation}
 		\begin{cases} \vspace{0.25em}
-			P_1 = - \dfrac{1}{3} R_3, \\ 
+			P_1 = - 3 R_3, \\ 
 			P_0 = 2 R_3. \\
 		\end{cases}
 		\label{eqP0P1R}
@@ -196,8 +196,8 @@
 	С учётом \eqref{eqP0P1R} имеем
 	\begin{equation}
 		\begin{cases} \vspace{0.25em}
-			M_3(x_1) = R_3 \left( f_1\left(x_1 - 3L\right) - 2 f_1\left(x_1 - L\right) \right), \\
-			Q(x_1) = R_3 \left( f_0(x_1 - 3L) - \dfrac{1}{3} f_0(x_1 - L) \right). \\
+			M_3(x_1) = R_3 \left( f_1\left(x_1\right) - 3 f_1\left(x_1 - L\right) \right), \\
+			Q(x_1) = R_3 \left( f_0(x_1) - 3 f_0(x_1 - L) \right). \\
 		\end{cases}
 		\label{eqM3QR}
 	\end{equation}
@@ -232,10 +232,10 @@
 		\label{eqw}
 	\end{equation}
 	
-	Ранее была отброшена одна связь в точке $x_1 = 0$. Тогда остаётся 2 закрепления в точках $x_1 = L$ и $x_1 = 3L$, в которых балка не должна прогибаться. В этом случае имеем следующие граничные условия:
+	Ранее была отброшена одна связь в точке $x_1 = 3L$. Тогда остаётся 2 закрепления в точках $x_1 = L$ и $x_1 = 0$, в которых балка не должна прогибаться. В этом случае имеем следующие граничные условия:
 	\vspace{-0.5em}
 	\begin{equation}
-		w(L) = 0, \quad w(3L) = 0.
+		w(L) = 0, \quad w(0) = 0.
 		\label{eqwGU}
 	\end{equation}
 	
@@ -243,13 +243,13 @@
 	
 	С учётом \eqref{eqM3QR} прогиб балки под действием только реакции $R_3$
 	\begin{equation}
-		w(x_1) = \dfrac{R_3}{E J_3} \left( f_3(x_1) - \dfrac{3}{2} f_3(x_1 - L) + L^3 - \dfrac{7}{6} L^2 x_1 \right).
+		w(x_1) = \dfrac{R_3}{E J_3} \left( f_3(x_1) - 3 f_3(x_1 - L) + L^3 - \dfrac{1}{6} L^2 x_1 \right).
 		\label{eqwR}
 	\end{equation}
 	
 	В точке $x_1 = 0$
 	\begin{equation}
-		w_{R_3} = w(0) = \dfrac{L^3}{E J_3} R_3.
+		w_{R_3} = w(0) = \dfrac{L^3}{3 E J_3} R_3.
 		\label{eqwR3}
 	\end{equation}
 	
@@ -270,7 +270,7 @@
 	\begin{equation*}
 		\begin{cases}
 			P_1 + P_2 + P_0 - 2L \cdot q^{\circ} = 0, \\
-			M_0 - M_1 + L \cdot P_1 + 2L \cdot P_2 - L \cdot 2L \cdot q^{\circ} = 0. \\
+			M_0 - M_1 + L \cdot P_1 + 2L \cdot P_2 - 2 L^2 \cdot q^{\circ} = 0. \\
 		\end{cases}
 	\end{equation*}
 	
@@ -320,15 +320,15 @@
 	С учётом \eqref{eqw}, \eqref{eqwGU} и \eqref{eqM3NOR} прогиб статически определимой балки без реакции $R_3$
 	\begin{equation}
 		\begin{split}
-			w(x_1) = \dfrac{1}{E J_3} \bigg[ M_1 f_2(x_1 - L) - M_0 & f_2(x_1) + P_1 f_3(x_1 - L) + P_2 f_3(x_1 - 2L) - \\ - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) + \dfrac{L^2}{48} \big( & 32 M_1 - 56 M_0 - 12L P_2 - 13L^2 q^{\circ} \big) + \\ & + \dfrac{L}{48} \big( 80 M_0 - 32 M_1 + 12L P_2 + 15 L^2 q^{\circ} \big) x_1 \bigg].
+			w(x_1) = \dfrac{1}{E J_3} \bigg[ M_1 f_2(x_1 - L) - M_0 & f_2(x_1) + P_1 f_3(x_1 - L) + P_2 f_3(x_1 - 2L) - \\ - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) + \dfrac{L^2}{24} \big( & 32 M_1 - 56 M_0 - 12L P_2 - 13L^2 q^{\circ} \big) + \\ & + \dfrac{L}{24} \big( 80 M_0 - 32 M_1 + 12L P_2 + 15 L^2 q^{\circ} \big) x_1 \bigg].
 		\end{split}
 		\label{eqwNOR} 
 	\end{equation}
 	
-	В точке $x_1 = 0$
+	В точке $x_1 = 3L$
 	\vspace{-0.5em}
 	\begin{equation}
-		w_{0} = w(0) = \dfrac{L^2}{48 E J_3} \left( 32 M_1 - 56 M_0 - 12L P_2 - 13L^2 q^{\circ} \right).
+		w_{0} = w(3L) = \dfrac{L^2}{24 E J_3} \left( -24 M_0 - 2 L^2 q^{\circ} \right).
 		\label{eqw0}
 	\end{equation}
 	
@@ -343,7 +343,7 @@
 	
 	С учётом \eqref{eqwR3} и \eqref{eqw0} имеем
 	\begin{equation*}
-		R_3 = \dfrac{13}{48} L q^{\circ} + \dfrac{1}{4} P_2 + \dfrac{1}{6L} (7 M_0 - 4 M_1).
+		R_3 = \dfrac{L^2}{24 E J_3} \left( 24 M_0 +  2 L^2 q^{\circ} \right) \dfrac{3 E J_3}{L^3}.
 	\end{equation*}
 	
 	Тогда из \eqref{eqP0P1} получим силы реакции для статически неопределимой балки
@@ -357,7 +357,7 @@
 	При значениях параметров в соответствии с индивидуальным заданием
 	\vspace{-0.5em}
 	\[
-	R_3 = 1520{,}8 \; \text{Н}, \quad P_1 = -781{,}25 \; \text{Н}, \quad P_0 = 260{,}42 \; \text{Н}.
+	R_3 = 6250 \; \text{Н}, \quad P_1 = -15750 \; \text{Н}, \quad P_0 = 10500 \; \text{Н}.
 	\]
 	
 	\vspace{-1.5em}
