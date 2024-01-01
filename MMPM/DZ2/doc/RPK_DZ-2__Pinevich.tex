@@ -114,16 +114,16 @@
 		\sum P = 0 \ \Rightarrow \ R_3 + P_1 + P_2 + P_0 - 2L \cdot q^{\circ} = 0.
 	\end{equation*}
 	
-	Аналогично уравнение равновесия моментов относительно точки $B$
+	Аналогично уравнение равновесия моментов относительно точки $O$
 	\begin{equation*}
-		\sum M = 0 \ \Rightarrow \ M_0 - M_1 + 2 L \cdot P_1 + L \cdot P_2 + 3 L \cdot P_0 - L^2 \cdot q^{\circ} = 0.
+		\sum M = 0 \ \Rightarrow \ M_0 - M_1 + L \cdot P_1 + 2 L \cdot P_2 + 3 L \cdot R_3 - L^2 \cdot q^{\circ} = 0.
 	\end{equation*}
 	
 	Откуда получим
 	\begin{equation}
 		\begin{cases} \vspace{0.75em}
-			P_1 = \dfrac{1}{L} \left( M_0 - M_1 \right) - 3 R_3 - 2 P_2 + 5 L \cdot q^{\circ}, \\ 
-			P_0 = \dfrac{1}{L} \left( M_1 - M_0 \right) + 2 R_3 + P_2 - 3 L \cdot q^{\circ}. \\
+			P_1 = \dfrac{\left( M_1 - M_0 \right)  + L\left(-2 P_2 + 2 L \cdot q^{\circ} - 3 R_3 \right)}, \\ 
+			P_0 = \dfrac{\left( M_0 - M_1 \right) + 2 L R_3 + L P_2}{L}. \\
 		\end{cases}
 		\label{eqP0P1}
 	\end{equation}
@@ -143,7 +143,7 @@
 	\begin{equation*}
 		\begin{cases}
 			R_3 + P_1 + P_0 = 0, \\ 
-			2L \cdot P_1 + 3L \cdot P_0 = 0. \\
+			L \cdot P_1 + 3L \cdot R_3 = 0. \\
 		\end{cases}
 	\end{equation*}
 	
@@ -179,7 +179,7 @@
 	
 	Тогда можно записать выражение для изгибающего момента
 	\[
-	M_(x_1) = R_3 f_1(x_1 - 3L) + P_1 f_1(x_1 - L).
+	M(x_1) = R_3 f_1(x_1) + P_1 f_1(x_1 - L).
 	\]
 	
 	Перерезывающая сила связана с изгибающим моментом следующим образом:
@@ -190,7 +190,7 @@
 	
 	Тогда
 	\[
-	Q(x_1) = R_3 f_0(x_1 - 3L) + P_1 f_0(x_1 - L).
+	Q(x_1) = R_3 f_0(x_1) + P_1 f_0(x_1 - L).
 	\]
 	
 	С учётом \eqref{eqP0P1R} имеем
@@ -243,13 +243,7 @@
 	
 	С учётом \eqref{eqM3QR} прогиб балки под действием только реакции $R_3$
 	\begin{equation}
-		w(x_1) = \dfrac{R_3}{E J_3} \left( f_3(x_1) - 3 f_3(x_1 - L) + L^3 - \dfrac{1}{6} L^2 x_1 \right).
-		\label{eqwR}
-	\end{equation}
-	
-	В точке $x_1 = 0$
-	\begin{equation}
-		w_{R_3} = w(0) = \dfrac{L^3}{3 E J_3} R_3.
+		w(x_1) = \dfrac{R_3}{E J_3} \left( f_3(x_1) - 3 f_3(x_1 - L) - \dfrac{L^2}{6} \right) \text{, где } J_3 = \frac{h b^3}{12}.
 		\label{eqwR3}
 	\end{equation}
 	
@@ -277,8 +271,8 @@
 	Откуда получим
 	\begin{equation}
 		\begin{cases} \vspace{0.75em}
-			P_1 = \dfrac{1}{L} \left( M_1 - M_0 \right) - 2 P_2 + 2L \cdot q^{\circ}, \\ 
-			P_0 = \dfrac{1}{L} \left( M_0 - M_1 \right) + P_2. \\
+			P_1 = \dfrac{ M_1 - M_0 + 2 L \left( L \cdot q^{\circ} - P_2 \right)}{L}, \\ 
+			P_0 = \dfrac{M_0 - M_1 + L P_2}{L}. \\
 		\end{cases}
 		\label{eqP0P1NOR}
 	\end{equation}
@@ -315,24 +309,16 @@
 	
 	\vspace{-0.75em}
 	
-	\section{Прогиб статически определимой балки без $R_3$} 
 	
-	С учётом \eqref{eqw}, \eqref{eqwGU} и \eqref{eqM3NOR} прогиб статически определимой балки без реакции $R_3$
-	\begin{equation}
+	\section{Прогиб балки только без реакции $R_0$} 
+	
+	С учётом \eqref{eqw}, \eqref{eqwGU} и \eqref{eqM3NOR} прогиб статически определимой балки без реакции $R_0$
+	\begin{equation} 
 		\begin{split}
-			w(x_1) = \dfrac{1}{E J_3} \bigg[ M_1 f_2(x_1 - L) - M_0 & f_2(x_1) + P_1 f_3(x_1 - L) + P_2 f_3(x_1 - 2L) - \\ - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) + \dfrac{L^2}{24} \big( & 32 M_1 - 56 M_0 - 12L P_2 - 13L^2 q^{\circ} \big) + \\ & + \dfrac{L}{24} \big( 80 M_0 - 32 M_1 + 12L P_2 + 15 L^2 q^{\circ} \big) x_1 \bigg].
+			w(x_1) = \dfrac{1}{E J_3} \bigg( M_1 f_2(x_1 - L) - M_0 f_2(x_1) + P_1 f_3(x_1 - L) + \\ + P_2 f_3(x_1 - 2L) - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) +  \frac{12 L M_0 + L^3 q^{\circ}}{24} x_1 \bigg)
 		\end{split}
-		\label{eqwNOR} 
-	\end{equation}
-	
-	В точке $x_1 = 3L$
-	\vspace{-0.5em}
-	\begin{equation}
-		w_{0} = w(3L) = \dfrac{L^2}{24 E J_3} \left( -24 M_0 - 2 L^2 q^{\circ} \right).
 		\label{eqw0}
 	\end{equation}
-	
-	\newpage
 	
 	\section{Определение силы реакции $R_3$} 
 	
@@ -343,21 +329,21 @@
 	
 	С учётом \eqref{eqwR3} и \eqref{eqw0} имеем
 	\begin{equation*}
-		R_3 = \dfrac{L^2}{24 E J_3} \left( 24 M_0 +  2 L^2 q^{\circ} \right) \dfrac{3 E J_3}{L^3}.
+		R_3 = \dfrac{72 L^2 M_0 - 48 L^2 M_1 - 4 L^3 P_2 + 77 L^4 q^{\circ}}{12 L^3 - 4 L^2}.
 	\end{equation*}
 	
 	Тогда из \eqref{eqP0P1} получим силы реакции для статически неопределимой балки
 	\begin{equation*}
 		\begin{cases}\vspace{0.75em}
-			P_1 = \dfrac{51}{32} L q^{\circ} - \dfrac{7}{8} P_2 + \dfrac{1}{12L} (14 M_0 + M_2), \\
-			P_0 = \dfrac{13}{96} L q^{\circ} - \dfrac{3}{8} P_2 + \dfrac{1}{12L} (M_0 + 2 M_1). \\
+			P_1 = \dfrac{M_1 - M_0 + L (-45375 - 2 P_2 + 2 L  q^{\circ})}{L}, \\
+			P_0 = \dfrac{30250 L + M_0 - M_1 + L P_2}{L}.\\
 		\end{cases}
 	\end{equation*}
 	
 	При значениях параметров в соответствии с индивидуальным заданием
 	\vspace{-0.5em}
 	\[
-	R_3 = 6250 \; \text{Н}, \quad P_1 = -15750 \; \text{Н}, \quad P_0 = 10500 \; \text{Н}.
+	R_3 = 15125 \; \text{Н}, \quad P_0 = 31250 \text{Н}\;, \quad P_1 = -45375 \text{Н}.
 	\]
 	
 	\vspace{-1.5em}
@@ -366,22 +352,6 @@
 	\subsection{Изгибающий момент и перерезывающая сила}
 	
 	Выражения для изгибающего момента и перерезывающей силы статически неопределимой балки можно получить путём сложения соответствующих выражений для балки под действием только силы реакции $R_3$, приложенной вместо отброшенной связи, а также статически определимой балки без учёта силы реакции $R_3$. 
-	
-	После сложения \eqref{eqM3QR} с \eqref{eqM3NOR} и \eqref{eqQNOR} соответственно c учётом \eqref{eqP0P1NOR} получим
-	\vspace{-0.25em}
-	\begin{equation*}
-		\begin{split}
-			M_3(x_1) = M_1 f_0(x_1 - L) - M_0 f_0(x_1) & + R_3 f_1(x_1) + \left( P_1 - \dfrac{3}{2} R_3 \right) f_1(x_1 - L) + \\ & + P_2 f_1(x_1 - 2L) - q^{\circ} f_2(x_1) + q^{\circ} f_2(x_1 - 2L).
-		\end{split}
-	\end{equation*}
-	
-	\vspace{-0.25em}
-	
-	С учётом \eqref{eqQ} перерезывающая сила
-	\vspace{-0.25em}
-	\begin{equation*}
-		Q(x_1) =  R_3 f_0(x_1) + \left( P_1 - \dfrac{3}{2} R_3 \right) f_0(x_1 - L) - P_2 f_0(x_1 - 2L) - q^{\circ} f_1(x_1) + q^{\circ} f_2(x_1 - 2L). \\
-	\end{equation*}
 	
 	Построим эпюры полученных изгибающего момента и перерезывающей силы для статически неопределимой балки при значениях параметров в соответствии с индивидуальным заданием.
 	
@@ -402,21 +372,6 @@
 	\subsection{Прогиб исходной балки}
 	
 	Выражения для прогиба статически неопределимой балки также можно получить путём сложения соответствующих выражений для балки под действием только силы реакции $R_3$, а также статически определимой балки без учёта силы реакции $R_3$. 
-	
-	После сложения \eqref{eqwR} и \eqref{eqw0} c учётом \eqref{eqP0P1NOR} получим
-	\vspace{-0.25em}
-	\begin{equation*}
-		\begin{split}
-			w(x_1) = \dfrac{1}{E J_3} \bigg[ M_1 f_2(x_1 - L) - M_0 f_2(x_1) + R_3 & f_3(x_1) + \left( P_1 - \dfrac{3}{2} R_3 \right) f_3(x_1 - L) + \\ + P_2 f_3(x_1 - 2L) - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) & + \dfrac{L^2}{48} \big( 32 M_1 - 56 M_0 - 12L P_2 - 13L^2 q^{\circ} \big) + \\ & + \dfrac{L}{48} \big( 80 M_0 - 32 M_1 + 12L P_2 + 15 L^2 q^{\circ} \big) x_1 \bigg].
-		\end{split}
-	\end{equation*}
-	
-	\newpage
-	
-	Для балки с прямоугольным поперечным сечением с основанием $b$ и высотой $h$ осевой момент инерции относительно нейтральной оси имеет вид
-	\[
-	J_3 = \dfrac{b h^3}{12}.
-	\]
 	
 	Построим график зависимости прогиба для статически неопределимой балки при значениях параметров в соответствии с индивидуальным заданием.
 	
