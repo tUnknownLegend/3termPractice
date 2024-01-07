@@ -1,0 +1,190 @@
+
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[oglav,spisok,boldsect,eqwhole,figwhole,hyperref,hyperprint,remarks,greekit]{./style/fn2kursstyle}
+\graphicspath{{./style/}{./figures/}}
+
+\usepackage{multirow}
+\usepackage{supertabular}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{afterpage}
+% Параметры титульного листа
+\title{Решение дифференциального уравнения\\ Рейнольдса методом конечных элементов}
+\author{В.\,Г.~Пиневич}
+\supervisor{А.\,В.~Селиванов}
+\group{ФН2-71Б}
+\date{2024}
+
+% Переопределение команды \vec, чтобы векторы печатались полужирным курсивом
+\renewcommand{\vec}[1]{\text{\mathversion{bold}${#1}$}}%{\bi{#1}}
+\newcommand\thh[1]{\text{\mathversion{bold}${#1}$}}
+%Переопределение команды нумерации перечней: точки заменяются на скобки
+\renewcommand{\labelenumi}{\theenumi)}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\newpage
+
+\section-{Введение}
+
+
+\section{Постановка задачи}
+Задача данной работы --- вывести, а затем найти решение дифференциального уравнения Рейнольдса методом конечных элементов.
+\begin{equation}
+	\label{reinolts-task}
+\frac{\partial}{\partial x} \left(h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left(h^3 \frac{\partial p}{\partial z} \right) = 6 \mu U \frac{\partial h}{\partial x} \text{, }
+\end{equation}
+где $h = h(x)$ --- толщина слоя, $p = p(x, z)$ --- давление, $\mu$ --- коэффициент вязкости. Граничные условия: $U$ --- скорость в направлении $x$ на одной из пластин, $p_b$ --- повышенное давление, $p_l$ --- пониженное давление.
+
+\section{Вывод уравнения Рейнольдса}
+
+Гидродинамические уравнения несжимаемой жидкости с
+внутренним трением могут быть представлены в очень простой
+форме, если пренебречь силами, пропорциональными массам,
+равно как и силами инерции.
+
+Обозначая через $х, у, z$ прямоугольные координаты точки, через $р$ -- гидродинамическое давление в этой точке,
+
+\[
+\begin{cases}
+	p_{xy}, p_{xz}; \\
+	p_{yx}, p_{yz}; \\
+	p_{zx}, p_{zy}.
+\end{cases}
+\]
+
+силы трения, перпендикулярные к оси, обозначенной первой буквой индекса и параллельные оси, обозначенной второй буквой индекса $u, \nu, \omega$ -- проекции скорости на осях $x, y, z \text{. }$$\mu$ --- коэффициент внутреннего трения жидкости, можно написать три группы следующих уравнений:
+\begin{enumerate}
+	\item Группа, определяющая гидродинамическое давление в
+	точке $x, y, z$:
+	\begin{equation}
+		\label{eqfi}
+		\begin{cases}
+			\frac{\partial p}{\partial x} = \mu \left( \frac{\partial^2 u}{\partial^2 x} + \frac{\partial^2 u}{\partial^2 y} + \frac{\partial^2 u}{\partial^2 z} \right), \\
+				\frac{\partial p}{\partial y} = \mu \left( \frac{\partial^2 \nu}{\partial^2 x} + \frac{\partial^2 \nu}{\partial^2 y} + \frac{\partial^2 \nu}{\partial^2 z} \right), \\
+					\frac{\partial p}{\partial z} = \mu \left( \frac{\partial^2 \omega}{\partial^2 x} + \frac{\partial^2 \omega}{\partial^2 y} + \frac{\partial^2 \omega}{\partial^2 z} \right).
+		\end{cases}
+	\end{equation}
+\item Группа, определяющая силы трения в той же точке:
+\begin{equation}
+	\label{eqsi}
+	\begin{cases}
+		p_{yz} = p_{zy} = \mu \left(\frac{\partial \omega}{\partial y} + \frac{\partial \nu}{\partial z} \right), \\
+			p_{zx} = p_{xz} = \mu \left( \frac{\partial \omega}{\partial x} +  \frac{\partial u}{\partial z} \right), \\
+				p_{xy} = p_{yx} = \mu \left(  \frac{\partial u}{\partial y} + \frac{\partial \nu}{\partial x} \right).
+	\end{cases}
+\end{equation}
+\item Условие несжимаемости жидкости, выраженное урав
+нением: 
+\begin{equation}
+	\label{eqthi}
+	\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0.
+	\end{equation}
+
+\end{enumerate}
+
+Примем, что скорость $\nu = 0$, поскольку она мала по сравнению со скоростями $u = 0$, $\omega = 0$.
+
+Изменения скоростей и и со при заданном значении $y$ для всех изменений $ x $ и $z$ могут рассматриваться как чрезмерно малые, поэтому причем
+\[
+\frac{\partial^2 u}{\partial^2 x} = 0, 
+\frac{\partial^2 u}{\partial^2 z} = 0, 
+\frac{\partial^2 \omega}{\partial^2 x} = 0, 
+\frac{\partial^2 \omega}{\partial^2 z} = 0. 
+\]
+
+Ограничиваясь приближенным решением, которое можно
+получить при указанных выше предположениях, уравнения \eqref{eqfi}, \eqref{eqsi} и \eqref{eqthi} могут быть приведены к следующей форме.
+\begin{equation}
+	\label{secondinitialeq}
+	\begin{cases}
+		\frac{\partial p }{\partial x} = \mu \frac{\partial^2 u}{\partial^2 y}, \\
+		\frac{\partial p }{\partial y} = 0, \\
+		\frac{\partial p }{\partial z} = \mu \frac{\partial^2 \omega}{\partial^2 y}.
+	\end{cases}
+\end{equation}
+\begin{equation}
+	\label{secinitialeq}
+	\begin{cases}
+		p_{yz} = p_{xy} = \mu \frac{\partial \omega}{\partial y}, \\
+		p_{zx} = p_{xz} = 0, \\
+		p_{xy} = p_{yx} = \mu \frac{\partial u}{\partial y}.
+	\end{cases}
+\end{equation}
+\begin{equation*}
+	\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0.
+\end{equation*}
+
+Для определения давления необходимо интегрировать выражения \eqref{secondinitialeq}, \eqref{secinitialeq}. Для этого определим граничные условия.
+Для $y = 0$ имеем
+\[
+u = U_0, \nu = 0, \omega = 0.
+\]
+Для $y = h$ имеем
+\[
+u = U_1, \nu = U_1 - U_1 \frac{\partial  h}{\partial h}, \omega = 0.
+\]
+На некотором контуре $f(x, y) = 0$ имеем
+\[
+p = p_0.
+\]
+
+Поскольку $p$ не зависит от $y$, то интегрирование уравнений \eqref{secondinitialeq} приводит к уравнениям
+\begin{equation}
+	\label{1-inte-inti}
+	\begin{cases}
+		u = \frac{1}{2 \mu} \frac{\partial p}{\partial x} \left( y - h \right) y + U_0 \frac{h - y}{h} + U_1 \frac{y}{h},\\
+		\omega = \frac{1}{2 \mu} \frac{\partial p}{\partial z} (y - h) y.
+	\end{cases}
+\end{equation} 
+Первые производные вторых членов этих уравнений, перене
+сенные в соответствующие уравнения группы \eqref{secinitialeq}, приводят
+к уравнениям
+\begin{equation}
+	\label{sec-init-eq}
+	\begin{cases}
+		p_{yz} = p_{zy} = \frac{1}{2} \frac{\partial p}{\partial z} \left( 2y - h \right), \\
+		p_{xy} = p_{yz} = \frac{1}{2} \frac{\partial p}{\partial x} \left( 2y - h \right) + \mu \frac{U_1 - U_0}{h}.
+	\end{cases}
+\end{equation}
+
+Если $р$ считать независимым от $z$, то четыре последних
+уравнения сокращаются до двух: первое из группы~\eqref{1-inte-inti} и
+второе из группы~\eqref{sec-init-eq}.
+
+Взяв производные от первого из этих уравнений по $x$ и
+от второго по $z$ и подставляя это в уравнение~\eqref{eqthi}, находим, что
+\begin{equation*}
+		\frac{\partial \nu}{\partial y} = - \frac{1}{2 \mu} \left( \frac{\partial}{\partial x} \left( \frac{\partial p}{\partial x} (y - x) y \right) + \frac{\partial}{\partial z} \left( \frac{\partial p}{\partial z} (y - h) h \right) - \frac{\partial}{\partial x} \left( U_0 \frac{h - y}{h} + U_1 \frac{y}{h} \right) \right).
+\end{equation*}
+
+Интегрируя это уравнение в пределах от г/ = 0 до г/ = Л и
+принимая во внимание условия [6], получаем
+\begin{equation*}
+	\frac{\partial}{\partial x} \left( h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left( h^3 \frac{\partial p}{\partial z} \right) + \frac{\partial}{\partial x} \left( h^3 \frac{p}{x} \right) = 6 \mu \left( (U_0 - U_1) \frac{\partial h}{\partial x} \right) + 2 V_1.
+\end{equation*}
+$2 V_1$ используется для учёта движений одной из стенок зазора, меняющих значение функции. Если пренебречь этим, и обозначить $U_0 - U_1$ как $U$, то получим искомое уравнение~\eqref{reinolts-task}.
+
+\newpage
+\section-{Заключение}
+
+\begin{enumerate}	
+	\item .
+\end{enumerate}
+ 
+\newpage
+\begin{thebibliography}{2}
+\bibitem{metoda_bmstu} Петров Н. Гидродинамическая теория смазки, М.: Из-во академии наук СССР, 1948. --- 558~с.
+
+\end{thebibliography}
+
+\end{document} 
