@@ -179,7 +179,7 @@
 	
 	Тогда можно записать выражение для изгибающего момента
 	\[
-	M(x_1) = R_3 f_1(x_1 - 3L) + P_1 f_1(x_1 - L).
+	M(x_1) = P_0 f_1(x_1) + P_1 f_1(x_1 - L).
 	\]
 	
 	Перерезывающая сила связана с изгибающим моментом следующим образом:
@@ -190,14 +190,14 @@
 	
 	Тогда
 	\[
-	Q(x_1) = R_3 f_0(x_1 - 3L) + P_1 f_0(x_1 - L).
+	Q(x_1) = P_0 f_0(x_1) + P_1 f_0(x_1 - L).
 	\]
 	
 	С учётом \eqref{eqP0P1R} имеем
 	\begin{equation}
 		\begin{cases} \vspace{0.25em}
-			M_3(x_1) = R_3 \left( f_1\left(x_1\right) - 3 f_1\left(x_1 - L\right) \right), \\
-			Q(x_1) = R_3 \left( f_0(x_1) - 3 f_0(x_1 - L) \right). \\
+			M_3(x_1) = R_3 \left( 2 f_1\left(x_1\right) - 3 f_1\left(x_1 - L\right) \right), \\
+			Q(x_1) = R_3 \left( 2f_0(x_1) - 3 f_0(x_1 - L) \right). \\
 		\end{cases}
 		\label{eqM3QR}
 	\end{equation}
@@ -243,7 +243,7 @@
 	
 	С учётом \eqref{eqM3QR} прогиб балки под действием только реакции $R_3$
 	\begin{equation}
-		w(x_1) = \dfrac{R_3}{E J_3} \left( f_3(x_1) - 3 f_3(x_1 - L) - \dfrac{L^2}{6} \right) \text{, где } J_3 = \frac{h b^3}{12}.
+		w(x_1) = \dfrac{R_3}{E J_3} \left( 2 f_3(x_1) - 3 f_3(x_1 - L) - \dfrac{L^2 x_1}{3} \right) \text{, где } J_3 = \frac{h b^3}{12}.
 		\label{eqwR3}
 	\end{equation}
 	
@@ -280,14 +280,16 @@
 	В этом случае выражение для изгибающего момента имеет вид
 	\begin{equation}
 		\begin{split}
-			M_3(x_1) = M_1 f_0(x_1 - L) - M_0 f_0(x_1) & + P_1 f_1(x_1 - L) + \\ & + P_2 f_1(x_1 - 2L) - q^{\circ} f_2(x_1) + q^{\circ} f_2(x_1 - 2L).
+			M_3(x_1) = M_1 f_0(x_1 - L) - M_0 f_0(x_1) + P_0 f_1 (x_1) + P_1 f_1(x_1 - L) + \\ + P_2 f_1(x_1 - 2L) - q^{\circ} f_2(x_1) + q^{\circ} f_2(x_1 - 2L).
 		\end{split}
 		\label{eqM3NOR}
 	\end{equation}
 	
 	С учётом \eqref{eqQ} перерезывающая сила
 	\begin{equation}
-		Q(x_1) = P_1 f_0(x_1 - L) + P_2 f_0(x_1 - 2L) - q^{\circ} f_1(x_1) + q^{\circ} f_1(x_1 - 2L).\\
+		\begin{split}
+		Q(x_1) = P_0 f_0 (x_1) & + P_1 f_0(x_1 - L) + \\ & + P_2 f_0(x_1 - 2L) - q^{\circ} f_1(x_1) + q^{\circ} f_1(x_1 - 2L).\\
+	\end{split}
 		\label{eqQNOR}
 	\end{equation}
 	
@@ -310,12 +312,12 @@
 	\vspace{-0.75em}
 	
 	
-	\section{Прогиб балки только без реакции $R_0$} 
+	\section{Прогиб балки только без реакции $R_3$} 
 	
-	С учётом \eqref{eqw}, \eqref{eqwGU} и \eqref{eqM3NOR} прогиб статически определимой балки без реакции $R_0$
+	С учётом \eqref{eqw}, \eqref{eqwGU} и \eqref{eqM3NOR} прогиб статически определимой балки без реакции $R_3$
 	\begin{equation} 
 		\begin{split}
-			w(x_1) = \dfrac{1}{E J_3} \bigg( M_1 f_2(x_1 - L) - M_0 f_2(x_1) + P_1 f_3(x_1 - L) + \\ + P_2 f_3(x_1 - 2L) - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) +  \frac{12 L M_0 + L^3 q^{\circ}}{24} x_1 \bigg)
+			w(x_1) = \dfrac{1}{E J_3} \bigg( M_1 f_2(x_1 - L) - M_0 f_2(x_1) + P_0 f_3(x_1) + \\ + P_1 f_3(x_1 - L) + P_2 f_3(x_1 - 2L) - q^{\circ} f_4(x_1) + q^{\circ} f_4(x_1 - 2L) + \\ +  \frac{L (8 M_0 + 4 M_1 + L (-4 P_2 + L q^{\circ}))}{24} x_1 \bigg)
 		\end{split}
 		\label{eqw0}
 	\end{equation}
@@ -329,21 +331,21 @@
 	
 	С учётом \eqref{eqwR3} и \eqref{eqw0} имеем
 	\begin{equation*}
-		R_3 = \dfrac{72 L^2 M_0 - 48 L^2 M_1 - 4 L^3 P_2 + 77 L^4 q^{\circ}}{12 L^3 - 4 L^2}.
+		R_3 = \dfrac{8 L^2 M_0 + 16 L^2 M_1 - 36 L^3 P_2 + 13 L^4 q^{\circ}}{96 L^3}.
 	\end{equation*}
 	
 	Тогда из \eqref{eqP0P1} получим силы реакции для статически неопределимой балки
 	\begin{equation*}
 		\begin{cases}\vspace{0.75em}
-			P_1 = \dfrac{M_1 - M_0 + L (-45375 - 2 P_2 + 2 L  q^{\circ})}{L}, \\
-			P_0 = \dfrac{30250 L + M_0 - M_1 + L P_2}{L}.\\
+			P_1 = \dfrac{M_1 - M_0 + L (-\frac{3125}{4} - 2 P_2 + 2 L  q^{\circ})}{L}, \\
+			P_0 = \dfrac{\frac{3125}{6} L + M_0 - M_1 + L P_2}{L}.\\
 		\end{cases}
 	\end{equation*}
 	
 	При значениях параметров в соответствии с индивидуальным заданием
 	\vspace{-0.5em}
 	\[
-	R_3 = 15125 \; \text{Н}, \quad P_0 = 31250 \text{Н}\;, \quad P_1 = -45375 \text{Н}.
+	R_3 = 260,417 \; \text{Н}, \quad P_0 = 1520,83 \text{Н}\;, \quad P_1 = -781,25 \text{Н}.
 	\]
 	
 	\vspace{-1.5em}
@@ -393,14 +395,14 @@
 	W_3 = \frac{b h^2}{6}.
 	\]
 	
-	Наибольшее по абсолютной величине значение изгибающего момента $M_0$ достигается при $x_1 = 0$. Тогда 
+	Наибольшее по абсолютной величине значение изгибающего момента $M_0$ достигается при $x_1 = L$. Тогда 
 	\[
 	\sigma_{11}^{max} = 6 \frac{|M_0|}{b h^2}.
 	\]
 	
 	При значениях параметров в соответствии с индивидуальным заданием
 	\[
-	\sigma_{11}^{max} \approx 94{,}675 \ \text{МПа}.
+	\sigma_{11}^{max} \approx 48{,}322 \ \text{МПа}.
 	\]
 	
 	\newpage
