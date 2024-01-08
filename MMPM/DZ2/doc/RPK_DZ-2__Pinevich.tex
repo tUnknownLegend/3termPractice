@@ -116,13 +116,13 @@
 	
 	Аналогично уравнение равновесия моментов относительно точки $O$
 	\begin{equation*}
-		\sum M = 0 \ \Rightarrow \ M_0 - M_1 + L \cdot P_1 + 2 L \cdot P_2 + 3 L \cdot R_3 - L^2 \cdot q^{\circ} = 0.
+		\sum M = 0 \ \Rightarrow \ M_0 - M_1 + L \cdot P_1 + 2 L \cdot P_2 + 3 L \cdot R_3 - 2 L^2 \cdot q^{\circ} = 0.
 	\end{equation*}
 	
 	Откуда получим
 	\begin{equation}
 		\begin{cases} \vspace{0.75em}
-			P_1 = \dfrac{\left( M_1 - M_0 \right)  + L\left(-2 P_2 + 2 L \cdot q^{\circ} - 3 R_3 \right)}, \\ 
+			P_1 = \dfrac{\left( M_1 - M_0 \right)  + L\left(-2 P_2 + 2 L \cdot q^{\circ} - 3 R_3 \right)}{L}, \\ 
 			P_0 = \dfrac{\left( M_0 - M_1 \right) + 2 L R_3 + L P_2}{L}. \\
 		\end{cases}
 		\label{eqP0P1}
@@ -179,7 +179,7 @@
 	
 	Тогда можно записать выражение для изгибающего момента
 	\[
-	M(x_1) = R_3 f_1(x_1) + P_1 f_1(x_1 - L).
+	M(x_1) = R_3 f_1(x_1 - 3L) + P_1 f_1(x_1 - L).
 	\]
 	
 	Перерезывающая сила связана с изгибающим моментом следующим образом:
@@ -190,7 +190,7 @@
 	
 	Тогда
 	\[
-	Q(x_1) = R_3 f_0(x_1) + P_1 f_0(x_1 - L).
+	Q(x_1) = R_3 f_0(x_1 - 3L) + P_1 f_0(x_1 - L).
 	\]
 	
 	С учётом \eqref{eqP0P1R} имеем
@@ -228,7 +228,7 @@
 	Общее решение имеет вид
 	\vspace{-0.5em}
 	\begin{equation}
-		w(x_1) = w(0) + w'(0) x_1 + \int\limits_0^{x_1} \! dt \int\limits_0^t \dfrac{M_3(\xi)}{E J_3} \, d \xi.
+		w(x_1) = w(3L) + w'(3L) x_1 + \int\limits_0^{x_1} \! dt \int\limits_0^t \dfrac{M_3(\xi)}{E J_3} \, d \xi.
 		\label{eqw}
 	\end{equation}
 	
