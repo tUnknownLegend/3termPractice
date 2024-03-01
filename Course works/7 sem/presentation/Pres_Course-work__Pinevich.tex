@@ -32,7 +32,7 @@
 
 %\title{Курсовая работа}
 %\subtitle{Численные схемы для аппроксимации неограниченных решений при моделировании обтекания профиля крыла в вихревых методах}
-\title[Решение уравнения Рейнольдса]{Решение уравнения Рейнольдса}
+\title[Вывод уравнения Рейнольдса]{Вывод уравнения Рейнольдса в рамках теории газовой смазки}
 \author[Пиневич В.\,Г.]{Докладчик: Пиневич В.\,Г.\and\\[0.5mm] Научный руководитель: Селиванов А.\,В.}
 
 \institute[каф. Прикладная математика ФН-2]{группа ФН2-61Б}
@@ -51,22 +51,20 @@
 	\begin{frame}{Постановка задачи}
 		\begin{columns}
 			\column{\textwidth}`
-			\begin{block}{Задача Робертсона}
+			\begin{block}{Уравнение Рейнольдса}
 			 \[
 				\frac{\partial}{\partial x} \left(h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left(h^3 \frac{\partial p}{\partial z} \right) = 6 \mu U \frac{\partial h}{\partial x}
 			 \]
 			\end{block}
 
 		\begin{columns}
-			\column{0.5\textwidth}
-			Задача данной работы --- описать вывод, а затем решение дифференциального уравнения Рейнольдса методом конечных элементов.
-			\column{0.5\textwidth}
+			\column{1.0\textwidth}
 			\begin{block}{Граничные условия}
 				$U$ --- скорость в направлении $x$ на одной из пластин,\\ 
 				$p_{\text{в}}$ --- повышенное давление,\\ 
 				$p_{\text{н}}$ --- пониженное давление
 			\end{block}
-		\begin{block}{Описание остальных величин}
+		\begin{block}{Описание величин}
 		$h = h(x)$ --- толщина слоя, \\
 		$p = p(x, z)$ --- давление, \\
 		$\mu$ --- коэффициент вязкости
@@ -110,9 +108,9 @@
 		точке}
 	\[
 	\begin{cases}
-		\frac{\partial p}{\partial x} = \mu \left( \frac{\partial^2 u}{\partial^2 x} + \frac{\partial^2 u}{\partial^2 y} + \frac{\partial^2 u}{\partial^2 z} \right), \\
-		\frac{\partial p}{\partial y} = \mu \left( \frac{\partial^2 \nu}{\partial^2 x} + \frac{\partial^2 \nu}{\partial^2 y} + \frac{\partial^2 \nu}{\partial^2 z} \right), \\
-		\frac{\partial p}{\partial z} = \mu \left( \frac{\partial^2 \omega}{\partial^2 x} + \frac{\partial^2 \omega}{\partial^2 y} + \frac{\partial^2 \omega}{\partial^2 z} \right).
+		\frac{\partial p}{\partial x} = \mu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right), \\
+		\frac{\partial p}{\partial y} = \mu \left( \frac{\partial^2 \nu}{\partial x^2} + \frac{\partial^2 \nu}{\partial y^2} + \frac{\partial^2 \nu}{\partial z^2} \right), \\
+		\frac{\partial p}{\partial z} = \mu \left( \frac{\partial^2 \omega}{\partial x^2} + \frac{\partial^2 \omega}{\partial y^2} + \frac{\partial^2 \omega}{\partial z^2} \right).
 	\end{cases}
 	\]
 \end{block}
@@ -122,12 +120,12 @@
 
 \begin{frame}{}
 
-Изменения скоростей и и со при заданном значении $y$ для всех изменений $ x $ и $z$ могут рассматриваться как чрезмерно малые, поэтому примем
+Изменения скоростей $u$ и $\omega$ со при заданном значении $y$ для всех изменений $ x $ и $z$ могут рассматриваться как чрезмерно малые, поэтому примем
 \[
-\frac{\partial^2 u}{\partial^2 x} = 0, 
-\frac{\partial^2 u}{\partial^2 z} = 0, 
-\frac{\partial^2 \omega}{\partial^2 x} = 0, 
-\frac{\partial^2 \omega}{\partial^2 z} = 0. 
+\frac{\partial^2 u}{\partial x^2} = 0, 
+\frac{\partial^2 u}{\partial z^2} = 0, 
+\frac{\partial^2 \omega}{\partial x^2} = 0, 
+\frac{\partial^2 \omega}{\partial z^2} = 0. 
 \]
 
 \begin{columns}
@@ -137,9 +135,9 @@
 \[
 	\label{secondinitialeq}
 	\begin{cases}
-		\frac{\partial p }{\partial x} = \mu \frac{\partial^2 u}{\partial^2 y}, \\
+		\frac{\partial p }{\partial x} = \mu \frac{\partial^2 u}{\partial y^2}, \\
 		\frac{\partial p }{\partial y} = 0, \\
-		\frac{\partial p }{\partial z} = \mu \frac{\partial^2 \omega}{\partial^2 y}.
+		\frac{\partial p }{\partial z} = \mu \frac{\partial^2 \omega}{\partial y^2}.
 	\end{cases}
 \]
 \end{block}
@@ -206,7 +204,7 @@
 
 \end{frame}	
 
-\begin{frame}{Фазовые траектории}
+\begin{frame}{}
 	
 	\begin{block}{}
 		\[
@@ -227,7 +225,7 @@ $2 V_1$ используется для учёта движений одной �
 	
 \end{frame}
 
-\begin{frame}{Решение уравнения Рейнольдса с помощью слабой формы Галеркина}
+\begin{frame}{Методика решение уравнения Рейнольдса с помощью слабой формы Галеркина}
 	
 \begin{columns}
 		
@@ -285,19 +283,17 @@ $2 V_1$ используется для учёта движений одной �
 \end{frame}
 
 \begin{frame}{}
-	\begin{block}{Интеграл по частям для $x$}
+Интеграл по частям для $x$:
 		\[
 		K1_i = \int_{S_i} {[N] \left(\frac{\partial}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right)\right) dx dz} = [N]\frac{d \phi}{dx}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dx} \left(h^3 \frac{\partial \phi}{\partial x} \right) dx dz}
 		\]
-	\end{block}
 
-\begin{block}{Интеграл по частям для $z$}
+Интеграл по частям для $z$:
 	\[
 	K2_i = \int_{S_i} {[N] \left(\frac{\partial}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right)\right) dx dz} = [N]\frac{d \phi}{dz}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dz} \left(h^3 \frac{\partial \phi}{\partial z} \right) dx dz}
 	\]
-\end{block}
 
-\begin{block} {Для правой части}
+\begin{block}{Для правой части}
 	\[
 	F_i = \int_{S_i} [N]\left(6 \mu U \frac{\partial h}{\partial x}\right) dx dz.
 	\]
@@ -315,7 +311,7 @@ $2 V_1$ используется для учёта движений одной �
 	\begin{block}{}
 	\begin{enumerate}	
 		\item Вывод уравнения Рейнольдса для установившегося течения в газовом смазочном слое.
-		\item Было рассмотрено решение уравнение Рейнольдса с помощью метода конечных элементов.
+		\item Была рассмотрена методика решения уравнения Рейнольдса с помощью метода конечных элементов.
 	\end{enumerate}
 	\end{block}	
 \end{frame}	
