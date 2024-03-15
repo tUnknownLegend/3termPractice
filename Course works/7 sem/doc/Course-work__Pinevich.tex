@@ -13,7 +13,7 @@
 \usepackage{amsmath}
 \usepackage{afterpage}
 % Параметры титульного листа
-\title{Вывод уравнения Рейнольдса\\ в рамках теории газовой смазки}
+\title{Решение уравнения Рейнольдса\\ в рамках теории газовой смазки \\ методом конечных элементов}
 \author{В.\,Г.~Пиневич}
 \supervisor{А.\,В.~Селиванов}
 \group{ФН2-71Б}
@@ -237,10 +237,10 @@ $S_i$ --- область, содержащая элемент.
 \end{equation*}
 Будем вычислять интегралы в которых участвует функция $\phi$ по частям:
 \begin{equation*}
-	\int_{S_i} {[N] \left(\frac{\partial}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right)\right) dx dz} = [N]\frac{d \phi}{dx}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dx} \left(h^3 \frac{\partial \phi}{\partial x} \right) dx dz},
+	\int_{S_i} {[N] \left(\frac{\partial}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right)\right) dx dz} = [N] h^3 \frac{d \phi}{dx}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dx} \left(h^3 \frac{\partial \phi}{\partial x} \right) dx dz},
 \end{equation*}
 \begin{equation*}
-	\int_{S_i} {[N] \left(\frac{\partial}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right)\right) dx dz} = [N]\frac{d \phi}{dz}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dz} \left(h^3 \frac{\partial \phi}{\partial z} \right) dx dz}.
+	\int_{S_i} {[N] \left(\frac{\partial}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right)\right) dx dz} = [N] h^3 \frac{d \phi}{dz}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dz} \left(h^3 \frac{\partial \phi}{\partial z} \right) dx dz}.
 \end{equation*}
 Суть такого подхода в том, что мы снижаем требования по дифференцируемости со второго до первого порядка.
 
@@ -262,8 +262,56 @@ W_i \phi = F_i,
 	W \phi = F,
 \end{equation*}
 
-Далее заменяем значения в матрице $F$ и/или матрице $W$ так, чтобы решения совпадали с граничными условиями.
+Далее заменяем значения в матрице $F$ и матрице $W$ так, чтобы решения совпадали с граничными условиями.
 После подстановки граничных условий решением уравнения будут являться искомые значения давления $p$ в узловых точках.
+
+\section{Результаты вычислений}
+
+Рассмотрим задачу со следующими входными данными 
+\begin{equation*}
+	\begin{cases}
+		h = 0.0001 \text{ м}, \\
+		verticalLength = 0.005 \text{ м}, \\
+		horizontalLength = 0.005 \text{ м}, \\
+		\nu = 8.90 * 10^{-4} \text{ Па}*\text{с}, \\
+		U = 10 \text{ м / c}, \\
+		p_{\text{н}} = 100 \text{ кПа}, \\
+		p_{\text{в}} = 150 \text{ кПа}, \\
+	\end{cases}	
+\end{equation*}
+$\nu$ --- коэффициент вязкости воды.
+
+\subsection{Сетка 5 на 5 элементов}
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5mesh.jpg}}
+	\caption{C}
+	\label{obl_resh}
+\end{figure}
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5points.jpg}}
+	\caption{C}
+	\label{obl_resh}
+\end{figure}
+
+\subsection{Сетка 10 на 10 элементов}
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10mesh.jpg}}
+	\caption{C}
+	\label{obl_resh}
+\end{figure}
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10points.jpg}}
+	\caption{C}
+	\label{obl_resh}
+\end{figure}
+
+\subsection{Сравнение полученного решения с решением Wolfram Mathematica}
+
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{exactSolutionConst.jpg}}
+	\caption{C}
+	\label{obl_resh}
+\end{figure}
 
 \newpage
 \section-{Заключение}
