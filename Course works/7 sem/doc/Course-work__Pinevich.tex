@@ -48,13 +48,11 @@
 
 Уравнения будем рассматривать в квадратной области. Схематичное изображение области и граничных условий изображено на рис.~\ref{obl_resh}.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{taskGU.png}}
 	\caption{Схема области решения и граничных условий уравнения Рейнольдса}
 	\label{obl_resh}
 \end{figure}
-
-\newpage
 
 \section{Вывод уравнения Рейнольдса}
 
@@ -273,8 +271,8 @@ W_i \phi = F_i,
 		h = 0.0001 \text{ м}, \\
 		verticalLength = 0.005 \text{ м}, \\
 		horizontalLength = 0.005 \text{ м}, \\
-		\nu = 8.90 * 10^{-4} \text{ Па}*\text{с}, \\
-		U = 10 \text{ м / c}, \\
+		\mu = 8.90 * 10^{-4} \text{ Па}*\text{с}, \\
+		U = 10 \text{ м/c}, \\
 		p_{\text{н}} = 100 \text{ кПа}, \\
 		p_{\text{в}} = 150 \text{ кПа}, \\
 	\end{cases}	
@@ -282,35 +280,57 @@ W_i \phi = F_i,
 $\nu$ --- коэффициент вязкости воды.
 
 \subsection{Сетка 5 на 5 элементов}
-\begin{figure}[h]
-	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5mesh.jpg}}
-	\caption{C}
-	\label{obl_resh}
-\end{figure}
-\begin{figure}[h]
-	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5points.jpg}}
-	\caption{C}
-	\label{obl_resh}
+
+Для сетки 5 на 5 элементов получаем следующие значения в узлах:
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=0.3\textwidth, height=1\textwidth]{5x5values.PNG}}
+	\caption{Значения в узлах решения уравнения Рейнольдса для h = 0.0001 м на сетке 5 на 5 элементов}
+	\label{5x5values}
 \end{figure}
 
+Построим график решения
+
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5mesh.jpg}}
+	\caption{График решения уравнения Рейнольдса для h = 0.0001 м на сетке 5 на 5 элементов}
+	\label{5x5mesh}
+\end{figure}
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5points.jpg}}
+	\caption{График значений узлов решения уравнения Рейнольдса для h = 0.0001 м на сетке 5 на 5 элементов}
+	\label{5x5points}
+\end{figure}
+
+Из полученных значений и графиков видно, что граничные условия выполняются.
+
+
+
 \subsection{Сетка 10 на 10 элементов}
-\begin{figure}[h]
+
+Для сетки 10 на 10 элементов получаем следующие значения графики:
+
+\begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10mesh.jpg}}
-	\caption{C}
-	\label{obl_resh}
+	\caption{График решения уравнения Рейнольдса для h = 0.0001 м на сетке 10 на 10 элементов}
+	\label{10x10mesh}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10points.jpg}}
+		\caption{График значений узлов решения уравнения Рейнольдса для h = 0.0001 м на сетке 10 на 10 элементов}
 	\caption{C}
-	\label{obl_resh}
+	\label{10x10points}
 \end{figure}
+
+Из полученных значений и графиков видно, что граничные условия выполняются.
 
 \subsection{Сравнение полученного решения с решением Wolfram Mathematica}
 
-\begin{figure}[h]
+Проверим полученный результат с помощью функции NDSolve в Wolfram Mathematica.
+
+\begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{exactSolutionConst.jpg}}
-	\caption{C}
-	\label{obl_resh}
+	\caption{График решения уравнения Рейнольдса для h = 0.0001 м полученный с помощью Wolfram Mathematica}
+	\label{exactSolutionConst}
 \end{figure}
 
 \newpage
