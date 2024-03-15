@@ -261,57 +261,75 @@ $2 V_1$ используется для учёта движений одной �
 	
 \end{frame}
 
-\begin{frame}{}
-	\begin{block}{}
-	\[
-	\int_{S_i} {[N] \left(\frac{\partial}{\partial x} \left(h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left(h^3 \frac{\partial p}{\partial z} \right) - 6 \mu U \frac{\partial h}{\partial x}\right) dx dz} = 0.
-	\]
-	\end{block}
+\begin{frame}{Решение на сетке 5 на 5}
 
-\begin{block}{Рассмотрим сумму интегралов}
-	\[
-		\int_{S_i} {[N] \left(\frac{\partial}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right)\right) dx dz}
-	+
-	\int_{S_i} {[N] \left(\frac{\partial}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right)\right) dx dz} 
-	-\]
-	\[ -
-	\int_{S_i} [N]\left(6 \mu U \frac{\partial h}{\partial x}\right) dx dz = 0.
-	\]
-\end{block}
+\begin{columns}
 	
+	\column{0.5\textwidth}
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5mesh.jpg}}
+	\caption{График решения уравнения Рейнольдса для h = 0.0001 м на сетке 5 на 5 элементов}
+	\label{5x5mesh}
+\end{figure}
+
+	\column{0.5\textwidth}
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{5x5points.jpg}}
+	\caption{График значений узлов решения уравнения Рейнольдса для h = 0.0001 м на сетке 5 на 5 элементов}
+	\label{5x5points}
+\end{figure}
+
+\end{columns}
 	
 \end{frame}
 
-\begin{frame}{}
-Интеграл по частям для $x$:
-		\[
-		K1_i = \int_{S_i} {[N] \left(\frac{\partial}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right)\right) dx dz} = [N]\frac{d \phi}{dx}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dx} \left(h^3 \frac{\partial \phi}{\partial x} \right) dx dz}
-		\]
-
-Интеграл по частям для $z$:
-	\[
-	K2_i = \int_{S_i} {[N] \left(\frac{\partial}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right)\right) dx dz} = [N]\frac{d \phi}{dz}\Biggr|_{S_i} - \int_{S_i} {\frac{d[N]}{dz} \left(h^3 \frac{\partial \phi}{\partial z} \right) dx dz}
-	\]
-
-\begin{block}{Для правой части}
-	\[
-	F_i = \int_{S_i} [N]\left(6 \mu U \frac{\partial h}{\partial x}\right) dx dz.
-	\]
-\end{block}
-
-\[
-(K1_i + K2_i )\phi = F_i
-\]
+\begin{frame}{Решение на сетке 10 на 10}
 	
+	\begin{columns}
+		
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10mesh.jpg}}
+			\caption{График решения уравнения Рейнольдса для h = 0.0001 м на сетке 10 на 10 элементов}
+			\label{10x10mesh}
+		\end{figure}
+		
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10points.jpg}}
+			\caption{График значений узлов решения уравнения Рейнольдса для h = 0.0001 м на сетке 10 на 10 элементов}
+			\label{10x10points}
+		\end{figure}
+		
+	\end{columns}
 	
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[!htbp]
+		\center{\includegraphics[width=\textwidth, height=0.4\textwidth]{exactSolutionConst.jpg}}
+		\caption{График решения уравнения Рейнольдса для h = 0.0001 м полученный с помощью Wolfram Mathematica}
+		\label{exactSolutionConst}
+	\end{figure}
+
+\begin{table}[!htbp]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\multicolumn{1}{|c|}{Размерность сетки} & \multicolumn{1}{c|}{Разность, Па} & Погрешность, \% \\ \hline
+		5 на 5                                  & 4612                              & 4.51            \\ \hline
+		10 на 10                                & 1538                              & 1.38            \\ \hline
+		20 на 20                                & 1290                              & 1.02            \\ \hline
+	\end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Заключение}
-	В ходе работы получены следующие результаты:
+	В работе представлен вывод уравнения Рейнольдса для установившегося течения в газовом смазочном слое и методика решения уравнения Рейнольдса с помощью метода конечных элементов. В ходе работы получены следующие результаты:
 	\begin{block}{}
 	\begin{enumerate}	
-		\item Вывод уравнения Рейнольдса для установившегося течения в газовом смазочном слое.
-		\item Была рассмотрена методика решения уравнения Рейнольдса с помощью метода конечных элементов.
+		\item Создана программная реализация метода конечного элемента для решение уравнения Рейнольдса
+		\item Полученные значения решения уравнения Рейнольдса были сравнены с результатами решения полученного с помощью функции NDSolve в Wolfram Mathematica
+		\item В результате сравнения для сетки 5 на 5 погрешность равна 4.51 \%, а для сетки 20 на 20 1.02 \%.
 	\end{enumerate}
 	\end{block}	
 \end{frame}	
