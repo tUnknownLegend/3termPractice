@@ -1,0 +1,71 @@
+/COM,ANSYS RELEASE 2021 R2           BUILD 21.2      UP20210601       17:34:20
+
+ *** WARNING ***                         CP =      25.734   TIME= 18:58:46
+ \SOL is not a recognized BEGIN command, abbreviation, or macro.  This   
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =      25.828   TIME= 18:58:46
+ ANTYPE is not a recognized BEGIN command, abbreviation, or macro.       
+ This command will be ignored.                                           
+
+ *** WARNING ***                         CP =      25.828   TIME= 18:58:47
+ DL is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =      28.516   TIME= 19:02:43
+ \SOL is not a recognized BEGIN command, abbreviation, or macro.  This   
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =      28.578   TIME= 19:02:43
+ ANTYPE is not a recognized BEGIN command, abbreviation, or macro.       
+ This command will be ignored.                                           
+
+ *** WARNING ***                         CP =      28.578   TIME= 19:02:43
+ DL is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =      28.578   TIME= 19:02:43
+ DK is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+/COM,ANSYS RELEASE 2021 R2           BUILD 21.2      UP20210601       14:03:01
+/COM,ANSYS RELEASE 2021 R2           BUILD 21.2      UP20210601       14:06:46
+
+ *** WARNING ***                         CP =       1.156   TIME= 14:06:59
+ \SOL is not a recognized BEGIN command, abbreviation, or macro.  This   
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       1.219   TIME= 14:06:59
+ ANTYPE is not a recognized BEGIN command, abbreviation, or macro.       
+ This command will be ignored.                                           
+
+ *** WARNING ***                         CP =       1.219   TIME= 14:06:59
+ DL is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       1.234   TIME= 14:06:59
+ DK is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       3.938   TIME= 14:58:01
+ \SOL is not a recognized BEGIN command, abbreviation, or macro.  This   
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       4.016   TIME= 14:58:01
+ ANTYPE is not a recognized BEGIN command, abbreviation, or macro.       
+ This command will be ignored.                                           
+
+ *** WARNING ***                         CP =       4.016   TIME= 14:58:01
+ DL is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       4.031   TIME= 14:58:01
+ DK is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       4.031   TIME= 14:58:01
+ SFL is not a recognized BEGIN command, abbreviation, or macro.  This    
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       4.047   TIME= 14:58:02
+ SOLVE is not a recognized BEGIN command, abbreviation, or macro.  This  
+ command will be ignored.                                                

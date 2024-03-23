@@ -1,0 +1,42 @@
+/COM,ANSYS RELEASE 2021 R2           BUILD 21.2      UP20210601       14:11:53
+
+ *** WARNING ***                         CP =       1.812   TIME= 14:13:13
+ \SOL is not a recognized BEGIN command, abbreviation, or macro.  This   
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       1.984   TIME= 14:13:13
+ ANTYPE is not a recognized BEGIN command, abbreviation, or macro.       
+ This command will be ignored.                                           
+
+ *** WARNING ***                         CP =       2.047   TIME= 14:13:13
+ DL is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       2.047   TIME= 14:13:13
+ DK is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       3.062   TIME= 14:58:39
+ \SOL is not a recognized BEGIN command, abbreviation, or macro.  This   
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       3.281   TIME= 14:58:39
+ ANTYPE is not a recognized BEGIN command, abbreviation, or macro.       
+ This command will be ignored.                                           
+
+ *** WARNING ***                         CP =       3.312   TIME= 14:58:39
+ DL is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       3.312   TIME= 14:58:39
+ DK is not a recognized BEGIN command, abbreviation, or macro.  This     
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       3.312   TIME= 14:58:39
+ SLF is not a recognized BEGIN command, abbreviation, or macro.  This    
+ command will be ignored.                                                
+
+ *** WARNING ***                         CP =       3.328   TIME= 14:58:39
+ SOLVE is not a recognized BEGIN command, abbreviation, or macro.  This  
+ command will be ignored.                                                
+/COM,ANSYS RELEASE 2021 R2           BUILD 21.2      UP20210601       15:00:36
