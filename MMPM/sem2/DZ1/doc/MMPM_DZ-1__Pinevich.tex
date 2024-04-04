@@ -1,0 +1,211 @@
+
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[oglav,spisok,boldsect,eqwhole,figwhole,hyperref,hyperprint,remarks,greekit]{./style/fn2kursstyle}
+\graphicspath{{./style/}{./figures/}}
+
+\usepackage{multirow}
+\usepackage{supertabular}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{afterpage}
+% Параметры титульного листа
+\title{Вариант 8}
+\author{В.\,Г.~Пиневич}
+\supervisor{И.\,Ю.~Савельева}
+\group{ФН2-81Б}
+\date{2023}
+
+% Переопределение команды \vec, чтобы векторы печатались полужирным курсивом
+\renewcommand{\vec}[1]{\text{\mathversion{bold}${#1}$}}%{\bi{#1}}
+\newcommand\thh[1]{\text{\mathversion{bold}${#1}$}}
+%Переопределение команды нумерации перечней: точки заменяются на скобки
+\renewcommand{\labelenumi}{\theenumi)}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\newpage
+
+\section-{Список условных обозначений}
+
+\noindent\begin{tabular}{cp{0.7\textwidth}}
+	
+	$Q_k$ & --- суммарный тепловой поток на k-ую  поверхность \\
+	$\overline{q}_k$ & --- плотность результирующего потока \\
+	$q_{\Pi, k}$ & --- плотность падающего потока \\ $S_k$ & ---  плотность k-ой поверхности
+\end{tabular}
+
+\newpage
+
+\section{Постановка задачи}
+В зазоре между двумя концентрическими круговыми цилиндрическими поверхностями, длина которых существенно превышает их диаметры $D_1$ и $D_2$ > $D_1$, установлен тонкий круговой цилиндрический металлический экран диаметром $D_0$. Тем-
+пература цилиндрических поверхностей $T_1$ и $T_2$ > $T_1$, коэффициенты излучения $e_1$ и
+$e_2$ соответственно, а коэффициенты излучения обеих поверхностей экрана одинаковы
+и равны $e_0$. Свойства всех указанных поверхностей отвечают модели серого тела.
+Сравнить суммарные значения теплового потока, передаваемого излучением от
+более нагретой поверхности к менее нагретой при наличии и отсутствии экрана в
+предположении, что температуру экрана можно считать однородной по его толщине.
+
+\section{Решение}
+Рассмотрим замкнутую систему, состоящую из $N$ поверхностей, и проанализируем теплообмен излучением между ними.
+Уравнение теплового баланса на k-ой поверхности
+\begin{equation}
+	\label{lab-1}
+	Q_k = \overline{q}_k S_k = \left(q_K^{*} - q_{\Pi, k}\right),
+\end{equation}
+где $Q_k$ --- суммарный тепловой поток на k-ую поверхность, $\overline{q}_k$ --- плотность результирующего потока, $q_{\Pi, k}$ --- плотность падающего потока, $S_k$ --- плотность k-ой поверхности.
+
+\begin{equation}
+	\label{lab-2}
+	q_k^{*} = \varepsilon_k \sigma_0 T_k^4 + \left(1 + A_k\right) q_{\Pi, k},
+\end{equation}
+\begin{equation}
+	\label{lab-3}
+	q_{\Pi, k} = S_1 q_1^{*} \phi_{1-k} + ... + S_N q_N^{*} \phi_{N-k},
+\end{equation}
+где $\phi_{N-k}$ угловые коэффициенты, характеризуют долю плотности энергии выпускаемое i-ой поверхностью и падающую на k-ую поверхность. Свойство угловых коэффициентов: $\phi_{1-k} S_1 = \phi_{k-1} S_k$.
+%$\phi_{0} + ... + \phi1 - N = 1$
+
+Воспользуемся им для в соотношении~(\ref{lab-3}) и получим: 
+\begin{equation}
+	\label{lab-4}
+	q_{\Pi, k} = \sum_{j=1}^{N} q_j^{*} \phi_{k-j}
+\end{equation}
+
+Также используем подстановку~(\ref{lab-4}) в~(\ref{lab-1}). 
+\[
+\]
+
+После этого выразим из~(\ref{lab-2}) $q_{\Pi, k}$ и подставим в~(\ref{lab-1}).
+\[
+\]
+
+Итого имеем систему
+\begin{equation}
+	\label{lab-5}
+	\begin{cases}
+		Q_k = \left(q_k^{*} - \sum_{j = 1}^{N} q_j^{*} \phi_{k-j} \right) S_k, \\
+		Q_k = \left(\frac{\varepsilon_k}{1 - A_k}\sigma_0 T^4_k - \frac{A_k}{1 - A_k} q_k^{*} \right)
+	\end{cases}
+\end{equation}
+
+\subsection{Поиск суммарного значения теплового потока при отсутствии экрана}
+Определим угловые коэффициенты для замкнутой системы для 2-х концентрических круговых цилиндрических поверхностей, длина которых существенно превышает их диаметры:
+
+\begin{equation*}
+	\begin{cases}
+		\phi_{1-1} = 0, \\
+		\phi_{1_1} + \phi_{1-2} = 1, \\
+		\phi_{2-1} + \phi_{2-2} = 1, \\
+		\phi_{1-2} S_1 = \phi_{2-1} S_2
+	\end{cases}
+\end{equation*}
+\begin{equation}
+	\label{lab-6}
+	\begin{cases}
+		\phi_{1-1} = 0, \\
+		\phi_{1-2} = 1, \\
+		\phi_{2-1} = \frac{S_1}{S_2} = \frac{D_1}{D_2}, \\
+		\phi_{2-2} = 1 - \frac{S_1}{S_2} = 1 - \frac{D_1}{D_2},
+	\end{cases}
+\end{equation}
+где $S_i = \pi D_i h$ --- площадь i-ого цилиндра.
+Запишем систему~(\ref{lab-5}) для этих поверхностей:
+\begin{equation}
+	\label{lab-7}
+	\begin{cases}
+		Q_1 = \left(q_1^{*} - q_1^{*} \phi_{1-1} - q_2^{*} \phi_{1-2}\right), \\
+		Q_2 = \left(q_2^{*} - q_1^{*} \phi_{2-1} - q^{*}_2 \phi_{2-2}\right), \\
+		Q_1 = \left(\frac{\varepsilon_1}{1 - A_1}\sigma_0T_1^4  - \frac{A_1}{1- A_1}q_1^{*}\right)S_1, \\
+		Q_2 = \left(\frac{\varepsilon_2}{1- A_2} \sigma_0 T_2^4 - \frac{A_2}{1- A_2}q_2^{*}\right)S_2
+	\end{cases}
+\end{equation}
+
+Так свойствах всех поверхностей отвечают моделям серого тела $\left(\varepsilon_k = A_k\right)$, преобразуем систему~(\ref{lab-7})
+\begin{equation}
+	\label{lab-8}
+	\begin{cases}
+		Q_1 = \left(q_1^{*} - q_1^{*} \phi_{1-1} - q_2^{*} \phi_{1-2}\right), \\
+		Q_2 = \left(q_2^{*} - q_1^{*} \phi_{2-1} - q^{*}_2 \phi_{2-2}\right), \\
+		Q_1 = \left(\frac{\varepsilon_1}{1 - \varepsilon_k}\sigma_0T_1^4  - \frac{A_1}{1- \varepsilon_k}q_1^{*}\right)S_1, \\
+		Q_2 = \left(\frac{\varepsilon_2}{1- \varepsilon_k} \sigma_0 T_2^4 - \frac{A_2}{1- \varepsilon_k}q_2^{*}\right)S_2
+	\end{cases}
+\end{equation}
+
+Подставим значение угловых коэффициентов~(\ref{lab-6}) в систему~(\ref{lab-8}) и решим ее. Получим следующее соотношения:
+\begin{equation*}
+	\begin{cases}
+		Q_1 = \frac{S_1 S_2 (T_2^4 - T_1^4) \varepsilon_1  \varepsilon_2 \sigma_0}{S_1 \varepsilon_1 (\varepsilon_2 - 1) - S_2 \varepsilon_2}, \\
+		Q_2 = \frac{S_1 S_2 (T_1^4 - T_2^4) \varepsilon_1  \varepsilon_2 \sigma_0}{S_1 \varepsilon_1 (\varepsilon_2 - 1) - S_2 \varepsilon_2}, \\
+		q_1^{*} = \frac{(S_1 T_1^4 \varepsilon_1 (\varepsilon_2 - 1) + S_2 (T_2^4 (\varepsilon_1 - 1) - T_1^4 \varepsilon_1)\varepsilon_2)\sigma}{S_1 \varepsilon_1 (\varepsilon_2 - 1) - S_2 \varepsilon_2}, \\
+		q_2^{*} = \frac{(S_1 T_1^4 (\varepsilon_1 - 1) - S_2 T_2^4 \varepsilon_2)\sigma}{S_1 \varepsilon_1 (\varepsilon_2 - 1) - S_2 \varepsilon_2}
+	\end{cases}
+\end{equation*}
+
+Тогда суммарный тепловой поток, передаваемый от тела с большей температурой будет равен
+\[
+Q_2 = \frac{S_1 S_2 (T_1^4 - T_2^4) \varepsilon_1  \varepsilon_2 \sigma_0}{S_1 \varepsilon_1 (\varepsilon_2 - 1) - S_2 \varepsilon_2}
+\]
+
+\subsection{Поиск суммарного значения теплового потока при наличии экрана}
+
+Рассмотрим две системы уравнений: внешний цилиндр и экран и экран и внутренний цилиндр.
+\begin{equation*}
+	\begin{cases}
+		\phi_{0-0} = 0, \\
+		\phi_{0-2} = 1, \\
+		\phi_{2-0} = \frac{S_0}{S_2}, \\
+		\phi_{2-2} = 1 - \frac{S_0}{S_2},\\
+		Q_0 = (q_0^{*} - q_0^{*} \phi_{0-0} - q_2^{*} \phi_{0-2})S_0, \\
+		Q_2 = (q_2^{*} - q_0^{*}\phi_{2-0} - q_2^{*} \phi_{2-2})S_2, \\
+		Q_0 = (\frac{\varepsilon_0}{1- \varepsilon_0}\sigma_0 T_0^4 - \frac{\varepsilon_0}{1-\varepsilon_0}q_0^{*})S_0, \\
+		Q_2 = (\frac{\varepsilon_2}{1-\varepsilon_2} \sigma_0 T_2^4 - \frac{\varepsilon_2}{1 - \varepsilon_2}q_2^{*}) S_2
+	\end{cases}
+\end{equation*}
+\begin{equation*}
+	\begin{cases}
+		\phi_{1-1} = 0, \\
+		\phi_{1-0} = 1, \\
+		\phi_{0-1} = \frac{S_1}{S_0}, \\
+		\phi_{0-0} = 1 - \frac{S_1}{S_0},\\
+		Q_1 = (q_1^{*} - q_1^{*} \phi_{1-1} - q_0^{*} \phi_{1-0})S_1, \\
+		Q_0 = (q_0^{*} - q_1^{*}\phi_{0-1} - q_0^{*} \phi_{0-0})S_0, \\
+		Q_1 = (\frac{\varepsilon_1}{1- \varepsilon_1}\sigma_0 T_1^4 - \frac{\varepsilon_1}{1-\varepsilon_1}q_1^{*})S_1, \\
+		Q_0 = (\frac{\varepsilon_0}{1-\varepsilon_0} \sigma_0 T_0^4 - \frac{\varepsilon_0}{1 - \varepsilon_0}q_0^{*}) S_0
+	\end{cases}
+\end{equation*}
+Решение данных систем аналогично решению системы из предыдущего пункта.
+Найдем плотность результирующего потока для этих систем:
+\[
+\overline{q}_{2, 0} = \frac{S_0 (T_0^4 - T_2^4) \varepsilon_1 \varepsilon_2 \sigma_0}{S_2 \varepsilon_2 + S_1 \varepsilon_1 (1 - \varepsilon_2)}
+\]
+\[
+\overline{q}_{0, 1} = \frac{S_1 (T_1^4 - T_0^4) \varepsilon_1 \varepsilon_0 \sigma_0}{S_1 \varepsilon_1 (\varepsilon_0 - 1) - S_0 \varepsilon_0}
+\]
+
+Так как исходная система <<внешний цилиндр - экран - внутренний цилиндр>> является замкнутой, то должно выполняться условие $\overline{q}_{2, 0} = \overline{q}_{0, 1}$. Выразим из данного условия температуру $T_0^4$:
+\[
+T^4_0 = \frac{\varepsilon_0 S_0 (\varepsilon_1 (\varepsilon_2 - 1) S_1 T_1^4 - \varepsilon_2 S_2 T^4_2) - \varepsilon_1 \varepsilon_2 S_1 S_2 (T_1^4 - (\varepsilon_0 - 1) T^4_2)}{S_1 S_2 (\varepsilon_0 - 2) \varepsilon_1 \varepsilon_2 + S_0 \varepsilon_0 (S_1 \varepsilon_1(\varepsilon_2 -1 ) S_2 \varepsilon_2)}
+\]
+
+Подставим полученное значение температуры $T^4_0$ в значение суммарного потока для системы <<внешний цилиндр – экран>>:
+\[
+Q_2 = \frac{S_0 S_2 (T_0^4 - T_2^4) \varepsilon_0 \varepsilon_2 \sigma_0}{S_0 \varepsilon_0 (\varepsilon_2- 1 ) - S_2 \varepsilon_2} = \frac{S_0 S_1 S_2 (T_1^4 - T_2^4) \varepsilon_0 \varepsilon_1 \varepsilon_2 \sigma_0}{S_1 S_2 (\varepsilon_0 - 2) \varepsilon_1 \varepsilon_2 + S_0 \varepsilon_0 (S_1 \varepsilon_1 (\varepsilon_2 - 1) - S_2 \varepsilon_2)}
+\]
+
+Сравним полученные суммарные значения теплового потока при наличии и отсутствии экрана:
+\[
+\frac{Q_2}{Q'_2} - 1 = \frac{S_1 S_2 (\varepsilon_0 - 2) \varepsilon_1 \varepsilon_2}{S_0 \varepsilon_0 (S_1 \varepsilon_1 (\varepsilon_2 -1) - S_2 \varepsilon_2)} > 0,
+\]
+где $Q_2$ --- суммарное значение теплового потока при отстутствии экрана, $Q'_2$ --- суммарное значение теплового потока при наличии экрана. Таким образом получаем,
+что суммарное значение теплового потока при отсутствии экрана больше, чем при
+его наличии.
+\end{document} 
