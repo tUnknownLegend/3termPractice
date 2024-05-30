@@ -35,7 +35,7 @@
 \title[Решение уравнения Рейнольдса]{Решение уравнения Рейнольдса в рамках теории газовой смазки методом конечных элементов}
 \author[Пиневич В.\,Г.]{Докладчик: Пиневич В.\,Г.\and\\[0.5mm] Научный руководитель: Селиванов А.\,В.}
 
-\institute[каф. Прикладная математика ФН-2]{группа ФН2-71Б}
+\institute[каф. Прикладная математика ФН-2]{группа ФН2-81Б}
 \date{\today}
 \titlegraphic{\includegraphics[width=2cm]{logo.png}}
 %\renewcommand{\vec}[1]{\text{\mathversion{bold}${#1}$}}
@@ -85,157 +85,7 @@
 			\label{ser_graph}
 		\end{figure}
 		
-	\end{frame}
-
-\begin{frame}{Вывод уравнения Рейнольдса}
-
-\begin{columns}
-	\column{0.4\textwidth}
-	\begin{block}{Проекции скорости}
-		$u$, $\nu$, $\omega$ -- проекции скорости скорости на осях $x$, $y$, $z$ соответственно
-	\end{block}
-	
-	\column{0.6\textwidth}
-	\begin{block}{Условие несжимаемости жидкости}	
-		\[
-		\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0
-		\]
-	\end{block}
-\end{columns}
-
-\begin{columns}
-	\column{0.5\textwidth}
-\begin{block}{Силы трения в точке}	
-	\[
-	\begin{cases}
-		p_{yz} = p_{zy} = \mu \left(\frac{\partial \omega}{\partial y} + \frac{\partial \nu}{\partial z} \right), \\
-		p_{zx} = p_{xz} = \mu \left( \frac{\partial \omega}{\partial x} +  \frac{\partial u}{\partial z} \right), \\
-		p_{xy} = p_{yx} = \mu \left(  \frac{\partial u}{\partial y} + \frac{\partial \nu}{\partial x} \right)
-	\end{cases}
-	\]
-\end{block}
-
-\column{0.5\textwidth}
-\begin{block}{Давление в
-		точке}
-	\[
-	\begin{cases}
-		\frac{\partial p}{\partial x} = \mu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right), \\
-		\frac{\partial p}{\partial y} = \mu \left( \frac{\partial^2 \nu}{\partial x^2} + \frac{\partial^2 \nu}{\partial y^2} + \frac{\partial^2 \nu}{\partial z^2} \right), \\
-		\frac{\partial p}{\partial z} = \mu \left( \frac{\partial^2 \omega}{\partial x^2} + \frac{\partial^2 \omega}{\partial y^2} + \frac{\partial^2 \omega}{\partial z^2} \right)
-	\end{cases}
-	\]
-\end{block}
-\end{columns}
-	
-\end{frame}	
-
-\begin{frame}{}
-
-Изменения скоростей $u$ и $\omega$ со при заданном значении $y$ для всех изменений $ x $ и $z$ могут рассматриваться как чрезмерно малые, поэтому примем
-\[
-\frac{\partial^2 u}{\partial x^2} = 0, 
-\frac{\partial^2 u}{\partial z^2} = 0, 
-\frac{\partial^2 \omega}{\partial x^2} = 0, 
-\frac{\partial^2 \omega}{\partial z^2} = 0
-\]
-
-\begin{columns}
-
-\column{0.5\textwidth}
-\begin{block}{}
-\[
-	\label{secondinitialeq}
-	\begin{cases}
-		\frac{\partial p }{\partial x} = \mu \frac{\partial^2 u}{\partial y^2}, \\
-		\frac{\partial p }{\partial y} = 0, \\
-		\frac{\partial p }{\partial z} = \mu \frac{\partial^2 \omega}{\partial y^2}
-	\end{cases}
-\]
-\end{block}
-
-\column{0.5\textwidth}
-\begin{block}{}
-\[
-	\label{secinitialeq}
-	\begin{cases}
-		p_{yz} = p_{xy} = \mu \frac{\partial \omega}{\partial y}, \\
-		p_{zx} = p_{xz} = 0, \\
-		p_{xy} = p_{yx} = \mu \frac{\partial u}{\partial y}
-	\end{cases}
-\]
-\end{block}
-\end{columns}
-
-\begin{block}{}
-\[
-	\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0
-\]
-\end{block}
-
-\end{frame}	
-
-\begin{frame}{}
-	
-	\begin{columns}
-		\column{0.5\textwidth}
-		\begin{block}{Для $y = 0$}
-			\[
-			u = U_0, \nu = 0, \omega = 0
-			\]
-		\end{block}
-	
-		\column{0.5\textwidth}
-		\begin{block}{Для $y = h$}
-		\[
-		u = U_1, \nu = U_1 - U_1 \frac{\partial  h}{\partial h}, \omega = 0
-		\]
-		\end{block}
-	\end{columns}
-
-
-	\begin{block}{}
-		\[
-		\begin{cases}
-			u = \frac{1}{2 \mu} \frac{\partial p}{\partial x} \left( y - h \right) y + U_0 \frac{h - y}{h} + U_1 \frac{y}{h},\\
-			\omega = \frac{1}{2 \mu} \frac{\partial p}{\partial z} (y - h) y
-		\end{cases}
-		\]
-	\end{block}
-	
-
-	\begin{block}{}
-		\[
-		\begin{cases}
-			p_{yz} = p_{zy} = \frac{1}{2} \frac{\partial p}{\partial z} \left( 2y - h \right), \\
-			p_{xy} = p_{yz} = \frac{1}{2} \frac{\partial p}{\partial x} \left( 2y - h \right) + \mu \frac{U_1 - U_0}{h}
-		\end{cases}
-		\]
-	\end{block}
-
-
-\end{frame}	
-
-\begin{frame}{}
-	
-	\begin{block}{}
-		\[
-		\frac{\partial \nu}{\partial y} = - \frac{1}{2 \mu} \frac{\partial}{\partial x} \left( \frac{\partial p}{\partial x} (y - x) y \right) +
-		\]
-		\[
-		+ \frac{\partial}{\partial z} \left( \frac{\partial p}{\partial z} (y - h) h \right) - \frac{\partial}{\partial x} \left( U_0 \frac{h - y}{h} + U_1 \frac{y}{h} \right)
-		\]
-	\end{block}
-
-Интегрируем это уравнение в пределах от $y = 0$ до $y = h$.
-\begin{block}{}
-	\[
-	\frac{\partial}{\partial x} \left( h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left( h^3 \frac{\partial p}{\partial z} \right) = 6 \mu \left( (U_0 - U_1) \frac{\partial h}{\partial x} \right) + 2 V_1
-	\]
-\end{block}
-$2 V_1$ используется для учёта движений одной из стенок зазора, меняющих значение функции. Если пренебречь этим, и обозначить $U_0 - U_1$ как $U$, то получим искомое уравнение
-	
-\end{frame}
+	\end{frame}	
 
 \begin{frame}{Решение уравнения Рейнольдса с помощью слабой формы Галеркина}
 	
@@ -341,14 +191,19 @@ $2 V_1$ используется для учёта движений одной �
 \end{table}
 \end{frame}
 
-\begin{frame}{Заключение}
-	В работе представлен вывод уравнения Рейнольдса для установившегося течения в газовом смазочном слое и методика реmшения уравнения Рейнольдса с помощью метода конечных элементов. В ходе работы получены следующие результаты:
-	\begin{block}{}
+\begin{frame}{Результаты}
+	\begin{block}{Сделано}
 	\begin{enumerate}	
 		\item Создана программная реализация метода конечного элемента для решение уравнения Рейнольдса
 		\item Полученные значения решения уравнения Рейнольдса были сравнены с результатами решения, полученного с помощью функции NDSolve в Wolfram Mathematica
-		\item В результате сравнения для сетки 5 на 5 погрешность равна 4.51 \%, а для сетки 20 на 20 -- 1.02 \%.
 	\end{enumerate}
 	\end{block}	
+
+	\begin{block}{Будет сделано}
+	\begin{enumerate}	
+		\item Получение базы аэродинамических усилий  для различных углов наклона и смещения верхней стенки на основе решения уравнения Рейнольдса
+		\item Исследование динамического поведения пластинки с двумя степенями свободы, находящей под действием аэродинамических усилий со стороны потока жидкости
+	\end{enumerate}
+\end{block}	
 \end{frame}	
 \end{document} 
