@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3170,        100]
+NotebookOptionsPosition[      2685,         85]
+NotebookOutlinePosition[      3125,        101]
+CellTagsIndexPosition[      3082,         98]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AA", " ", "=", " ", 
+   RowBox[{"2", " ", "f1", " ", 
+    FractionBox[
+     RowBox[{"(", 
+      RowBox[{"z1", " ", "-", " ", 
+       RowBox[{"x1", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"n", " ", "Pi"}], "]"}]}]}], ")"}], 
+     RowBox[{"n", " ", "Pi", " ", "s1", " ", 
+      RowBox[{"Sh", "[", 
+       RowBox[{"z1", " ", "n", " ", 
+        RowBox[{"Pi", " ", "/", " ", "x1"}]}], "]"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BB", " ", "=", " ", 
+   RowBox[{"2", " ", "f2", " ", 
+    FractionBox[
+     RowBox[{"(", 
+      RowBox[{"s1", " ", "-", " ", 
+       RowBox[{"s1", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"n", " ", "Pi"}], "]"}]}]}], ")"}], 
+     RowBox[{"n", " ", "Pi", " ", "s1", " ", 
+      RowBox[{"Sinh", "[", 
+       RowBox[{"z1", " ", "n", " ", 
+        RowBox[{"Pi", " ", "/", " ", "x1"}]}], "]"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CC", " ", "=", " ", 
+   RowBox[{"2", " ", "f3", " ", 
+    FractionBox[
+     RowBox[{"(", 
+      RowBox[{"z1", " ", "-", " ", 
+       RowBox[{"z1", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"n", " ", "Pi"}], "]"}]}]}], ")"}], 
+     RowBox[{"n", " ", "Pi", " ", "z1", " ", 
+      RowBox[{"Sinh", "[", 
+       RowBox[{"x1", " ", "n", " ", 
+        RowBox[{"Pi", " ", "/", " ", "z1"}]}], "]"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DD", " ", "=", " ", 
+   RowBox[{"2", " ", "f4", " ", 
+    FractionBox[
+     RowBox[{"(", 
+      RowBox[{"z1", " ", "-", " ", 
+       RowBox[{"z1", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"n", " ", "Pi"}], "]"}]}]}], ")"}], 
+     RowBox[{"n", "  ", "z1", " ", 
+      RowBox[{"Sinh", "[", 
+       RowBox[{"x1", " ", "n", " ", 
+        RowBox[{"Pi", " ", "/", " ", "z1"}]}], "]"}]}]]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.9270934250809307`*^9, 
+  3.9270936598753014`*^9}},ExpressionUUID->"c5af667c-8e48-4bf1-b32e-\
+7757c7826fa1"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.927093490972884*^9, 
+  3.927093498158494*^9}},ExpressionUUID->"8a21c082-394b-41ed-8c66-\
+ebb188ce13e5"]
+},
+WindowSize->{530.5846153846154, 531.1384615384616},
+WindowMargins->{{-4.430769230769231, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3e5f1447-8ba6-497a-9780-1b375a0e008d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1968, 58, 176, "Input",ExpressionUUID->"c5af667c-8e48-4bf1-b32e-7757c7826fa1"],
+Cell[2529, 80, 152, 3, 28, "Input",ExpressionUUID->"8a21c082-394b-41ed-8c66-ebb188ce13e5"]
+}
+]
+*)
+
