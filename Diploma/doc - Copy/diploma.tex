@@ -462,7 +462,7 @@ W_i \phi = F_i,
 Проверим полученный результат с помощью функции NDSolve в Wolfram Mathematica.
 
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
 	\caption{График решения уравнения Рейнольдса для h = 0.0001 м полученный с помощью Wolfram Mathematica}
 	\label{exactSolutionConst}
 \end{figure}
@@ -489,21 +489,21 @@ W_i \phi = F_i,
 
 В начале вычислим давление для постоянного зазора
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
 	\caption{График решения уравнения Рейнольдса для h = 0.001 м}
 	\label{sol_const_h}
 \end{figure}
 
 Затем получим график для увеличивающегося зазора
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
 	\caption{График решения уравнения Рейнольдса для h = 0.15 x + 0.001 м}
 	\label{sol_pos_h}
 \end{figure}
 
 Так выглядит давление на пластину для уменьшающегося зазора
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
 	\caption{График решения уравнения Рейнольдса для h = 0.15 x + 0.001 м}
 	\label{sol_neg_h}
 \end{figure}
@@ -512,14 +512,14 @@ W_i \phi = F_i,
 
 При положительном коэффициенте видимо провал
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
 	\caption{График решения уравнения Рейнольдса для h = 0.15 x + 0.001 м}
 	\label{sol_pos_h}
 \end{figure}
 
 При отрицательном коэффициенте наблюдаем пик
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{res_check_func_2.png}}
 	\caption{График решения уравнения Рейнольдса для h = 0.15 x + 0.001 м}
 	\label{sol_pos_h}
 \end{figure}
@@ -529,13 +529,77 @@ W_i \phi = F_i,
 Для построения аэроупругой модели не достаточно получить решение уравнения Рейнольдса. Для ее получения необходимо дополнить имеющуюся модель пружиной, ограничивающей движение пластины сверху. Закрепим пружину по центру пластины в точке $\{0.0025, 0.0025\}$. 
 
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.\textwidth, height=0.5\textwidth]{pruzina.png}}
-	\caption{График решения уравнения Рейнольдса для h = 0.15 x + 0.001 м}
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{pruzina.png}}
+	\caption{Схема модели пластины с пружиной}
 	\label{pruzina}
 \end{figure}
 
 
-Необходимо связать изменения положения пластины и сжатия и растяжение пружины.
+Необходимо связать изменения положения пластины и сжатия и растяжение пружины. Для этого необходимо записать уравнения Лагранжа. Они были разработаны французским математиком и астрономом Жозефом Луи Лагранжем в конце 18 века. Идея уравнений Лагранжа второго рода заключается в том, что для описания движения системы достаточно знать ее кинетическую энергию и потенциальную энергию, а также уравнения, описывающие связи между различными частями системы. Эти уравнения выражаются в виде дифференциальных уравнений второго порядка, которые обеспечивают полное описание динамики системы.
+
+Для записи уравнений Лагранжа зададим вертикальную координату l и угловую $\psi$.
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{Polar_coordinate_components.png}}
+	\caption{Полярная система координат}
+	\label{Polar_coordinate_components}
+\end{figure}
+
+Тогда уравнения Лагранжа будут иметь вид
+\begin{equation}
+	\begin{cases*}
+	\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x}} \right) - \frac{\partial L}{\partial x} = F, \\
+	\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\psi}} \right) - \frac{\partial L}{\partial \psi} = F,
+	\end{cases*}
+\label{lagrange}
+\end{equation}
+$F$ --- сила, $M$ --- момент. $L =  T - P$, где $T$ --- кинетическая энергия, а $P$ --- потенциальная.
+
+\noindent Определим значения потенциальной силы
+\begin{equation*}
+	T = \frac{m \dot{x^2}}{2} + \frac{I \dot{\psi^2}}{2},
+\end{equation*}
+где $I = \frac{length^4}{12}$ --- момент инерции квадрата.
+
+\noindent Определим значения потенциальной силы
+\begin{equation*}
+	P = \frac{k {x^2}}{2} +\frac{c {\psi^2}}{2},
+\end{equation*}
+где $k$ --- коэффициент жёсткости пружины на деформирование по $l$,  $c$ --- коэффициент жёсткости пружины на деформирование по $\psi$.
+
+После подстановки в исходную систему~\eqref{lagrange} получим
+\begin{equation}
+	\begin{cases*}
+		m \ddot{x} + k x = F, \\
+		I \ddot{\psi} + c \psi = M,
+	\end{cases*}
+	\label{lagrange_fin}
+\end{equation}
+
+\subsection{Получение равновесного положения системы}
+
+Для получения равновесного положения на первом этапе вычислим координаты пластины, решив уравнение Рейнольдса методом МКЭ. Начальный зазор $h(x) = 0.001$.
+Далее поскольку ищем положение равновесия производные по времени в системе~\eqref{lagrange_fin} можно обнулить
+\begin{equation}
+	\begin{cases*}
+		k x = F, \\
+		c \psi = M,
+	\end{cases*}
+\label{temp_lagr}
+\end{equation}
+Определим силу $F$ и момент $M$ из полученного ранее уравнения Рейнольдса. Для этого потребуется вычислить интегралы по площади конечного элемента. Обозначим $b_i = p_i - p_{ext}$, где $i = 1..4$, $p_{ext} = 100000$ Па --- внешнее давление на пружину. Составим интегралы для силы и момента
+\begin{equation*}
+	F = \int_{S_i} { \left( N_1 b_1 + N_2 b_2 + N_3 b_3 + N_4 b_4 \right)  dx dz}
+\end{equation*}
+\begin{equation*}
+	M = \int_{S_i} { \left( N_1 b_1 + N_2 b_2 + N_3 b_3 + N_4 b_4 \right) \sqrt{x^2 + y^2}  dx dz}
+\end{equation*}
+Вычислив их можно получить значения $l$ и $\psi$ из~\eqref{temp_lagr}. Коэффициенты $k$ и $c$ сложно определить экспериментально, поэтому они были подобраны так, чтобы изменение зазора в достаточной степени влияло на положение пружины.
+
+После получения  $l$ и $\psi$ можно определить новый вид функции зазора $h(x) = \tan{\psi} x + l$. Далее снова получается решение уравнения Рейнольдса и процесс повторяется по кругу до тех пор пока функция  $h(x) = \tan{\psi} x + l$ перестанет изменяться. Получить равновесное значения $h(x)$ удалось за 4 повторения, $h(x) = 0.147 x + 0.00046$. Далее следует убедиться в устойчивости данного положения пластины.
+
+
+\subsection{Проверка устойчивости системы}
+Для проверки устойчивости нужно изменять значения $l$ и $\psi$ на 1-2\% и таким образом построить аппроксимацию $F$ и $M$ из системы~\eqref{temp_lagr}.
 
 
 \newpage
