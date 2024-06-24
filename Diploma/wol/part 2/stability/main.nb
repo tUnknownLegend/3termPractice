@@ -757,12 +757,11 @@ Cell[BoxData[
             RowBox[{"Lstiffnes", "*", 
              RowBox[{"(", 
               RowBox[{"LLL", "+", 
-               RowBox[{"LLL", "*", "dif"}]}], ")"}]}], "==", "SForce"}], 
-           RowBox[{"(*", 
-            RowBox[{
-             RowBox[{"+", "friciton"}], " ", 
-             RowBox[{"D", "[", 
-              RowBox[{"l", ",", " ", "t"}], "]"}]}], "*)"}], "}"}], ",", 
+               RowBox[{"LLL", "*", "dif"}]}], ")"}]}], "==", 
+            RowBox[{"SForce", "+", 
+             RowBox[{"friciton", " ", 
+              RowBox[{"D", "[", 
+               RowBox[{"l", ",", " ", "t"}], "]"}]}]}]}], "}"}], ",", 
           "SForce"}], " ", "]"}], "[", 
         RowBox[{"[", 
          RowBox[{"1", ",", " ", "1", ",", "2"}], "]"}], "]"}]}], "}"}]}], 
@@ -864,9 +863,10 @@ Cell[BoxData[
    3.928132331167572*^9}, {3.928132751325726*^9, 3.9281327839939027`*^9}, {
    3.9281328163336573`*^9, 3.9281328235888667`*^9}, {3.928133269424652*^9, 
    3.9281332756410437`*^9}, {3.9281340738234572`*^9, 
-   3.9281340756063523`*^9}, {3.928134112824979*^9, 3.928134114197132*^9}},
- CellLabel->
-  "In[880]:=",ExpressionUUID->"803be1eb-53c0-4e62-850c-4201e5de7ecc"],
+   3.9281340756063523`*^9}, {3.928134112824979*^9, 3.928134114197132*^9}, {
+   3.9282145113208227`*^9, 
+   3.9282145133954134`*^9}},ExpressionUUID->"803be1eb-53c0-4e62-850c-\
+4201e5de7ecc"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1341,7 +1341,7 @@ Cell[29127, 716, 950, 15, 28, "Output",ExpressionUUID->"f084a4d4-f78d-4f7b-9ff7-
 Cell[CellGroupData[{
 Cell[30114, 736, 5220, 132, 456, "Input",ExpressionUUID->"803be1eb-53c0-4e62-850c-4201e5de7ecc"],
 Cell[35337, 870, 1301, 27, 47, "Output",ExpressionUUID->"8daded0f-3445-4fa1-9569-19d2428584b5"],
-Cell[36641, 899, 1295, 26, 96, "Output",ExpressionUUID->"b6fee714-f302-4a87-9473-72f8565d8d9c"]
+Cell[36641, 899, 1295, 26, 47, "Output",ExpressionUUID->"b6fee714-f302-4a87-9473-72f8565d8d9c"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[37973, 930, 936, 25, 43, "Input",ExpressionUUID->"8e05d7c7-2f4e-424c-bc34-200fa1147924"],
