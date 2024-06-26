@@ -248,6 +248,12 @@
 	\phi = c_0 N_1 + c_1 N_2 + c_2 N_3 + c_3 N_4
 	\]
 \end{block}
+
+\begin{block}{Приведение к форме Галеркина}
+	\begin{equation*}
+		\int_{S_i} {\left( \frac{\partial[N]^T}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right) +  \frac{\partial[N]^T}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right) - [N]^T 6 \mu U \frac{\partial h}{\partial x}\right) dxdz} = 0
+	\end{equation*}
+\end{block}
 	
 \end{frame}
 
@@ -274,7 +280,7 @@
 		\column{0.33\textwidth}
 	\begin{figure}[!htbp]
 		\center{\includegraphics[width=0.9\textwidth, height=0.7\textwidth]{res_static.png}}
-		\caption{Решение для $h = 0.001$ м}
+		\caption{Решение для $h = -0.15 x + 0.001$ м}
 		\label{res_static}
 	\end{figure}
 		
@@ -313,8 +319,8 @@
 	
 	\begin{block}{Проверочная функция}
 	\begin{equation*}
-		f(x, z) = -2 \frac{\pi z}{0.005} \sin{\frac{2 \pi z}{0.005}} \sin{\frac{4 \pi x}{0.005}}
-		\label{check_func_2}
+		f(x, z) = -2 \frac{\pi }{0.005} \sin{\left(\frac{\pi z}{0.005}\right)} x \left(x - 0.005\right)
+		\label{check_func_1}
 	\end{equation*}
 \end{block}
 
@@ -397,6 +403,168 @@
 \end{table}
 \end{frame}
 
+\begin{frame}{Поиск положения равновесия}
+	
+	\vspace*{-3mm}
+		\begin{columns}
+	
+	
+			\column{0.4\textwidth}
+			\begin{block}{Уравнение Лагранжа}
+				\vspace*{-4mm}
+			\begin{equation*}
+				\begin{cases*}
+					m \ddot{x} + k x + F_{fr} = F \\
+					I \ddot{\psi} + c \psi = M
+				\end{cases*}
+				\label{lagrsdfdsfsange_fin}
+			\end{equation*}
+			\end{block}
+
+			\column{0.47\textwidth}
+			\begin{block}{Поиск положения равновесия}
+			\begin{equation*}
+				\begin{cases*}
+					k x = F \\
+					c \psi = M
+				\end{cases*}
+				\label{temp_ldsfsdfsdfagr}
+			\end{equation*}
+			\end{block}
+	
+	
+	\column{0.2\textwidth}
+			\begin{block}{Давление}
+				\vspace*{2mm}
+				\begin{equation*}
+					s_i = p_i - p_{ext}
+					\label{kjdsbafabjb}
+				\end{equation*}
+			\end{block}
+		
+\end{columns}
+
+	\vspace*{-2mm}
+	\begin{block}{Сила}
+	\begin{equation*}
+		F_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right)  dx dz}
+	\end{equation*}
+	\end{block}
+
+	\vspace*{-2mm}
+	\begin{block}{Момент}
+	\begin{equation*}
+		M_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right) \sqrt{x^2 + y^2}  dx dz}
+	\end{equation*}
+	\end{block}
+
+\vspace*{-1mm}
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=0.4\textwidth, height=0.18\textwidth]{zazor2d.png}}
+	\caption{Положение равновесия при $h(x) = 0.147 x + 0.00046$}
+	\label{res_chasdasdaeck_func_2}
+\end{figure}
+
+
+
+\end{frame}
+
+\begin{frame}{Устойчивость положения равновесия}
+	\vspace*{-3mm}
+	\begin{columns}
+		
+	\column{0.5\textwidth}
+	\begin{block}{Давление}
+		\vspace*{2mm}
+		\begin{equation*}
+			F = F_0 + a_1 l + a_2 \psi
+			\label{kjdkjsnadkjadsbafabjb}
+		\end{equation*}
+	\end{block}
+
+	\column{0.5\textwidth}
+	\begin{block}{Давление}
+		\vspace*{2mm}
+		\begin{equation*}
+			M = M_0 + b_1 l + b_2 \psi
+			\label{kjdkjsasdsanadkjadsbafabjb}
+		\end{equation*}
+	\end{block}
+	
+	\end{columns}
+
+\vspace*{-2mm}
+\begin{columns}
+	
+	\column{0.5\textwidth}
+	\begin{block}{Замена $l$}
+		\vspace*{2mm}
+		\begin{equation*}
+			l = l_c + l_c \exp{w_1 t}
+			\label{kjdkjsnadkjddadsbafabjb}
+		\end{equation*}
+	\end{block}
+	
+	\column{0.5\textwidth}
+	\begin{block}{Замена $\psi$}
+		\vspace*{2mm}
+		\begin{equation*}
+			\psi = \psi_c +  \psi_c \exp{w_2 t}
+			\label{kjdkjsasdsssanadkjadsbafabjb}
+		\end{equation*}
+	\end{block}
+	
+\end{columns}
+
+\vspace*{-2mm}
+\begin{columns}
+	
+	\column{0.5\textwidth}
+	\begin{block}{Характ-ое уравнение для $l$}
+		\vspace*{2mm}
+		\begin{equation*} 
+			a_1 w_1^2	+ a_2 w_1 + a_3 = 0
+		\end{equation*}
+	\end{block}
+	
+	\column{0.5\textwidth}
+	\begin{block}{Характ-ое уравнение для $\psi$}
+		\vspace*{2mm}
+		\begin{equation*}
+			b_1 w_2^2	+ b_2 w_2 + b_3 = 0
+		\end{equation*}
+	\end{block}
+	
+\end{columns}
+
+\vspace*{-2mm}
+\begin{columns}
+	
+	\column{0.5\textwidth}
+	\begin{block}{Общее характ-ое уравнение}
+		\vspace*{2mm}
+		\begin{equation*} 
+			w^2 + 256.41 w + 0.12 = 0.
+		\end{equation*}
+	\end{block}
+	
+	\column{0.5\textwidth}
+	\begin{block}{Корни уравнения}
+		\vspace*{2mm}
+		\begin{equation*}
+			\begin{cases}
+				w_1 = -256, \\
+				w_2 = -0.00047.
+			\end{cases}
+		\end{equation*}
+	\end{block}
+	
+\end{columns}
+
+
+	
+\end{frame}
+
 \begin{frame}{Результаты}
 	\begin{block}{}
 	\begin{enumerate}	
@@ -407,4 +575,24 @@
 	\end{block}	
 
 \end{frame}	
+
+\begin{frame}{}
+	\begin{thebibliography}{00}
+		\bibitem{petrov_smazka} Петров Н.П. Гидродинамическая теория смазки, М.: из-во академии наук СССР, 1948. --- 558~с.
+		\bibitem{slezkin_smazka} Слезкин Н.А. Динамика вязкой несжимаемой жидкости, М.: из-во техно-теоретической литературы, 1955. --- 521~с.
+		\bibitem{seligard} Селегринд Л. Примененение метода конечных элементов, М.: из-во МИР, 1979. --- 195~с.
+		\bibitem{seshu} Seshu P. Textbook of
+		Finite Element
+		Analysis, New Dehli: PHI Learning Private Limited, 2012. --- 340~с.
+		\bibitem{itmo} Григорьев А.Ю., Григорьев К.А., Малявко Д.П. Колебания
+		и виброактивность элементов машин: Учеб. пособие. СПб.: Университет ИТМО, 2016. --- 136~с.
+		\bibitem{sel-1}  Селиванов А.В., Дзева И.Ю., Многодисциплинарная математическая модель пальчикового уплотнения Уфа:, 2011 --- 17 c.
+		\bibitem{feodosiev} Феодосьев В.И. Сопротивление материалов: Учеб. для вузов. М.: Изд-во МГТУ им.
+		Н.Э. Баумана, 1999. – 592 с.
+		\bibitem{nasa} Steinetz B.M., Hendricks C.R. Overview of NASA Glenn Seal Development
+		Program. Nevada: NASA
+		Conference Publication, 2001 --- 493 с.
+		
+	\end{thebibliography}
+\end{frame}
 \end{document} 
