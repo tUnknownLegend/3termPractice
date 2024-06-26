@@ -8,6 +8,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx,pgf}
 \usepackage{multimedia}
+\usepackage{multicol}
 
 \usetheme{Warsaw}
 
@@ -32,7 +33,7 @@
 
 %\title{Курсовая работа}
 %\subtitle{Численные схемы для аппроксимации неограниченных решений при моделировании обтекания профиля крыла в вихревых методах}
-\title[Решение уравнения Рейнольдса]{Решение уравнения Рейнольдса в рамках теории газовой смазки методом конечных элементов}
+\title[Аэроупргугая модель]{Аэроупругая модель сегментного надроторного кольца}
 \author[Пиневич В.\,Г.]{Докладчик: Пиневич В.\,Г.\and\\[0.5mm] Научный руководитель: Селиванов А.\,В.}
 
 \institute[каф. Прикладная математика ФН-2]{группа ФН2-81Б}
@@ -49,10 +50,146 @@
 	\end{frame}
 
 	\begin{frame}{Постановка задачи}
+		Данная работа посвящена получению пригодной к использованию в практических задачах формы уравнения Рейнольдса, решению его методом конечных элементов и поиску равновесного состояния для динамической системы дополненной пружиной как ограничителем сверху.
+		
+			\begin{columns}
+		\column{0.5\textwidth}
+	\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{vved-2.png}}
+	\caption{Схема бесконтактного пальчикового уплотнения: 1 – корпусные
+		диски; 2 и 3 – задняя и передняя уплотняющие пластины}
+	\label{vved-2}
+	\end{figure}
+		
+		\column{0.5\textwidth}
+	\begin{figure}[!htbp]
+		\center{\includegraphics[width=0.7\textwidth, height=0.7\textwidth]{pruzina.png}}
+		\caption{Схема модели пластины с пружиной}
+		\label{pruzina}
+	\end{figure}
+	\end{columns}	
+		
+	\end{frame}
+
+	\begin{frame}{Получение уравнения Рейнольдса}
+		\vspace*{-2mm}
+	\begin{block}{Гидродинамическое давление $p$ в
+			точках $x, y, z$}
+		\vspace*{-6mm}
+		\begin{columns}
+		\column{0.4\textwidth}`	
+			\begin{minipage}[t]{0.5\linewidth}
+			\begin{equation*}
+				\label{eqfi}
+				\begin{cases}
+					\frac{\partial p}{\partial x} = \mu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right) \\
+					\frac{\partial p}{\partial y} = \mu \left( \frac{\partial^2 \nu}{\partial x^2} + \frac{\partial^2 \nu}{\partial y^2} + \frac{\partial^2 \nu}{\partial z^2} \right) \\
+					\frac{\partial p}{\partial z} = \mu \left( \frac{\partial^2 \omega}{\partial x^2} + \frac{\partial^2 \omega}{\partial y^2} + \frac{\partial^2 \omega}{\partial z^2} \right)
+				\end{cases}
+			\end{equation*}
+			\end{minipage}
+				
+				
+				\column{0.2\textwidth}`
+					\begin{minipage}[t]{0.2\linewidth}
+		
+		
+					\begin{equation*}
+					\label{secondinitialeq}
+					\begin{cases}
+						\frac{\partial p }{\partial x} = \mu \frac{\partial^2 u}{\partial y^2} \\
+						\frac{\partial p }{\partial y} = 0 \\
+						\frac{\partial p }{\partial z} = \mu \frac{\partial^2 \omega}{\partial y^2}
+					\end{cases}
+				\end{equation*}
+			\end{minipage}
+				
+				\column{0.3\textwidth}`
+				
+			\begin{minipage}[t]{0.6\linewidth}
+				%\begin{block}
+				Проекции скорости $u, \nu, \omega$ на осях $x, y, z$.
+				%\end{block}
+			\end{minipage}
+				
+	\end{columns}
+
+	\end{block}
+		
+		
+		\vspace*{-3mm}
+		\begin{block}{Cилы трения $p_{xy}, p_{xz}, p_{yx}, p_{yz}, p_{zx}, p_{zy}$}
+			\vspace*{-12mm}
+			\begin{columns}
+				\column{0.3\textwidth}`	
+				\begin{minipage}[t]{\linewidth}
+					\begin{equation*}
+						\label{eqsi}
+					\begin{cases}
+						p_{yz} = p_{zy} = \mu \left(\frac{\partial \omega}{\partial y} + \frac{\partial \nu}{\partial z} \right) \\
+						p_{zx} = p_{xz} = \mu \left( \frac{\partial \omega}{\partial x} +  \frac{\partial u}{\partial z} \right) \\
+						p_{xy} = p_{yx} = \mu \left(  \frac{\partial u}{\partial y} + \frac{\partial \nu}{\partial x} \right)
+					\end{cases}
+					\end{equation*}
+				\end{minipage}
+				
+				
+				\column{0.5\textwidth}`
+				\begin{minipage}[t]{\linewidth}
+					
+					
+					\begin{equation*}
+					\label{secinitialeq}
+					\begin{cases}
+						p_{yz} = p_{xy} = \mu \frac{\partial \omega}{\partial y} \\
+						p_{zx} = p_{xz} = 0 \\
+						p_{xy} = p_{yx} = \mu \frac{\partial u}{\partial y}
+					\end{cases}
+					\end{equation*}
+				\end{minipage}
+		
+				
+			\end{columns}
+			
+		\end{block}
+	
+	\vspace*{-3mm}
+	\begin{block}{Условие несжимаемости жидкости, выраженное уравнением}
+		\vspace*{-6mm}
+		\begin{columns}
+			\column{0.4\textwidth}`	
+			\begin{minipage}[t]{0.5\linewidth}
+				\begin{equation*}
+						\label{eqthi}
+					\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0.
+				\end{equation*}
+			\end{minipage}
+			
+			
+			\column{0.5\textwidth}`
+			\begin{minipage}[t]{0.2\linewidth}
+				
+				
+				\begin{equation*}
+						\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0.
+				\end{equation*}
+		\end{minipage}
+	\end{columns}
+		
+	\end{block}
+		
+
+	
+
+			
+			
+	\end{frame}
+
+	\begin{frame}{Уравнение Рейнольдса}
 		\vspace*{-4mm}
 		\begin{columns}
 			\column{\textwidth}`
-			\begin{block}{Уравнение Рейнольдса}
+			\begin{block}{}
 			 \[
 				\frac{\partial}{\partial x} \left(h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left(h^3 \frac{\partial p}{\partial z} \right) = 6 \mu U \frac{\partial h}{\partial x}
 			 \]
