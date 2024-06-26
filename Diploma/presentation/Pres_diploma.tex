@@ -38,7 +38,7 @@
 %\title{Курсовая работа}
 %\subtitle{Численные схемы для аппроксимации неограниченных решений при моделировании обтекания профиля крыла в вихревых методах}
 \title[Аэроупргугая модель]{Аэроупругая модель сегментного надроторного кольца}
-\author[Пиневич В.\,Г.]{Докладчик: Пиневич В.\,Г.\and\\[0.5mm] Научный руководитель: Селиванов А.\,В.}
+\author[Пиневич В.\,Г.]{Выполнил: Пиневич В.\,Г.\and\\[0.5mm] Научный руководитель: Селиванов А.\,В.}
 
 \institute[каф. Прикладная математика ФН-2]{группа ФН2-81Б}
 \date{\today}
@@ -108,7 +108,7 @@
 	\column{0.5\textwidth}`
 	\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=1\textwidth, height=1\textwidth]{taskGU}%
+	\includegraphics[width=1\textwidth, height=0.5\textheight]{taskGU}%
 	\caption{Cхема расчетной области}
 	\vspace*{-2mm}
 	\label{ser_graph}
@@ -192,7 +192,7 @@
 	
 \end{frame}
 
-\begin{frame}{Верификация}
+\begin{frame}{Верификация программы}
 	\vspace*{-1mm}
 	\begin{block}{Проверочная функция}
 		\begin{equation*}
@@ -207,22 +207,32 @@
 		\column{0.5\textwidth}
 		
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.6\textheight]{check_func_2.png}}
+			\center{\includegraphics[width=\textwidth, height=0.35\textheight]{check_func_2.png}}
 			\caption{Проверочная функция}
 			\label{check_func_2_pic}
 		\end{figure}
 		
 		\column{0.5\textwidth}
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.6\textheight]{res_check_func_2.png}}
+			\center{\includegraphics[width=\textwidth, height=0.35\textheight]{res_check_func_2.png}}
 			\caption{Решение на сетке 20 на 20}
 			\label{res_check_func_2}
 		\end{figure}
 		
 	\end{columns}
+	\vspace*{-4mm}
+\begin{table}[!htbp]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\multicolumn{1}{|c|}{Размерность сетки} & \multicolumn{1}{c|}{Разность, Па} & Погрешность, \% \\ \hline
+		5 на 5                                  & 0.969                              & 21.31            \\ \hline
+		10 на 10                                & 0.260                              & 5.7            \\ \hline
+		20 на 20                                & 0.065                              & 1.4            \\ \hline
+	\end{tabular}
+\end{table}
 \end{frame}
 
-\begin{frame}{Сравнение результатов при расширяющимся зазоре}
+\begin{frame}{Давление в расширяющемся зазоре}
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[!htbp]
@@ -241,7 +251,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Сравнение результатов при сужающимся зазоре}	
+\begin{frame}{Давление в сужающемся зазоре}	
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{figure}[!htbp]
@@ -262,40 +272,56 @@
 \begin{frame}{Аэроупругая модель}
 	\vspace*{-9mm}
 	\begin{figure}[!htbp]
-		\center{\includegraphics[width=\textwidth, height=0.4\textheight]{pruzina-text.png}}
+		\center{\includegraphics[width=\textwidth, height=0.48\textheight]{pruzina-text.png}}
 		\caption{Схема модели}
 		\label{pruzina}
 	\end{figure}	
 
 \vspace*{-5mm}
 	\begin{columns}
-		\column{0.3\textwidth}
+		\column{0.5\textwidth}
+			\begin{block}{}
+				\vspace*{-1mm}
+			\begin{equation*}
+				\begin{cases*}
+					m \ddot{l} + \varepsilon \dot{l} + k l  = F \\
+					J \ddot{\psi} + c \psi = M
+				\end{cases*}
+				\label{lagrsdfdsfsange_fin}
+			\end{equation*}
+		\end{block}
+		\column{0.5\textwidth}
 		\begin{block}{}
 			\begin{equation*}
 				\tilde{\tilde{p}} = p_i - p_{ext}
-			\end{equation*}
-		\end{block}
-		\column{0.7\textwidth}
-		\begin{block}{}
-			\vspace*{2mm}
-			\begin{equation*}
-			 \hat{p}	= N_1 \tilde{\tilde{p}}_1 + N_2 \tilde{\tilde{p}}_2 + N_3 \tilde{\tilde{p}}_3 + N_4 \tilde{\tilde{p}}_4
 			\end{equation*}
 		\end{block}
 	\end{columns}
 	
 	\vspace*{-2mm}
 		\begin{columns}	
-				\column{0.5\textwidth}
+			\column{0.5\textwidth}
+			\begin{block}{}
+				\vspace*{-4mm}
+				\begin{equation*}
+					\hat{p}	= N_1 \tilde{\tilde{p}}_1 + N_2 \tilde{\tilde{p}}_2 + N_3 \tilde{\tilde{p}}_3 + N_4 \tilde{\tilde{p}}_4
+				\end{equation*}
+			\end{block}
+				\column{0.2\textwidth}
 	\begin{block}{Сила}
-		\begin{equation*}
+		\vspace*{-6mm}
+		\begin{equation*}{\scriptstyle 
 			F_i = \int_{S_i} { \hat{p}   dx dz}
+		}
 		\end{equation*}
 	\end{block}
-	\column{0.5\textwidth}
+	\column{0.3\textwidth}
 	\begin{block}{Момент}
+		\vspace*{-6mm}
 		\begin{equation*}
-			M_i = \int_{S_i} {\hat{p}  \left(x - 0.25 \right)  dx dz}
+			{\scriptstyle 
+			M_i = \int_{S_i} {\hat{p}  \left(x - x_{\text{ц}} \right)  dx dz}
+		}
 		\end{equation*}
 	\end{block}
 \end{columns}
@@ -305,20 +331,7 @@
 \end{frame}
 
 \begin{frame}{Поиск положения равновесия}
-	
-		\begin{columns}
-			\column{0.5\textwidth}
-			\begin{block}{}
-			\begin{equation*}
-				\begin{cases*}
-					m \ddot{l} + \varepsilon \dot{l} + k l  = F \\
-					J \ddot{\psi} + c \psi = M
-				\end{cases*}
-				\label{lagrsdfdsfsange_fin}
-			\end{equation*}
-			\end{block}
 
-			\column{0.5\textwidth}
 			\begin{block}{}
 			\begin{equation*}
 				\begin{cases*}
@@ -328,15 +341,10 @@
 				\label{temp_ldsfsdfsdfagr}
 			\end{equation*}
 			\end{block}
-		
-\end{columns}
-
-
-
 \vspace*{-1mm}
 \begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{part_2-zazor.png}}
-	\caption{Начальное и равновесное положение}
+	\caption{Начальное и равновесное положения}
 	\label{res_chasdasdaeck_func_2}
 \end{figure}
 
@@ -357,7 +365,7 @@
 				\psi = \psi_0 + \Delta{\psi}
 			\end{cases}
 			\begin{cases}
-			\Delta{l} = L e^{\omega t}, \\
+			\Delta{l} = \tilde{L} e^{\omega t}, \\
 			\Delta{\psi} = \Psi e^{\omega t}
 			\end{cases}
 			\label{kjdkjsnadkjadsbafabjb}
@@ -424,7 +432,7 @@
 	
 \end{frame}
 
-\begin{frame}{Результаты}
+\begin{frame}{Заключение}
 	\begin{block}{}
 	\begin{enumerate}	
 		\item Показано, что исследование устойчивости положения равновесия сегментов надроторного кольца в потоке жидкости можно выполнить на основе инженерного подхода, объединяющего модель Рейнольдса для течения жидкой смазки и модель колебательной системы с двумя степенями свободы.
