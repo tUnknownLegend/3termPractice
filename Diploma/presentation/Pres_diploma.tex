@@ -50,6 +50,15 @@
 		%\insertshortinstitute{Группа ФН2-41Б}
 	\end{frame}
 
+	\begin{frame}{Надроторное кольцо}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{vved-2.png}}
+			\caption{Схема бесконтактного пальчикового уплотнения: 1 – корпусные
+				диски; 2 и 3 – задняя и передняя уплотняющие пластины}
+			\label{vved-2}
+		\end{figure}
+	\end{frame}
+
 	\begin{frame}{Постановка задачи}
 		Данная работа посвящена получению пригодной к использованию в практических задачах формы уравнения Рейнольдса, решению его методом конечных элементов и поиску равновесного состояния для динамической системы дополненной пружиной как ограничителем сверху.
 		
@@ -207,7 +216,7 @@
 		
 			\column{0.5\textwidth}
 			\begin{block}{Описание величин}
-			$h = h(x)$ --- толщина слоя, \\
+			$h = h(x, z)$ --- толщина слоя, \\
 			$p = p(x, z)$ --- давление, \\
 			$\mu$ --- коэффициент вязкости
 			\end{block}
@@ -414,8 +423,8 @@
 				\vspace*{-4mm}
 			\begin{equation*}
 				\begin{cases*}
-					m \ddot{x} + k x + F_{fr} = F \\
-					I \ddot{\psi} + c \psi = M
+					m \ddot{l} + \varepsilon \dot{l} + k l  = F \\
+					J \ddot{\psi} + c \psi = M
 				\end{cases*}
 				\label{lagrsdfdsfsange_fin}
 			\end{equation*}
@@ -425,7 +434,7 @@
 			\begin{block}{Поиск положения равновесия}
 			\begin{equation*}
 				\begin{cases*}
-					k x = F \\
+					k l = F \\
 					c \psi = M
 				\end{cases*}
 				\label{temp_ldsfsdfsdfagr}
@@ -470,96 +479,92 @@
 \end{frame}
 
 \begin{frame}{Устойчивость положения равновесия}
-	\vspace*{-3mm}
+	\vspace*{-2mm}
 	\begin{columns}
 		
 	\column{0.5\textwidth}
-	\begin{block}{Давление}
+	\begin{block}{}
 		\vspace*{2mm}
 		\begin{equation*}
-			F = F_0 + a_1 l + a_2 \psi
+			\begin{cases}
+				l = l_0 + \Delta{l}, \\
+				\psi = \psi_0 + \Delta{\psi}
+			\end{cases}
+			\begin{cases}
+			\Delta{l} = L e^{\omega t}, \\
+			\Delta{\psi} = \Psi e^{\omega t}
+			\end{cases}
 			\label{kjdkjsnadkjadsbafabjb}
 		\end{equation*}
 	\end{block}
 
 	\column{0.5\textwidth}
-	\begin{block}{Давление}
+	\begin{block}{}
 		\vspace*{2mm}
 		\begin{equation*}
-			M = M_0 + b_1 l + b_2 \psi
+			\begin{cases}
+			F = F_0 + d_1 \Delta{l} + d_2 \Delta{\psi}, \\
+			M = M_0 + u_1 \Delta{l} + u_2 \Delta{\psi}
+			\end{cases}
 			\label{kjdkjsasdsanadkjadsbafabjb}
 		\end{equation*}
 	\end{block}
 	
 	\end{columns}
 
-\vspace*{-2mm}
-\begin{columns}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Замена $l$}
-		\vspace*{2mm}
-		\begin{equation*}
-			l = l_c + l_c \exp{w_1 t}
-			\label{kjdkjsnadkjddadsbafabjb}
-		\end{equation*}
-	\end{block}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Замена $\psi$}
-		\vspace*{2mm}
-		\begin{equation*}
-			\psi = \psi_c +  \psi_c \exp{w_2 t}
-			\label{kjdkjsasdsssanadkjadsbafabjb}
-		\end{equation*}
-	\end{block}
-	
-\end{columns}
+\begin{block}{}
+	\vspace*{-2mm}
+	\begin{equation*}
+		\begin{cases}
+			\left( m \omega^2 - d_1 - \varepsilon \omega + k \right) L - d_2 \Psi = 0, \\
+			- u_1 L + \left(J \omega^2 - u_2 + c \right) \Psi 	 = 0
+		\end{cases}
+		\label{kjdkjsnadkjddadsbafabjb}
+	\end{equation*}
+\end{block}
+
+%\begin{block}{}
+%	\vspace*{2mm}
+%	\begin{equation*}
+%		m J w^4 - \varepsilon J w^3 + \left( \left(c - u_2 \right) m + \left(k - %d_1 \right)J \right) w^2 + \left(u_2 - c\right) \varepsilon w + 
+%		\label{kjdsskjsnadkjddadsbafabjb}
+%	\end{equation*}
+%\begin{equation*}
+%	+ d_1 \left( u_w - c \right) - k \left( u_2 - c \right) - d_1 u_1 = 0
+%	\label{asdasd}
+%\end{equation*}
+%\end{block}
 
 \vspace*{-2mm}
-\begin{columns}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Характ-ое уравнение для $l$}
-		\vspace*{2mm}
-		\begin{equation*} 
-			a_1 w_1^2	+ a_2 w_1 + a_3 = 0
-		\end{equation*}
-	\end{block}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Характ-ое уравнение для $\psi$}
-		\vspace*{2mm}
-		\begin{equation*}
-			b_1 w_2^2	+ b_2 w_2 + b_3 = 0
-		\end{equation*}
-	\end{block}
-	
-\end{columns}
+\begin{block}{Критерий устойчивости}
+	\vspace*{-2mm}
+	\begin{columns}
+		
+	\column{0.6\textwidth}
+	\begin{equation*} 
+		\begin{cases}
+			a_4 = m J \\
+			a_3 = - \varepsilon J \\
+			a_2 = \left(c - u_2 \right) m + \left(k - d_1 \right)J \\
+			a_1 = \left(u_2 - c\right) \varepsilon \\
+			a_0 = d_1 \left( u_2 - c \right) - k \left( u_2 - c \right) - d_2 u_1
+		\end{cases}
+	\end{equation*}
 
-\vspace*{-2mm}
-\begin{columns}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Общее характ-ое уравнение}
-		\vspace*{2mm}
+	\column{0.3\textwidth}
 		\begin{equation*} 
-			w^2 + 256.41 w + 0.12 = 0.
-		\end{equation*}
-	\end{block}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Корни уравнения}
-		\vspace*{2mm}
-		\begin{equation*}
-			\begin{cases}
-				w_1 = -256, \\
-				w_2 = -0.00047.
-			\end{cases}
-		\end{equation*}
-	\end{block}
-	
+		\begin{cases}
+			a_1 >  0 \\
+			a_1 a_2 - a_0 a_3 > 0 \\
+			\begin{vmatrix*}
+				a_1 & a_0 & 0 \\
+				a_3 & a_2 & a_1 \\
+				0 & a_4 & a_3 
+			\end{vmatrix*} > 0
+		\end{cases}
+	\end{equation*}
 \end{columns}
+\end{block}
 
 
 	
@@ -568,9 +573,9 @@
 \begin{frame}{Результаты}
 	\begin{block}{}
 	\begin{enumerate}	
-		\item Было показано, что с помощью полученной модели решения уравнения Рейнольдса возможно получить положение оценку положения равновесия динамической системы в первом инженерном приближении и доказать ее асимптотическую устойчивость в данном положении
-		\item Представлены расчеты уравнения Рейнольдса для различных функций зазора. Показано отличие смещения пластины при различных зазорах и граничных условиях.
-		\item Полученная математическая модель может быть расширена для учета неравномерного распределения давления на сегменты кольца при не симметричного вращении ротора относительно центра кольца.
+		\item Показано, что исследование устойчивости положения равновесия сегментов надроторного кольца в потоке жидкости можно выполнить на основе инженерного подхода, объединяющего модель Рейнольдса для течения жидкой смазки и модель колебательной системы с двумя степенями свободы.
+		\item Показано возникновение подъемного гидродинамического клина в сужающемся по окружности зазоре, а также области разряжения в зазоре с расширением. Эти результаты согласуются с экспериментально наблюдаемой картиной течения в гидродинамических подшипниках и уплотнениях.
+		\item Построенная математическая модель может быть использована на этапе предварительного проектирования конструкции.
 	\end{enumerate}
 	\end{block}	
 
