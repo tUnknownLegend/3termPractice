@@ -70,10 +70,10 @@
 	\item Исследовать устойчивость найденного положения равновесия.
 \end{enumerate}
 		
-		\vspace*{-10mm}
+		\vspace*{-4mm}
 	\begin{figure}[!htbp]
-		\center{\includegraphics[width=1\textwidth, height=0.47\textwidth]{pruzina-text.png}}
-		\caption{Схема модели пластины с пружиной}
+		\center{\includegraphics[width=1\textwidth, height=0.5\textheight]{pruzina-text.png}}
+		\caption{Схема модели}
 		\label{pruzina}
 	\end{figure}	
 		
@@ -89,6 +89,7 @@
 			\]
 		\end{block}
 		
+		\vspace*{-10mm}
 		\begin{columns}
 	
 		\column{0.5\textwidth}`
@@ -97,17 +98,17 @@
 				$p(0, z) = p(L, z) = p(x, L) = p_{\text{н}}$
 			\end{block}
 			\begin{block}{}
-			$h = h(x, z)$ --- функция зазор \\
-			$p = p(x, z)$ --- давление \\
+			$h = h(x, z)$ --- функция зазора \\
+			$p = p(x, z)$ --- давление жидкости \\
 			$\mu$ --- коэффициент вязкости \\
-			$U$ --- скорость
+			$U$ --- скорость ротора
 			\end{block}
 
 	
 	\column{0.5\textwidth}`
 	\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=\textwidth]{taskGU}%
+	\includegraphics[width=1\textwidth, height=1\textwidth]{taskGU}%
 	\caption{Cхема расчетной области}
 	\vspace*{-2mm}
 	\label{ser_graph}
@@ -127,10 +128,10 @@
 	\begin{block}{Функции формы}
 		\[
 			\begin{cases}
-				N_1 = 1 - \frac{\xi}{l} - \frac{\zeta}{h} + \frac{\xi  \zeta}{l  h}, \\
-				N_2 = \frac{\xi}{l} - \frac{\xi  \zeta}{l  h}, \\
-				N_3 = \frac{\xi  \zeta}{l h}, \\
-				N_4 = \frac{\zeta}{h} - \frac{\xi  \zeta}{l  h} \\
+				N_1 = 1 - \frac{\xi}{L} - \frac{\zeta}{H} + \frac{\xi  \zeta}{L  H}, \\
+				N_2 = \frac{\xi}{L} - \frac{\xi  \zeta}{L  H}, \\
+				N_3 = \frac{\xi  \zeta}{L H}, \\
+				N_4 = \frac{\zeta}{H} - \frac{\xi  \zeta}{L  H} \\
 			\end{cases}
 			\label{form-func}
 		\]
@@ -151,113 +152,48 @@
 	
 \end{frame}
 
-\begin{frame}{Сравнение постоянного и зазора с положительным коэффициентом}
+\begin{frame}{Результаты расчетов}
 	
 
 	
 	\begin{columns}
 		
-		\column{0.33\textwidth}
+	
+		\column{0.5\textwidth}
+		\vspace*{-10mm}
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{res_static.png}}
-			\caption{Решение для $h = 0.001$ м}
+			\center{\includegraphics[width=1.2\textwidth, height=0.7\textheight]{res_static.png}}
+			\caption{Распределение давления $h = 0.001$~м}
 			\label{res_static}
 		\end{figure}
-		
-		\column{0.33\textwidth}
-		\begin{figure}[!htbp]
-			\center{\includegraphics[width=0.9\textwidth, height=0.7\textwidth]{res_pos.png}}
-			\caption{Решения для $h = 0.15 x + 0.001$ м}
-			\label{res_pos}
-		\end{figure}
 	
-		\column{0.33\textwidth}
-	\begin{figure}[!htbp]
-		\center{\includegraphics[width=0.9\textwidth, height=0.7\textwidth]{res_static.png}}
-		\caption{Решение для $h = -0.15 x + 0.001$ м}
-		\label{res_static}
-	\end{figure}
+	
+	\vspace*{-7mm}
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=1\textwidth, height=0.5\textheight]{check_func_1.png}}
+			\caption{Проверочная функция}
+			\label{check_func_1_pic}
+		\end{figure}
+		\vspace*{-2mm}
+		\begin{block}{}
+			\begin{equation*}
+				\vspace*{5mm}
+				{\scriptstyle 
+					f(x, z) = -2 \frac{\pi x }{0.005} \sin{\left(\frac{\pi z}{0.005}\right)} \left(x - 0.005\right)
+				}
+			\end{equation*}
+		\end{block}
+		
+	
 		
 	\end{columns}
 
 	
 \end{frame}
 
-\begin{frame}{Сравнение результатов при постоянном давлении на границе}
-	
-	
-	
-	\begin{columns}
-		
-		\column{0.5\textwidth}
-		
-		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{zero_neg.png}}
-			\caption{График для $h = -0.15 x + 0.001$ м с одинаковыми ГУ}
-			\label{zero_neg}
-		\end{figure}
-		
-		\column{0.5\textwidth}
-		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{zero_pos.png}}
-			\caption{График для $h = 0.15 x + 0.001$ м с одинаковыми ГУ}
-			\label{zero_pos}
-		\end{figure}
-		
-	\end{columns}
-	
-	
-\end{frame}
-
-\begin{frame}{Верификация подстановкой правой части}
-	
-	\begin{block}{Проверочная функция}
-	\begin{equation*}
-		f(x, z) = -2 \frac{\pi }{0.005} \sin{\left(\frac{\pi z}{0.005}\right)} x \left(x - 0.005\right)
-		\label{check_func_1}
-	\end{equation*}
-\end{block}
-
-\begin{columns}
-
-\column{0.3\textwidth}
-\begin{block}{Правая часть}
-\begin{equation*}
-	g = \frac{\partial^2 f}{x^2} + \frac{\partial^2 f}{\partial z^2}
-\end{equation*} 
-\end{block}
-
-\column{0.3\textwidth}
-\begin{figure}[!htbp]
-	\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{check_func_1.png}}
-	\caption{Проверочная функция}
-	\label{check_func_1_pic}
-\end{figure}
-
-\vspace*{-2mm}
-\column{0.3\textwidth}
-\begin{figure}[!htbp]
-	\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{res_check_func_1.png}}
-	\caption{Результат на сетке 20 на 20}
-	\label{res_check_func_1}
-\end{figure}
-	
-\end{columns}	
-\vspace*{-2mm}
-\begin{table}[!htbp]
-	\begin{tabular}{|l|l|l|}
-		\hline
-		\multicolumn{1}{|c|}{Размерность сетки} & \multicolumn{1}{c|}{Разность, Па} & Погрешность, \% \\ \hline
-		5 на 5                                  & 0.0002                              & 3.3            \\ \hline
-		10 на 10                                & 0.0001                              & 0.8            \\ \hline
-		20 на 20                                & 0.0000                              & 0.2            \\ \hline
-	\end{tabular}
-\end{table}
-	
-\end{frame}
-
-\begin{frame}{Результаты верификации подстановкой правой части}
-		\vspace*{-1mm}
+\begin{frame}{Верификация}
+	\vspace*{-1mm}
 	\begin{block}{Проверочная функция}
 		\begin{equation*}
 			f(x, z) = -2 \frac{\pi z}{0.005} \sin{\frac{2 \pi z}{0.005}} \sin{\frac{4 \pi x}{0.005}}
@@ -265,60 +201,107 @@
 		\end{equation*}
 	\end{block}
 	
-	\vspace*{-2mm}
+	\vspace*{-6mm}
 	\begin{columns}
 		
 		\column{0.5\textwidth}
 		
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=0.7\textwidth, height=0.6\textwidth]{check_func_2.png}}
+			\center{\includegraphics[width=\textwidth, height=0.6\textheight]{check_func_2.png}}
 			\caption{Проверочная функция}
 			\label{check_func_2_pic}
 		\end{figure}
 		
 		\column{0.5\textwidth}
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=0.7\textwidth, height=0.6\textwidth]{res_check_func_2.png}}
+			\center{\includegraphics[width=\textwidth, height=0.6\textheight]{res_check_func_2.png}}
 			\caption{Решение на сетке 20 на 20}
 			\label{res_check_func_2}
 		\end{figure}
 		
 	\end{columns}
-
-	\vspace*{-3mm}
-\begin{table}[!htbp]
-	\begin{tabular}{|l|l|l|}
-		\hline
-		\multicolumn{1}{|c|}{Размерность сетки} & \multicolumn{1}{c|}{Разность, Па} & Погрешность, \% \\ \hline
-		5 на 5                                  & 0.969                              & 21.31            \\ \hline
-		10 на 10                                & 0.260                              & 5.7            \\ \hline
-		20 на 20                                & 0.065                              & 1.4            \\ \hline
-	\end{tabular}
-\end{table}
 \end{frame}
 
-\begin{frame}
-		\vspace*{-2mm}
-	\begin{block}{Сила}
-		\begin{equation*}
-			F_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right)  dx dz}
-		\end{equation*}
-	\end{block}
+\begin{frame}{Сравнение результатов при расширяющимся зазоре}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=1.1\textwidth, height=\textwidth]{res_pos.png}}
+			\caption{Распределение давления $h = 0.15 x + 0.001$~м}
+			\label{res_pos}
+		\end{figure}
+
+		
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=1.1\textwidth, height=\textwidth]{zero_pos.png}}
+			\caption{Распределение давления $h = 0.15 x + 0.001$~м, $p_{\text{в}} = p_{\text{н}}$}
+			\label{zero_pos}
+		\end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Сравнение результатов при сужающимся зазоре}	
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+		\center{\includegraphics[width=1.2\textwidth, height=\textwidth]{res_static.png}}
+		\caption{Распределение давления $h = -0.15 x + 0.001$~м}
+		\label{res_static}
+	\end{figure}
+	
+	\column{0.5\textwidth}
+	\begin{figure}[!htbp]
+		\center{\includegraphics[width=1.2\textwidth, height=\textwidth]{zero_neg.png}}
+		\caption{Распределение давления $h = -0.15 x + 0.001$~м, $p_{\text{в}} = p_{\text{н}}$}
+		\label{zero_neg}
+	\end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Аэроупругая модель}
+	\vspace*{-9mm}
+	\begin{figure}[!htbp]
+		\center{\includegraphics[width=\textwidth, height=0.4\textheight]{pruzina-text.png}}
+		\caption{Схема модели}
+		\label{pruzina}
+	\end{figure}	
+
+\vspace*{-5mm}
+	\begin{columns}
+		\column{0.3\textwidth}
+		\begin{block}{}
+			\begin{equation*}
+				\tilde{\tilde{p}} = p_i - p_{ext}
+			\end{equation*}
+		\end{block}
+		\column{0.7\textwidth}
+		\begin{block}{}
+			\vspace*{2mm}
+			\begin{equation*}
+			 \hat{p}	= N_1 \tilde{\tilde{p}}_1 + N_2 \tilde{\tilde{p}}_2 + N_3 \tilde{\tilde{p}}_3 + N_4 \tilde{\tilde{p}}_4
+			\end{equation*}
+		\end{block}
+	\end{columns}
 	
 	\vspace*{-2mm}
-	\begin{block}{Момент}
+		\begin{columns}	
+				\column{0.5\textwidth}
+	\begin{block}{Сила}
 		\begin{equation*}
-			M_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right) \sqrt{x^2 + y^2}  dx dz}
+			F_i = \int_{S_i} { \hat{p}   dx dz}
 		\end{equation*}
 	\end{block}
+	\column{0.5\textwidth}
+	\begin{block}{Момент}
+		\begin{equation*}
+			M_i = \int_{S_i} {\hat{p}  \left(x - 0.25 \right)  dx dz}
+		\end{equation*}
+	\end{block}
+\end{columns}
 
-		\begin{block}{Давление}
-	\vspace*{2mm}
-	\begin{equation*}
-		s_i = p_i - p_{ext}
-		\label{kjdsbafabjb}
-	\end{equation*}
-\end{block}
+
+	
 \end{frame}
 
 \begin{frame}{Поиск положения равновесия}
@@ -353,7 +336,7 @@
 \vspace*{-1mm}
 \begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{part_2-zazor.png}}
-	\caption{}
+	\caption{Начальное и равновесное положение}
 	\label{res_chasdasdaeck_func_2}
 \end{figure}
 
@@ -399,24 +382,12 @@
 	\vspace*{-2mm}
 	\begin{equation*}
 		\begin{cases}
-			\left( m \omega^2 - d_1 - \varepsilon \omega + k \right) L - d_2 \Psi = 0, \\
-			- u_1 L + \left(J \omega^2 - u_2 + c \right) \Psi 	 = 0
+			\left( m \omega^2 - d_1 - \varepsilon \omega + k \right) \tilde{L} - d_2 \Psi = 0, \\
+			- u_1 \tilde{L} + \left(J \omega^2 - u_2 + c \right) \Psi 	 = 0
 		\end{cases}
 		\label{kjdkjsnadkjddadsbafabjb}
 	\end{equation*}
 \end{block}
-
-%\begin{block}{}
-%	\vspace*{2mm}
-%	\begin{equation*}
-%		m J w^4 - \varepsilon J w^3 + \left( \left(c - u_2 \right) m + \left(k - %d_1 \right)J \right) w^2 + \left(u_2 - c\right) \varepsilon w + 
-%		\label{kjdsskjsnadkjddadsbafabjb}
-%	\end{equation*}
-%\begin{equation*}
-%	+ d_1 \left( u_w - c \right) - k \left( u_2 - c \right) - d_1 u_1 = 0
-%	\label{asdasd}
-%\end{equation*}
-%\end{block}
 
 \vspace*{-2mm}
 \begin{block}{Критерий устойчивости}
