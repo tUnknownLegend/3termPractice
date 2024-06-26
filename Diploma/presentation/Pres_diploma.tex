@@ -9,6 +9,7 @@
 \usepackage{graphicx,pgf}
 \usepackage{multimedia}
 \usepackage{multicol}
+\usepackage{mathtools}
 
 \usetheme{Warsaw}
 
@@ -225,10 +226,10 @@
 	\end{frame}	
 
 \begin{frame}{Решение уравнения Рейнольдса с помощью слабой формы Галеркина}
-	
-\begin{columns}
 		
-		\column{0.5\textwidth}
+
+
+
 	\begin{block}{Функции формы}
 		\[
 			\begin{cases}
@@ -239,23 +240,8 @@
 			\end{cases}
 			\label{form-func}
 		\]
-		\end{block}
-	
-	\column{0.5\textwidth}
-	\begin{block}{Входные данные}
-	\[
-		\begin{cases}
-			h = 0.0001 \text{ м}, \\
-			verticalLength = 0.005 \text{ м}, \\
-			horizontalLength = 0.005 \text{ м}, \\
-			\mu = 8.90 * 10^{-4} \text{ Па}*\text{с}, \\
-			U = 10 \text{ м/c}, \\
-			p_{\text{н}} = 100 \text{ кПа}, \\
-			p_{\text{в}} = 150 \text{ кПа} \\
-		\end{cases}	
-	\]
-\end{block}
-\end{columns}
+	\end{block}
+
 
 \begin{block}{Аппроксимирующая функция}
 	\[
@@ -265,82 +251,160 @@
 	
 \end{frame}
 
-\begin{frame}{Решение на сетке 10 на 10}
+\begin{frame}{Сравнение постоянного и зазора с положительным коэффициентом}
+	
+
 	
 	\begin{columns}
 		
-		\column{0.5\textwidth}
+		\column{0.33\textwidth}
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10mesh.jpg}}
-			\caption{График решения уравнения Рейнольдса для h = 0.0001 м на сетке 10 на 10 элементов}
-			\label{10x10mesh}
+			\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{res_static.png}}
+			\caption{Решение для $h = 0.001$ м}
+			\label{res_static}
 		\end{figure}
 		
-		\column{0.5\textwidth}
+		\column{0.33\textwidth}
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{10x10points.jpg}}
-			\caption{График значений узлов решения уравнения Рейнольдса для h = 0.0001 м на сетке 10 на 10 элементов}
-			\label{10x10points}
+			\center{\includegraphics[width=0.9\textwidth, height=0.7\textwidth]{res_pos.png}}
+			\caption{Решения для $h = 0.15 x + 0.001$ м}
+			\label{res_pos}
 		\end{figure}
-		
-	\end{columns}
 	
-\end{frame}
-
-\begin{frame}{Решение на сетке 20 на 20}
-	
-	\begin{columns}
-		
-		\column{0.5\textwidth}
-		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{20x20mesh.jpg}}
-			\caption{График решения уравнения Рейнольдса для h = 0.0001 м на сетке 20 на 20 элементов}
-			\label{5x5mesh}
-		\end{figure}
-		
-		\column{0.5\textwidth}
-		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{20x20points.jpg}}
-			\caption{График значений узлов решения уравнения Рейнольдса для h = 0.0001 м на сетке 20 на 20 элементов}
-			\label{20x20points}
-		\end{figure}
-		
-	\end{columns}
-	
-\end{frame}
-
-\begin{frame}{Сравнение решения с Wolfram Mathematica}
-	\vspace*{-4mm}
+		\column{0.33\textwidth}
 	\begin{figure}[!htbp]
-		\center{\includegraphics[width=\textwidth, height=0.4\textwidth]{exactSolutionConst.jpg}}
-		\caption{График решения уравнения Рейнольдса для h = 0.0001 м полученный с помощью Wolfram Mathematica}
-		\label{exactSolutionConst}
+		\center{\includegraphics[width=0.9\textwidth, height=0.7\textwidth]{res_static.png}}
+		\caption{Решение для $h = 0.001$ м}
+		\label{res_static}
 	\end{figure}
+		
+	\end{columns}
 
+	
+\end{frame}
+
+\begin{frame}{Сравнение результатов при постоянном давлении на границе}
+	
+	
+	
+	\begin{columns}
+		
+		\column{0.5\textwidth}
+		
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{zero_neg.png}}
+			\caption{График для $h = -0.15 x + 0.001$ м с одинаковыми ГУ}
+			\label{zero_neg}
+		\end{figure}
+		
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{zero_pos.png}}
+			\caption{График для $h = 0.15 x + 0.001$ м с одинаковыми ГУ}
+			\label{zero_pos}
+		\end{figure}
+		
+	\end{columns}
+	
+	
+\end{frame}
+
+\begin{frame}{Верификация подстановкой правой части}
+	
+	\begin{block}{Проверочная функция}
+	\begin{equation*}
+		f(x, z) = -2 \frac{\pi z}{0.005} \sin{\frac{2 \pi z}{0.005}} \sin{\frac{4 \pi x}{0.005}}
+		\label{check_func_2}
+	\end{equation*}
+\end{block}
+
+\begin{columns}
+
+\column{0.3\textwidth}
+\begin{block}{Правая часть}
+\begin{equation*}
+	g = \frac{\partial^2 f}{x^2} + \frac{\partial^2 f}{\partial z^2}
+\end{equation*} 
+\end{block}
+
+\column{0.3\textwidth}
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{check_func_1.png}}
+	\caption{Проверочная функция}
+	\label{check_func_1_pic}
+\end{figure}
+
+\vspace*{-2mm}
+\column{0.3\textwidth}
+\begin{figure}[!htbp]
+	\center{\includegraphics[width=\textwidth, height=0.7\textwidth]{res_check_func_1.png}}
+	\caption{Результат на сетке 20 на 20}
+	\label{res_check_func_1}
+\end{figure}
+	
+\end{columns}	
+\vspace*{-2mm}
 \begin{table}[!htbp]
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\multicolumn{1}{|c|}{Размерность сетки} & \multicolumn{1}{c|}{Разность, Па} & Погрешность, \% \\ \hline
-		5 на 5                                  & 4612                              & 4.51            \\ \hline
-		10 на 10                                & 1538                              & 1.38            \\ \hline
-		20 на 20                                & 1290                              & 1.02            \\ \hline
+		5 на 5                                  & 0.0002                              & 3.3            \\ \hline
+		10 на 10                                & 0.0001                              & 0.8            \\ \hline
+		20 на 20                                & 0.0000                              & 0.2            \\ \hline
+	\end{tabular}
+\end{table}
+	
+\end{frame}
+
+\begin{frame}{Результаты верификации подстановкой правой части}
+		\vspace*{-1mm}
+	\begin{block}{Проверочная функция}
+		\begin{equation*}
+			f(x, z) = -2 \frac{\pi z}{0.005} \sin{\frac{2 \pi z}{0.005}} \sin{\frac{4 \pi x}{0.005}}
+			\label{check_func_2}
+		\end{equation*}
+	\end{block}
+	
+	\vspace*{-2mm}
+	\begin{columns}
+		
+		\column{0.5\textwidth}
+		
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=0.7\textwidth, height=0.6\textwidth]{check_func_2.png}}
+			\caption{Проверочная функция}
+			\label{check_func_2_pic}
+		\end{figure}
+		
+		\column{0.5\textwidth}
+		\begin{figure}[!htbp]
+			\center{\includegraphics[width=0.7\textwidth, height=0.6\textwidth]{res_check_func_2.png}}
+			\caption{Решение на сетке 20 на 20}
+			\label{res_check_func_2}
+		\end{figure}
+		
+	\end{columns}
+
+	\vspace*{-3mm}
+\begin{table}[!htbp]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\multicolumn{1}{|c|}{Размерность сетки} & \multicolumn{1}{c|}{Разность, Па} & Погрешность, \% \\ \hline
+		5 на 5                                  & 0.969                              & 21.31            \\ \hline
+		10 на 10                                & 0.260                              & 5.7            \\ \hline
+		20 на 20                                & 0.065                              & 1.4            \\ \hline
 	\end{tabular}
 \end{table}
 \end{frame}
 
 \begin{frame}{Результаты}
-	\begin{block}{Сделано}
+	\begin{block}{}
 	\begin{enumerate}	
-		\item Создана программная реализация метода конечного элемента для решение уравнения Рейнольдса
-		\item Полученные значения решения уравнения Рейнольдса были сравнены с результатами решения, полученного с помощью функции NDSolve в Wolfram Mathematica
+		\item Было показано, что с помощью полученной модели решения уравнения Рейнольдса возможно получить положение оценку положения равновесия динамической системы в первом инженерном приближении и доказать ее асимптотическую устойчивость в данном положении
+		\item Представлены расчеты уравнения Рейнольдса для различных функций зазора. Показано отличие смещения пластины при различных зазорах и граничных условиях.
+		\item Полученная математическая модель может быть расширена для учета неравномерного распределения давления на сегменты кольца при не симметричного вращении ротора относительно центра кольца.
 	\end{enumerate}
 	\end{block}	
 
-	\begin{block}{Будет сделано}
-	\begin{enumerate}	
-		\item Получение базы аэродинамических усилий  для различных углов наклона и смещения верхней стенки на основе решения уравнения Рейнольдса
-		\item Исследование динамического поведения пластинки с двумя степенями свободы, находящей под действием аэродинамических усилий со стороны потока жидкости
-	\end{enumerate}
-\end{block}	
 \end{frame}	
 \end{document} 

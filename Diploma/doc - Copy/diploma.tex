@@ -480,7 +480,7 @@ W_i \phi = F_i,
 
 Правая часть вычисляется аналогичным образом с первой проверкой, подставив~\eqref{check_func_2} в уравнение
 \begin{equation*}
-	F = \frac{\partial^2 f}{x^2} + \frac{\partial^2 f}{\partial z}
+	F = \frac{\partial^2 f}{x^2} + \frac{\partial^2 f}{\partial z^2}
 \end{equation*} 
 
 Посчитаем разность вычисленных значений с искомым и погрешность. Погрешность была вычислена по формуле $\underset{i}{\max} | \frac{{x_t}_i - {x_{node}}_i}{{x_t}_i} |$, где ${x_t}_i$ -- значение в узле $i$, полученное из искомой функции, а ${x_{node}}_i$ -- значение в узле $i$, полученное в программе. Максимум вычисляется по всем узловым элементам.
@@ -511,7 +511,7 @@ W_i \phi = F_i,
 \subsection{Верификация программы сравнением с Wolfram Mathematica}
 
 В качестве еще одной проверки воспользуемся пакетом компьютерной алгебры Wolfram Mathematica.
-Решим уравнение Рейнольдса с помощью функции NDSolve.
+Решим уравнение Рейнольдса для $h(x) = -0.1x + 0.001$ и постоянного давления на границе $100000$ Па с помощью функции NDSolve.
 
 \begin{figure}[!htbp]
 	\center{\includegraphics[width=0.7\textwidth, height=0.5\textwidth]{w_sol.png}}
@@ -549,7 +549,7 @@ W_i \phi = F_i,
 Затем получим график для увеличивающегося зазора. Наблюдается сдвиг по оси $x$ влево по сравнению с постоянным зазором. Это как раз и вызвано изменением в правой части уравнения Рейнольдса
 \begin{figure}[!htbp]
 	\center{\includegraphics[width=0.9\textwidth, height=0.7\textwidth]{res_pos.png}}
-	\caption{График решения уравнения Рейнольдса для $h = 0.15 x + 0.001$ м}
+	\caption{решения для $h = 0.001$ и $h = 0.15 x + 0.001$ м}
 	\label{res_pos}
 \end{figure}
 
@@ -578,7 +578,7 @@ W_i \phi = F_i,
 
 \begin{figure}[!htbp]
 	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{neg_res_diff.png}}
-	\caption{График решения уравнения Рейнольдса для $h = 0.15 x + 0.001$ м}
+	\caption{Сравнение решения для $h = 0.001$ и $h = -0.15 x + 0.001$ м}
 	\label{neg_res_diff}
 \end{figure}
 
