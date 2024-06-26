@@ -10,6 +10,9 @@
 \usepackage{multimedia}
 \usepackage{multicol}
 \usepackage{mathtools}
+\usepackage{caption} 
+
+\captionsetup[figure]{name=}
 
 \usetheme{Warsaw}
 
@@ -50,191 +53,73 @@
 		%\insertshortinstitute{Группа ФН2-41Б}
 	\end{frame}
 
-	\begin{frame}{Надроторное кольцо}
+
+	\begin{frame}{Практическое применение}
+		\vspace*{-10mm}
 		\begin{figure}[!htbp]
-			\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{vved-2.png}}
-			\caption{Схема бесконтактного пальчикового уплотнения: 1 – корпусные
-				диски; 2 и 3 – задняя и передняя уплотняющие пластины}
+			\center{\includegraphics[width=\textwidth, height=0.6\textwidth]{vved-2.png}}
+			\caption{Схема сегментного надроторного кольца (на примере пальчикового уплотнения)}
 			\label{vved-2}
 		\end{figure}
 	\end{frame}
 
 	\begin{frame}{Постановка задачи}
-		Данная работа посвящена получению пригодной к использованию в практических задачах формы уравнения Рейнольдса, решению его методом конечных элементов и поиску равновесного состояния для динамической системы дополненной пружиной как ограничителем сверху.
+		\vspace*{2mm}
+	\begin{enumerate}	
+	\item Построить модель для исследования положения равновесия сегментов надроторного кольца в потоке жидкости.
+	\item Исследовать устойчивость найденного положения равновесия.
+\end{enumerate}
 		
-			\begin{columns}
-		\column{0.5\textwidth}
+		\vspace*{-10mm}
 	\begin{figure}[!htbp]
-	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{vved-2.png}}
-	\caption{Схема бесконтактного пальчикового уплотнения: 1 – корпусные
-		диски; 2 и 3 – задняя и передняя уплотняющие пластины}
-	\label{vved-2}
-	\end{figure}
-		
-		\column{0.5\textwidth}
-	\begin{figure}[!htbp]
-		\center{\includegraphics[width=0.7\textwidth, height=0.7\textwidth]{pruzina.png}}
+		\center{\includegraphics[width=1\textwidth, height=0.47\textwidth]{pruzina-text.png}}
 		\caption{Схема модели пластины с пружиной}
 		\label{pruzina}
-	\end{figure}
-	\end{columns}	
+	\end{figure}	
 		
-	\end{frame}
-
-	\begin{frame}{Получение уравнения Рейнольдса}
-		\vspace*{-2mm}
-	\begin{block}{Гидродинамическое давление $p$ в
-			точках $x, y, z$}
-		\vspace*{-6mm}
-		\begin{columns}
-		\column{0.4\textwidth}`	
-			\begin{minipage}[t]{0.5\linewidth}
-			\begin{equation*}
-				\label{eqfi}
-				\begin{cases}
-					\frac{\partial p}{\partial x} = \mu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right) \\
-					\frac{\partial p}{\partial y} = \mu \left( \frac{\partial^2 \nu}{\partial x^2} + \frac{\partial^2 \nu}{\partial y^2} + \frac{\partial^2 \nu}{\partial z^2} \right) \\
-					\frac{\partial p}{\partial z} = \mu \left( \frac{\partial^2 \omega}{\partial x^2} + \frac{\partial^2 \omega}{\partial y^2} + \frac{\partial^2 \omega}{\partial z^2} \right)
-				\end{cases}
-			\end{equation*}
-			\end{minipage}
-				
-				
-				\column{0.2\textwidth}`
-					\begin{minipage}[t]{0.2\linewidth}
-		
-		
-					\begin{equation*}
-					\label{secondinitialeq}
-					\begin{cases}
-						\frac{\partial p }{\partial x} = \mu \frac{\partial^2 u}{\partial y^2} \\
-						\frac{\partial p }{\partial y} = 0 \\
-						\frac{\partial p }{\partial z} = \mu \frac{\partial^2 \omega}{\partial y^2}
-					\end{cases}
-				\end{equation*}
-			\end{minipage}
-				
-				\column{0.3\textwidth}`
-				
-			\begin{minipage}[t]{0.6\linewidth}
-				%\begin{block}
-				Проекции скорости $u, \nu, \omega$ на осях $x, y, z$.
-				%\end{block}
-			\end{minipage}
-				
-	\end{columns}
-
-	\end{block}
-		
-		
-		\vspace*{-3mm}
-		\begin{block}{Cилы трения $p_{xy}, p_{xz}, p_{yx}, p_{yz}, p_{zx}, p_{zy}$}
-			\vspace*{-12mm}
-			\begin{columns}
-				\column{0.3\textwidth}`	
-				\begin{minipage}[t]{\linewidth}
-					\begin{equation*}
-						\label{eqsi}
-					\begin{cases}
-						p_{yz} = p_{zy} = \mu \left(\frac{\partial \omega}{\partial y} + \frac{\partial \nu}{\partial z} \right) \\
-						p_{zx} = p_{xz} = \mu \left( \frac{\partial \omega}{\partial x} +  \frac{\partial u}{\partial z} \right) \\
-						p_{xy} = p_{yx} = \mu \left(  \frac{\partial u}{\partial y} + \frac{\partial \nu}{\partial x} \right)
-					\end{cases}
-					\end{equation*}
-				\end{minipage}
-				
-				
-				\column{0.5\textwidth}`
-				\begin{minipage}[t]{\linewidth}
-					
-					
-					\begin{equation*}
-					\label{secinitialeq}
-					\begin{cases}
-						p_{yz} = p_{xy} = \mu \frac{\partial \omega}{\partial y} \\
-						p_{zx} = p_{xz} = 0 \\
-						p_{xy} = p_{yx} = \mu \frac{\partial u}{\partial y}
-					\end{cases}
-					\end{equation*}
-				\end{minipage}
-		
-				
-			\end{columns}
-			
-		\end{block}
 	
-	\vspace*{-3mm}
-	\begin{block}{Условие несжимаемости жидкости, выраженное уравнением}
-		\vspace*{-6mm}
-		\begin{columns}
-			\column{0.4\textwidth}`	
-			\begin{minipage}[t]{0.5\linewidth}
-				\begin{equation*}
-						\label{eqthi}
-					\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0.
-				\end{equation*}
-			\end{minipage}
-			
-			
-			\column{0.5\textwidth}`
-			\begin{minipage}[t]{0.2\linewidth}
-				
-				
-				\begin{equation*}
-						\frac{\partial u}{\partial x} + \frac{\partial \nu}{\partial y} + \frac{\partial \omega}{\partial z} = 0.
-				\end{equation*}
-		\end{minipage}
-	\end{columns}
 		
-	\end{block}
-		
-
-	
-
-			
-			
 	\end{frame}
 
 	\begin{frame}{Уравнение Рейнольдса}
-		\vspace*{-4mm}
+		
+		\begin{block}{}
+			\[
+			\frac{\partial}{\partial x} \left(h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left(h^3 \frac{\partial p}{\partial z} \right) = 6 \mu U \frac{\partial h}{\partial x}
+			\]
+		\end{block}
+		
 		\begin{columns}
-			\column{\textwidth}`
-			\begin{block}{}
-			 \[
-				\frac{\partial}{\partial x} \left(h^3 \frac{\partial p}{\partial x} \right) + \frac{\partial}{\partial z} \left(h^3 \frac{\partial p}{\partial z} \right) = 6 \mu U \frac{\partial h}{\partial x}
-			 \]
-			\end{block}
-
-\vspace*{-2mm}
-		\begin{columns}
-			\column{0.5\textwidth}
+	
+		\column{0.5\textwidth}`
 			\begin{block}{Граничные условия}
-				$U$ --- скорость в направлении $x$,\\ 
-				$p_{\text{в}}$ --- повышенное давление,\\ 
-				$p_{\text{н}}$ --- пониженное давление
+				$p(x, 0) = p_{\text{в}}$\\ 
+				$p(0, z) = p(L, z) = p(x, L) = p_{\text{н}}$
 			\end{block}
-		
-			\column{0.5\textwidth}
-			\begin{block}{Описание величин}
-			$h = h(x, z)$ --- толщина слоя, \\
-			$p = p(x, z)$ --- давление, \\
-			$\mu$ --- коэффициент вязкости
+			\begin{block}{}
+			$h = h(x, z)$ --- функция зазор \\
+			$p = p(x, z)$ --- давление \\
+			$\mu$ --- коэффициент вязкости \\
+			$U$ --- скорость
 			\end{block}
-		\end{columns}
+
+	
+	\column{0.5\textwidth}`
+	\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=\textwidth]{taskGU}%
+	\caption{Cхема расчетной области}
+	\vspace*{-2mm}
+	\label{ser_graph}
+\end{figure}
 
 		\end{columns}
 		
-		\begin{figure}[!htbp]
-			\centering
-			\includegraphics[width=0.4\textwidth]{taskGU}%
-			\caption{Cхема области решения задачи}
-			\vspace*{-2mm}
-			\label{ser_graph}
-		\end{figure}
+		
 		
 	\end{frame}	
 
-\begin{frame}{Решение уравнения Рейнольдса с помощью слабой формы Галеркина}
+\begin{frame}{Решение уравнения Рейнольдса МКЭ}
 		
 
 
@@ -242,10 +127,10 @@
 	\begin{block}{Функции формы}
 		\[
 			\begin{cases}
-				N_1 = 1 - \frac{x}{l} - \frac{z}{h} + \frac{x  z}{l  h}, \\
-				N_2 = \frac{x}{l} - \frac{x  z}{l  h}, \\
-				N_3 = \frac{x  z}{l h}, \\
-				N_4 = \frac{z}{h} - \frac{x  z}{l  h} \\
+				N_1 = 1 - \frac{\xi}{l} - \frac{\zeta}{h} + \frac{\xi  \zeta}{l  h}, \\
+				N_2 = \frac{\xi}{l} - \frac{\xi  \zeta}{l  h}, \\
+				N_3 = \frac{\xi  \zeta}{l h}, \\
+				N_4 = \frac{\zeta}{h} - \frac{\xi  \zeta}{l  h} \\
 			\end{cases}
 			\label{form-func}
 		\]
@@ -254,13 +139,13 @@
 
 \begin{block}{Аппроксимирующая функция}
 	\[
-	\phi = c_0 N_1 + c_1 N_2 + c_2 N_3 + c_3 N_4
+	\tilde{p} = p_1 N_1 + p_2 N_2 + p_3 N_3 + p_4 N_4
 	\]
 \end{block}
 
 \begin{block}{Приведение к форме Галеркина}
 	\begin{equation*}
-		\int_{S_i} {\left( \frac{\partial[N]^T}{\partial x} \left(h^3 \frac{\partial \phi}{\partial x} \right) +  \frac{\partial[N]^T}{\partial z} \left(h^3 \frac{\partial \phi}{\partial z} \right) - [N]^T 6 \mu U \frac{\partial h}{\partial x}\right) dxdz} = 0
+		\int_{S_i} {\left( \frac{\partial[N]^T}{\partial \xi} h^3 \frac{\partial \tilde{p}}{\partial \xi}  +  \frac{\partial[N]^T}{\partial \zeta} h^3 \frac{\partial \tilde{p}}{\partial \zeta}  - [N]^T 6 \mu U \frac{\partial h}{\partial \xi}\right) d\xi dz\zeta} = 0
 	\end{equation*}
 \end{block}
 	
@@ -412,15 +297,35 @@
 \end{table}
 \end{frame}
 
+\begin{frame}
+		\vspace*{-2mm}
+	\begin{block}{Сила}
+		\begin{equation*}
+			F_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right)  dx dz}
+		\end{equation*}
+	\end{block}
+	
+	\vspace*{-2mm}
+	\begin{block}{Момент}
+		\begin{equation*}
+			M_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right) \sqrt{x^2 + y^2}  dx dz}
+		\end{equation*}
+	\end{block}
+
+		\begin{block}{Давление}
+	\vspace*{2mm}
+	\begin{equation*}
+		s_i = p_i - p_{ext}
+		\label{kjdsbafabjb}
+	\end{equation*}
+\end{block}
+\end{frame}
+
 \begin{frame}{Поиск положения равновесия}
 	
-	\vspace*{-3mm}
 		\begin{columns}
-	
-	
-			\column{0.4\textwidth}
-			\begin{block}{Уравнение Лагранжа}
-				\vspace*{-4mm}
+			\column{0.5\textwidth}
+			\begin{block}{}
 			\begin{equation*}
 				\begin{cases*}
 					m \ddot{l} + \varepsilon \dot{l} + k l  = F \\
@@ -430,8 +335,8 @@
 			\end{equation*}
 			\end{block}
 
-			\column{0.47\textwidth}
-			\begin{block}{Поиск положения равновесия}
+			\column{0.5\textwidth}
+			\begin{block}{}
 			\begin{equation*}
 				\begin{cases*}
 					k l = F \\
@@ -440,37 +345,15 @@
 				\label{temp_ldsfsdfsdfagr}
 			\end{equation*}
 			\end{block}
-	
-	
-	\column{0.2\textwidth}
-			\begin{block}{Давление}
-				\vspace*{2mm}
-				\begin{equation*}
-					s_i = p_i - p_{ext}
-					\label{kjdsbafabjb}
-				\end{equation*}
-			\end{block}
 		
 \end{columns}
 
-	\vspace*{-2mm}
-	\begin{block}{Сила}
-	\begin{equation*}
-		F_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right)  dx dz}
-	\end{equation*}
-	\end{block}
 
-	\vspace*{-2mm}
-	\begin{block}{Момент}
-	\begin{equation*}
-		M_i = \int_{S_i} { \left( N_1 s_1 + N_2 s_2 + N_3 s_3 + N_4 s_4 \right) \sqrt{x^2 + y^2}  dx dz}
-	\end{equation*}
-	\end{block}
 
 \vspace*{-1mm}
 \begin{figure}[!htbp]
-	\center{\includegraphics[width=0.4\textwidth, height=0.18\textwidth]{zazor2d.png}}
-	\caption{Положение равновесия при $h(x) = 0.147 x + 0.00046$}
+	\center{\includegraphics[width=\textwidth, height=0.5\textwidth]{part_2-zazor.png}}
+	\caption{}
 	\label{res_chasdasdaeck_func_2}
 \end{figure}
 
@@ -484,7 +367,7 @@
 		
 	\column{0.5\textwidth}
 	\begin{block}{}
-		\vspace*{2mm}
+		\vspace*{0mm}
 		\begin{equation*}
 			\begin{cases}
 				l = l_0 + \Delta{l}, \\
@@ -500,7 +383,7 @@
 
 	\column{0.5\textwidth}
 	\begin{block}{}
-		\vspace*{2mm}
+		\vspace*{0mm}
 		\begin{equation*}
 			\begin{cases}
 			F = F_0 + d_1 \Delta{l} + d_2 \Delta{\psi}, \\
